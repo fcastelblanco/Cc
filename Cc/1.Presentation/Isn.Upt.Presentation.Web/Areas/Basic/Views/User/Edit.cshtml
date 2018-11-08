@@ -1,0 +1,126 @@
+﻿@model Isn.Upt.Domain.User
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<form method="post" id="userForm" action="@Url.Action("Save", "User")">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Nombre
+            </label>
+            <div class="col-md-10">
+                <input type="text" name="Name" class="form-control" data-rule-required="true" data-msg-required="El nombre es requerido" value="@Model.Name" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Apellido
+            </label>
+            <div class="col-md-10">
+                <input type="text" name="LastName" class="form-control" data-rule-required="true" data-msg-required="El apellido es requerido" value="@Model.LastName" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Nombre de usuario
+            </label>
+            <div class="col-md-10">
+                <input type="text" name="UserName" class="form-control" data-rule-required="true" data-msg-required="El nombre de usuario es requerido" value="@Model.UserName" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Email
+            </label>
+            <div class="col-md-10">
+                <input type="text" name="Email" class="form-control" data-rule-required="true" data-msg-required="El e-mail es requerido" data-rule-email=”true” data-msg-email="Ingrese un e-mail valido" value="@Model.Email" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Perfil
+            </label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Profile, ViewBag.ProfileList as IEnumerable<SelectListItem>, "Seleccione un perfil", new { @class = "form-control", data_rule_required = "true", data_msg_required = "El perfil es requerido", @id = "Profile" })
+            </div>
+        </div>
+
+        <div class="form-group" id="CompanyData">
+            <label class="control-label col-md-2">
+                Compañía
+            </label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.CompanyId, ViewBag.Companies as SelectList, "Seleccione una compañía", new { @class = "form-control", data_rule_required = "true", data_msg_required = "La compania es requerida", @id = "Company" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" id="save" value="Guardar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    @Html.ActionLink("Volver al listado", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        var profilesTypes = {
+            CompanyContact: "0",
+            PackageCreator: "1",
+            Administrator: "2",
+        };
+
+        $("#userForm").validate({
+            errorClass: "error-class-validation",
+        });
+
+        $("#Profile").change(function () {
+
+            if (this.value !== profilesTypes.CompanyContact) {
+                $("#CompanyData").hide();
+                $("#Company").removeAttr("data-rule-required");
+                $("#Company").removeAttr("data-msg-required");
+                return;
+            }
+
+            $("#CompanyData").show();
+            $("#Company").attr("data-rule-required", "true");
+            $("#Company").attr("data-msg-required", "La compania es requerida");
+
+        });
+
+        $("#save").click(function () {
+
+            if ($("#userForm").valid()) {
+                $("#userForm").submit();
+            }
+        });
+
+        $(document).ready(function () {
+
+            $("#Profile").change();
+        });
+
+    </script>
+}

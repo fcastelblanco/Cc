@@ -1,0 +1,14 @@
+﻿[
+  {
+    "table": "",
+    "columnOrField": "MOTOR_BASEDATOS",
+    "where": "",
+    "licenseParameter": 0
+  },
+  {
+    "table": "",
+    "columnOrField": "CADENA_CONEXION_SF",
+    "where": "",
+    "licenseParameter": 1 
+  }
+]

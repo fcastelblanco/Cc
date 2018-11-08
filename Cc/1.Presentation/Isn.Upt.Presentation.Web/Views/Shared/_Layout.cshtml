@@ -1,0 +1,112 @@
+﻿@using Isn.Common.Enumerations
+@using Isn.Upt.Presentation.AuthenticationWeb;
+@{
+    var currentUser = User as AuthorizedPrincipal;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isolucion Package Managment</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    @{
+        var values = ViewContext.RouteData.Values;
+        var actionName = values["action"].ToString();
+        var controllerName = values["controller"].ToString();
+
+    }
+
+</head>
+<body>
+
+    <nav class="navbar navbar-default" style="border-bottom: 2px solid #ef6900">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="~/Basic/Release">
+                    <img src="~/Content/images/logoLogin.jpg" style=" height:30px;">
+                </a>
+                <h4 style="display:inline;">&nbsp;&nbsp;|&nbsp;&nbsp;Centro de Servicio</h4>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav"></ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    @if (User.Identity.IsAuthenticated && currentUser.Profile == Isn.Upt.Domain.Enumerations.Profile.Administrator)
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-cog"></span> Admin <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Usuarios", "Index", "User")</li>
+                                <li>@Html.ActionLink("Compañias", "Index", "Company")</li>
+                                <li>@Html.ActionLink("Parametrización", "Index", "Parameter")</li>
+                            </ul>
+                        </li>
+                    }
+                    @if (User.Identity.IsAuthenticated && (currentUser.Profile == Isn.Upt.Domain.Enumerations.Profile.Administrator || currentUser.Profile == Isn.Upt.Domain.Enumerations.Profile.PackageCreator))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-compressed"></span> Paquetes <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" style="min-width: 300px;">
+
+                                <li>@Html.ActionLink("Crear actualización", "Create", "Release")</li>
+
+                            </ul>
+                        </li>
+                    }
+                    @if (User.Identity.IsAuthenticated && currentUser != null)
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@currentUser.UserName&nbsp; <span class="caret"></span></a>
+
+                            <ul class="dropdown-menu">
+                                <li><a>@currentUser.Name @currentUser.LastName</a></li>
+                                <li><a>@currentUser.Profile.GetDescription()</a></li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="@Url.Action("ResetPassword", "Password", new { area = "Basic", userId = currentUser.Id })">
+                                        Cambiar contraseña
+                                    </a>
+                                </li>
+                                <li>@Html.ActionLink("Cerrar sesión", "LogOut", "Login", new { area = "" }, new { @class = "" })</li>
+
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+
+
+    <div class="container body-content">
+            
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year ISOLUCIÓN SISTEMAS INTEGRADOS DE GESTIÓN S.A.</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,392 @@
+﻿<Window x:Class="Isn.Upt.Presentation.Configurator.Desktop.CompanyMapper"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Isn.Upt.Presentation.Configurator.Desktop"
+        xmlns:customUserControl="clr-namespace:Isn.Upt.Presentation.Configurator.Desktop.CustomUserControl"
+        mc:Ignorable="d"
+        Title="Configurador del actualizador"
+        SizeToContent="Manual" Loaded="CompanyMapper_OnLoaded">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical" Margin="10" Grid.Row="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Margin="10" Grid.Column="0" Grid.Row="0" FontWeight="Bold" HorizontalContentAlignment="Center">
+                        Seleccione las carpetas en dónde se encuentra las licencias de Isolucion que desee actualizar
+                    </Label>
+                    <Button  Grid.Column="0" Grid.Row="1" Margin="10" Name="AddCompany" Click="AddCompany_OnClick" Background="#FF3C6F9C" Foreground="White">
+                        Agregar
+                    </Button>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" HorizontalAlignment="Center" Name="PanelGrid" Visibility="Hidden" Margin="20">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <DataGrid AutoGenerateColumns="False"
+                              CanUserAddRows="False" RowHeaderWidth="0"
+                              HorizontalContentAlignment="Stretch"
+                              ItemsSource="{Binding CompanyMappers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="*" Header="Empresa">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox Margin="10"
+                                                 Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="*" Header="Ruta smart flow">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+
+                                        <Grid Margin="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBox Grid.ColumnSpan="4" Grid.Column="0" IsReadOnly="True"
+                                                     Text="{Binding SmartFlowPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            <Button Grid.Column="4" Name="SmartFlowPath" Click="FileChooser_OnClick">...</Button>
+                                        </Grid>
+
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+                            <DataGridTemplateColumn Width="*" Header="Ruta isolucion servicio">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBox Grid.ColumnSpan="4" Grid.Column="0" IsReadOnly="True"
+                                                     Text="{Binding IsolucionServicioPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            <Button Grid.Column="4" Name="IsolucionServicioPath"
+                                                    Click="FileChooser_OnClick">
+                                                ...
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="*" Header="Ruta banco anexo">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBox Grid.ColumnSpan="4" Grid.Column="0" IsReadOnly="True"
+                                                     Text="{Binding BancoAnexoPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            <Button Grid.Column="4" Name="BancoAnexoPath" Click="FileChooser_OnClick">...</Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="*" Header="Ruta banco conocimiento">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBox Grid.ColumnSpan="4" Grid.Column="0" IsReadOnly="True"
+                                                     Text="{Binding BancoConocimientoPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            <Button Grid.Column="4" Name="BancoConocimientoPath"
+                                                    Click="FileChooser_OnClick">
+                                                ...
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="*" Header="Ruta librerias">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBox Grid.ColumnSpan="4" Grid.Column="0" IsReadOnly="True"
+                                                     Text="{Binding LibreriaPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            <Button Grid.Column="4" Name="LibreriaPath" Click="FileChooser_OnClick">...</Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="*" Header="Ruta templates">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBox Grid.ColumnSpan="4" Grid.Column="0" IsReadOnly="True"
+                                                     Text="{Binding TemplatePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            <Button Grid.Column="4" Name="TemplatePath" Click="FileChooser_OnClick">...</Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="*" Header="Ruta web">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBox Grid.ColumnSpan="4" Grid.Column="0" IsReadOnly="True"
+                                                     Text="{Binding WebPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            <Button Grid.Column="4" Name="WebPath" Click="FileChooser_OnClick">...</Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="*" Header="Ruta licencia">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBox Grid.ColumnSpan="4" Grid.Column="0" IsReadOnly="True"
+                                                     Text="{Binding LicencePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            <Button Grid.Column="4" Name="LicencePath" Click="FileChooser_OnClick">...</Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="*" Header="Ruta generic handler">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBox Grid.ColumnSpan="4" Grid.Column="0" IsReadOnly="True"
+                                                     Text="{Binding GenericHandlerPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            <Button Grid.Column="4" Name="GenericHandlerPath" Click="FileChooser_OnClick">...</Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="10">
+                                            <Button Name="Remove" Click="ButtonBase_OnClick">Borrar</Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </ScrollViewer>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Name="PathData" Visibility="Collapsed">
+                <Label Foreground="Red" Name="Error" FontWeight="Bold"></Label>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Name="LicenseView" Visibility="Collapsed">
+                <GroupBox Margin="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Column="0" Orientation="Vertical" Grid.Row="0" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="#FF7A797B">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Label FontWeight="Bold"  Grid.Column="0" FontSize="13">
+                                    Licencia:
+                                </Label>
+                                <TextBox   Grid.Column="1" Text="{Binding TheCompanyMapperDto.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                            </Grid>
+                        </StackPanel>
+
+                        <customUserControl:FolderChoosed Grid.Column="0" LabelControlValue="Banco anexo" Margin="10"
+                                                         x:Name="BancoAnexo" Grid.Row="1"
+                                                         ToolTipControlTitleValue="Banco anexo"
+                                                         ToolTipControlDescriptionValue="Proporciona la ruta de los anexos"
+                                                         PathControlValue="{Binding TheCompanyMapperDto.BancoAnexoPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         RootFolderValue="{Binding TheCompanyMapperDto.RootPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         CreateParameterAndFillItValue="False" FillParameterValue="False" />
+
+                        <customUserControl:FolderChoosed Grid.Column="0" LabelControlValue="Banco conocimiento"
+                                                         Grid.Row="2" Margin="10" x:Name="BancoConocimiento"
+                                                         ToolTipControlTitleValue="Banco conocimiento"
+                                                         ToolTipControlDescriptionValue="Proporciona la ruta de los documentos" 
+                                                         PathControlValue="{Binding TheCompanyMapperDto.BancoConocimientoPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                          RootFolderValue="{Binding TheCompanyMapperDto.RootPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         CreateParameterAndFillItValue="False" FillParameterValue="False"/>
+
+                        <customUserControl:FolderChoosed Grid.Column="0" LabelControlValue="Libreria" Margin="10"
+                                                         Grid.Row="3" x:Name="Libreria"
+                                                         ToolTipControlTitleValue="Libreria"
+                                                         ToolTipControlDescriptionValue="Proporciona la ruta de las librerias"
+                                                         PathControlValue="{Binding TheCompanyMapperDto.LibreriaPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                          RootFolderValue="{Binding TheCompanyMapperDto.RootPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         CreateParameterAndFillItValue="False" FillParameterValue="False"/>
+
+
+                        <customUserControl:FolderChoosed Grid.Column="0" LabelControlValue="Web" Margin="10"
+                                                         x:Name="Web" Grid.Row="4" ToolTipControlTitleValue="Web"
+                                                         ToolTipControlDescriptionValue="Proporciona la ruta de la aplicacion web"
+                                                         PathControlValue="{Binding TheCompanyMapperDto.WebPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                          RootFolderValue="{Binding TheCompanyMapperDto.RootPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         CreateParameterAndFillItValue="False" FillParameterValue="False"/>
+
+                        <customUserControl:FolderChoosed Grid.Column="0" LabelControlValue="Licencia" Margin="10"
+                                                         x:Name="Licencia" Grid.Row="5"
+                                                         ToolTipControlTitleValue="Licencia"
+                                                         ToolTipControlDescriptionValue="Proporciona la ruta de la licencia"
+                                                         PathControlValue="{Binding TheCompanyMapperDto.LicencePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                          RootFolderValue="{Binding TheCompanyMapperDto.RootPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         CreateParameterAndFillItValue="false" FillParameterValue="false" Visibility="Collapsed"
+                                                         />
+
+                        <customUserControl:FolderChoosed Grid.Column="0" LabelControlValue="Smart flow" Margin="10"
+                                                         x:Name="SmartFlow" Grid.Row="6"
+                                                         ToolTipControlTitleValue="Smart flow"
+                                                         ToolTipControlDescriptionValue="Proporciona la ruta de smart flow"
+                                                         PathControlValue="{Binding TheCompanyMapperDto.SmartFlowPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                          RootFolderValue="{Binding TheCompanyMapperDto.RootPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         CreateParameterAndFillItValue="False" FillParameterValue="False"/>
+
+                        <customUserControl:FolderChoosed Grid.Column="1" LabelControlValue="Templates" Margin="10"
+                                                         x:Name="Template" Grid.Row="7"
+                                                         ToolTipControlTitleValue="Templates"
+                                                         ToolTipControlDescriptionValue="Proporciona la ruta de las plantillas de los proyectos" 
+                                                         PathControlValue="{Binding TheCompanyMapperDto.TemplatePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                          RootFolderValue="{Binding TheCompanyMapperDto.RootPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         CreateParameterAndFillItValue="False" FillParameterValue="False"/>
+
+                        <customUserControl:FolderChoosed Grid.Column="0" LabelControlValue="Isolucion servicio"
+                                                         Margin="10" x:Name="IsolucionServicio" Grid.Row="8"
+                                                         ToolTipControlTitleValue="Isolucion servicio"
+                                                         ToolTipControlDescriptionValue="Proporciona la ruta de isolucion servicio" 
+                                                         PathControlValue="{Binding TheCompanyMapperDto.IsolucionServicioPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         RootFolderValue="{Binding TheCompanyMapperDto.RootPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         CreateParameterAndFillItValue="False" FillParameterValue="False"/>
+
+                        <customUserControl:FolderChoosed Grid.Column="0" LabelControlValue="Generic handler"
+                                                         Margin="10" x:Name="GenericHandler" Grid.Row="9"
+                                                         ToolTipControlTitleValue="Generic handler"
+                                                         ToolTipControlDescriptionValue="Proporciona la ruta del generic handler" 
+                                                         PathControlValue="{Binding TheCompanyMapperDto.GenericHandlerPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         RootFolderValue="{Binding TheCompanyMapperDto.RootPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         CreateParameterAndFillItValue="False" FillParameterValue="False"/>
+
+                        <StackPanel Grid.Row="10" Grid.Column="0" Margin="10" VerticalAlignment="Bottom">
+                            <Button Background="#FF3C6F9C" Foreground="White" Name="SaveCompanyInGrid" Click="SaveCompanyInGrid_OnClick">Agregar otra licencia</Button>
+                        </StackPanel>
+
+                    </Grid>
+                </GroupBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Grid.Row="4" Grid.Column="0" Name="PanelClose" Margin="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Background="#FF3C6F9C" Foreground="White" Grid.Column="0" Margin="10" Name="SaveCompanyMapper" Click="SaveCompanyMapper_OnClick">
+                        Cerrar
+                    </Button>
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="5" Grid.ColumnSpan="4" HorizontalAlignment="Center">
+                <Label Foreground="Red" FontWeight="Bold" Name="FileError">
+                    [ERROR]
+                </Label>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Window>

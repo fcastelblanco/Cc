@@ -1,0 +1,240 @@
+﻿<Window x:Class="Isn.Upt.Presentation.Configurator.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Isn.Upt.Presentation.Configurator.Desktop"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Configurador del actualizador"
+        SizeToContent="Manual"
+        Loaded="MainWindow_OnLoaded" >
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" >
+        <xctk:BusyIndicator Name="BusyIndicator" IsBusy="False" >
+            <StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel   HorizontalAlignment="Center" Grid.Column="0" Name="ExisteConfiguracion" Grid.Row="1" Margin="0" Visibility="Hidden" VerticalAlignment="Center">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Orientation="Vertical"  Grid.Row="0" >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0" x:Name="Fine" Source="Resources\Like.png" />
+                                    <TextBlock Grid.Column="1" TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="10" FontSize="15">
+                                        Se ha encontrado una configuración previa del Actualizador de Isolución.
+                                        ¿Desea cargarlo?
+                                    </TextBlock>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Grid.Row="1"  Margin="10" >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Button Background="#FF3C6F9C" Foreground="White" Grid.Row="0" Grid.Column="0"  Name="YesReload"  Click="YesReload_Click" Margin="10">
+                                        Si
+                                    </Button>
+                                    <Button  Grid.Row="0" Grid.Column="1"  Name="NoReload"  Click="NoReload_Click" Margin="10">
+                                        No
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" Name="NoExisteConfiguracion"  Visibility="Visible" >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15"  Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                       FontWeight="Bold" Content="Elija el método de operación"  Height="30" />
+                            <StackPanel  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel  Grid.Row="0" Grid.Column="0">
+                                        <RadioButton GroupName="WorkMode" IsChecked="{Binding Path=IsOnline, Mode=TwoWay, NotifyOnSourceUpdated=True}" Content="Automático:"  VerticalAlignment="Top" FontWeight="Bold" Margin="10"  Name="OnLine"/>
+                                        <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="10">
+                                            Elija esta opción si su servidor tiene acceso a Internet y usted va a permitir que se actualice Isolución de forma automática. Obviamente este sistema de actualización hará copias de respaldo de su información antes del backup
+                                        </TextBlock>
+                                        <StackPanel Orientation="Vertical" Margin="10" >
+                                            <Label Content="Modo de funcionalidad" Visibility="Hidden" />
+                                            <ComboBox x:Name="FunctionallityMode" Visibility="Hidden"
+                                                      ItemsSource="{Binding ItemDtos, NotifyOnSourceUpdated=True}"
+                                                      SelectedItem="{Binding ItemDto, Mode=TwoWay}" DisplayMemberPath="Description"  />
+                                        </StackPanel>
+                                        
+                                    </StackPanel>
+
+                                    <StackPanel  Grid.Row="0" Grid.Column="1">
+                                        <RadioButton GroupName="WorkMode" IsChecked="{Binding Path=IsOffLine, Mode=TwoWay, NotifyOnSourceUpdated=True}" Content="Manual:" HorizontalAlignment="Left"  VerticalAlignment="Top" FontWeight="Bold"   Name="OffLine" Margin="10"/>
+                                        <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="10">
+                                            Elija esta opción si prefiere descargar los paquetes de  actualización de http://actualizador.isolucion.co hacia una carpeta local y realizar la actualización de acuerdo a su planeación
+                                        </TextBlock>
+                                        <StackPanel Orientation="Vertical" Margin="10">
+                                            <Label Content="Periodo de ejecución (en minutos)"  Visibility="Hidden"/>
+                                            <TextBox x:Name="IntervalExecution" Text="5" Visibility="Hidden"/>
+                                        </StackPanel>
+                                        
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Foreground="Red" FontWeight="Bold" x:Name="Error" Grid.Column="0"  Grid.ColumnSpan="2"  Grid.Row="0" HorizontalContentAlignment="Center"/>
+
+                                    <StackPanel Orientation="Vertical" x:Name="ModeOffLine" Margin="10" Visibility="Hidden"  Grid.Row="1"  Grid.Column="1">
+
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0"  Content="Carpeta local con los paquetes de actualización" FontWeight="Bold"/>
+
+                                            <TextBox x:Name="ReleaseLocation" IsReadOnly="True"  Grid.Row="1" Grid.Column="0"     />
+                                            <Button  x:Name="ReleaseLocationButton" Click="ReleaseLocationButton_OnClick" Content="..." Grid.Row="1"  HorizontalAlignment="Right" />
+
+                                            <Button Background="#FF3C6F9C" Foreground="White" Margin="0,10,0,10" Grid.Row="2" Grid.Column="0"  x:Name="MapCompaniesModeOffLine" Click="MapCompaniesModeOffLine_OnClick"   Content="Continuar">
+                                            </Button>
+                                            <Button Background="#FF3C6F9C" Foreground="White"  Grid.Row="3" Grid.Column="0"  x:Name="StartProcessModeOffLine" Click="StartProcessModeOffLine_Click"  Content="Iniciar proceso"/>
+                                        </Grid>
+                                    </StackPanel>
+
+
+                                    <StackPanel Orientation="Vertical" Grid.Row="1"  Grid.Column="0" Name="ModeOnLine" Margin="10" Visibility="Hidden"  >
+                                        <StackPanel >
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Orientation="Vertical" Grid.Column="0"  Grid.Row="0" >
+                                                    <Label Content="API Url" FontWeight="Bold"/>
+                                                    <TextBox x:Name="ApiUrl" Text="http://actualizador.isolucion.co/"  />
+                                                    <Label Content="Usuario" FontWeight="Bold"/>
+                                                    <TextBox x:Name="UserName" />
+                                                    <Label FontWeight="Bold" Content="Contraseña"/>
+                                                    <PasswordBox x:Name="UserPassword" />
+                                                    <Button Background="#FF3C6F9C" Foreground="White" x:Name="AutenticateUser" Click="AutenticateUser_OnClick" Content="Autenticar" Margin="0,10,0,10"  >
+                                                    </Button>
+                                                    <Button Background="#FF3C6F9C" Foreground="White" x:Name="StartProcessModeOnLine"   Click="StartProcessModeOnLine_Click"  Content="Iniciar el proceso"/>
+                                                </StackPanel>
+
+
+
+
+                                                <StackPanel Grid.ColumnSpan="4" Margin="10" x:Name="FtpData" Visibility="Hidden" >
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <Label FontWeight="Bold" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Usuario autenticado:"/>
+                                                        <Label x:Name="UserLoggedIn" Foreground="Green" FontWeight="Bold" Grid.Row="1"
+                                           Grid.Column="2" Grid.ColumnSpan="2" />
+
+                                                        <StackPanel Orientation="Vertical" Grid.ColumnSpan="2" Margin="10" Grid.Row="2" Visibility="Hidden">
+                                                            <Label Content="Usuario de ftp"/>
+                                                            <TextBox x:Name="UserNameFtp" />
+                                                        </StackPanel>
+
+                                                        <StackPanel Orientation="Vertical" Grid.Column="2" Grid.ColumnSpan="2" Margin="10"  Visibility="Hidden"
+                                                Grid.Row="2">
+                                                            <Label Content="Clave de usuario de ftp"/>
+                                                            <PasswordBox x:Name="PasswordUserFtp" />
+                                                        </StackPanel>
+
+                                                        <StackPanel Orientation="Vertical" Grid.ColumnSpan="2" Margin="10" Grid.Row="3"  Visibility="Hidden">
+                                                            <Label Content="Ruta de ftp"/>
+                                                            <TextBox x:Name="FtpPath" />
+                                                        </StackPanel>
+
+                                                    </Grid>
+                                                </StackPanel>
+
+
+                                            </Grid>
+                                        </StackPanel>
+
+                                    </StackPanel>
+
+                                </Grid>
+                            </StackPanel>
+
+                                                
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </xctk:BusyIndicator>
+    </ScrollViewer>
+</Window>

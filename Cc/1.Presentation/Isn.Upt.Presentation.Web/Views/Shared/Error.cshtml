@@ -1,0 +1,28 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+<div class="row text-center">
+    <div  class="col-md-12 text-danger">
+        <h1>
+            Oops ! Error no controlado
+        </h1>
+        <br/>
+        <img src="~/Content/images/robotDamage.jpg" alt="Sorry" style="height: 250px"/>
+    </div>
+</div>
+
+<p>
+    <h4>
+        @Model.Exception.Message
+    </h4>    
+</p>
+<br/>
+<p>
+    @Model.Exception.ToString()
+</p>
+
+<br/>
+
+@*<a href="@Url.Action(@Model.ActionName, @Model.ControllerName)">*@
+<a href="@Url.Action("Index", "Home")">
+    Volver
+</a>

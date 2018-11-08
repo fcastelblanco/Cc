@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "EmailSended";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="form-horizontal">
+    <hr />
+    <div class="form-group">
+        <div class="col-md-10">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <label>Se ha enviado un correo electrónico con la información de recuperación de la contraseña</label>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.ActionLink("Iniciar sesión", "Index")
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

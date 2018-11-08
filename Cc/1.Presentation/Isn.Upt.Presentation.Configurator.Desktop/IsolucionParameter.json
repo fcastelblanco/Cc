@@ -1,0 +1,92 @@
+﻿[
+  {
+    "table": "WebSite",
+    "columnOrField": "RutaAnexo",
+    "where": "",
+    "parameterIsolucion": 0,
+    "scriptInsertOracle": "",
+    "scriptInsertSql": "",
+    "scriptCreateColumnOracle": "ALTER TABLE WEBSITE ADD COLUMN RUTAANEXO VARCHAR2(256) NOT NULL",
+    "scriptCreateColumnSql": "ALTER TABLE WebSite ADD COLUMN RutaAnexo VARCHAR(256) NOT NULL"
+  },
+  {
+    "table": "WebSite",
+    "columnOrField": "RutaWebSite",
+    "where": "",
+    "parameterIsolucion": 1,
+    "scriptInsertOracle": "",
+    "scriptInsertSql": "",
+    "scriptCreateColumnOracle": "ALTER TABLE WEBSITE ADD COLUMN RUTAWEBSITE VARCHAR2(255)  NULL",
+    "scriptCreateColumnSql": "ALTER TABLE WebSite ADD COLUMN RutaWebSite VARCHAR(255)  NULL"
+  },
+  {
+    "table": "WebSite",
+    "columnOrField": "RutaArticulo",
+    "where": "",
+    "parameterIsolucion": 2,
+    "scriptInsertOracle": "",
+    "scriptInsertSql": "",
+    "scriptCreateColumnOracle": "ALTER TABLE WEBSITE ADD COLUMN RUTAARTICULO VARCHAR2(255)  NULL",
+    "scriptCreateColumnSql": "ALTER TABLE WEBSITE ADD COLUMN RutaArticulo VARCHAR(255)  NULL"
+  },
+  {
+    "table": "WebSite",
+    "columnOrField": "RutaLibreria",
+    "where": "",
+    "parameterIsolucion": 3,
+    "scriptInsertOracle": "",
+    "scriptInsertSql": "",
+    "scriptCreateColumnOracle": "ALTER TABLE WEBSITE ADD COLUMN RUTALIBRERIA VARCHAR2(255)  NULL",
+    "scriptCreateColumnSql": "ALTER TABLE WEBSITE ADD COLUMN RutaLibreria VARCHAR(255)  NULL"
+  },
+  {
+    "table": "WebSite",
+    "columnOrField": "RutaHttpServicios",
+    "where": "",
+    "parameterIsolucion": 4,
+    "scriptInsertOracle": "UPDATE WebSite SET RUTAHTTPSERVICIOS = (('RutaServicio')) ",
+    "scriptInsertSql": "UPDATE WebSite SET RUTAHTTPSERVICIOS = (('RutaServicio')) ",
+    "scriptCreateColumnOracle": "ALTER TABLE WEBSITE ADD COLUMN RUTAHTTPSERVICIOS NCLOB",
+    "scriptCreateColumnSql": "ALTER TABLE WEBSITE ADD COLUMN RutaHttpServicios NVARCHAR2 MAX(255)  NULL"
+  },
+  {
+    "table": "Parametro",
+    "columnOrField": "Valor",
+    "where": "upper(NomParametro) like upper(('%RUTA_BASE_CACHEDATOS%'))",
+    "parameterIsolucion": 5,
+    "scriptInsertOracle": "",
+    "scriptInsertSql": "",
+    "scriptCreateColumnOracle": "",
+    "scriptCreateColumnSql": ""
+  },
+  {
+    "table": "Parametro",
+    "columnOrField": "Valor",
+    "where": "upper(NomParametro) like upper(('%App_RutaServicioWebSF%'))",
+    "parameterIsolucion": 6,
+    "scriptInsertOracle": "",
+    "scriptInsertSql": "",
+    "scriptCreateColumnOracle": "",
+    "scriptCreateColumnSql": ""
+  },
+  {
+    "table": "WebSite",
+    "columnOrField": "WebSite",
+    "where": "",
+    "parameterIsolucion": 7,
+    "scriptInsertOracle": "",
+    "scriptInsertSql": "",
+    "scriptCreateColumnOracle": "",
+    "scriptCreateColumnSql": ""
+  },
+  {
+    "table": "Parametro",
+    "columnOrField": "Valor",
+    "where": "upper(NomParametro) like upper(('%RUTA_BASE_LIBRERIAS_EVENTOS%'))",
+    "parameterIsolucion": 8,
+    "scriptInsertOracle": "",
+    "scriptInsertSql": "",
+    "scriptCreateColumnOracle": "",
+    "scriptCreateColumnSql": ""
+  }
+]
