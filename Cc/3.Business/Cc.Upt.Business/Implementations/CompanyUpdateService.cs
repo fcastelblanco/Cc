@@ -12,7 +12,7 @@ using Cc.Upt.Domain;
 
 namespace Cc.Upt.Business.Implementations
 {
-    public class CompanyUpdateService : EntityService<CompanyUpdate>, ICompanyUpdateService
+    public class CompanyUpdateService : Repository<CompanyUpdate>, ICompanyUpdateService
     {
         private readonly IReleaseService _releaseService;
         private readonly ICompanyReleaseService _companyReleaseService;

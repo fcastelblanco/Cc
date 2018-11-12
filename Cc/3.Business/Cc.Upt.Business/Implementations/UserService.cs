@@ -13,7 +13,7 @@ using Cc.Upt.Domain.Enumerations;
 
 namespace Cc.Upt.Business.Implementations
 {
-    public class UserService : EntityService<User>, IUserService
+    public class UserService : Repository<User>, IUserService
     {
         public UserService(IContext context) : base(context)
         {

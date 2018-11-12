@@ -12,7 +12,7 @@ using Path = Cc.Common.ExtensionMethods.Path;
 
 namespace Cc.Upt.Business.Implementations
 {
-    public class DownloadRequestReleaseService : EntityService<DownloadRequestRelease>, IDownloadRequestReleaseService
+    public class DownloadRequestReleaseService : Repository<DownloadRequestRelease>, IDownloadRequestReleaseService
     {
         private readonly IParameterService _parameterService;
         private readonly IReleaseService _releaseService;

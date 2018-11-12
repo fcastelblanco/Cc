@@ -52,15 +52,14 @@
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac.Integration.WebApi, Version=4.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Autofac.WebApi2.4.1.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Autofac.WebApi2.4.2.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
@@ -295,7 +294,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Dto\ValidateFiles.cs" />
-    <Compile Include="Modules\BusinessModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Workers\RequestReleaseCreator.cs" />
   </ItemGroup>
@@ -360,7 +358,6 @@
     <Content Include="Content\uploadfile.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -380,6 +377,7 @@
     <Content Include="Content\bootstrap-datepicker.css.map" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Global.asax" />
     <Content Include="Scripts\ckeditor\CHANGES.md" />
     <Content Include="Scripts\ckeditor\LICENSE.md" />
     <Content Include="Scripts\ckeditor\README.md" />
@@ -659,11 +657,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\RecoverPassword.cshtml" />
     <Content Include="Views\Login\EmailSent.cshtml" />
     <Content Include="Views\Login\CreateUserPassword.cshtml" />
     <Content Include="Views\Login\ForgotPassword.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -677,17 +675,21 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\2.Services\Cc.Ioc\Cc.Ioc.csproj">
+      <Project>{D7B0912E-CDA3-4B17-BCA1-B6994355A981}</Project>
+      <Name>Cc.Ioc</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\3.Business\Cc.Upt.Business\Cc.Upt.Business.csproj">
       <Project>{0F82B700-1CF2-4D6C-AA25-EB4DAE36219F}</Project>
       <Name>Cc.Upt.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\4.Domain\Cc.Upt.DomainRepository\Cc.Upt.DomainRepository\Cc.Upt.DomainRepository.csproj">
+      <Project>{7711C7D1-028A-4B02-8FA8-1C03ED613B0B}</Project>
+      <Name>Cc.Upt.DomainRepository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\4.Domain\Cc.Upt.Domain\Cc.Upt.Domain.csproj">
       <Project>{7C8F66FF-63B0-4977-9049-451C1A35B1F1}</Project>
       <Name>Cc.Upt.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\5.Data\Cc.Upt.Data\Cc.Upt.Data.csproj">
-      <Project>{8ED59F8D-AEEE-4490-9B63-8B568A9840FA}</Project>
-      <Name>Cc.Upt.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\6.Common\Cc.Common\Cc.Common.csproj">
       <Project>{83190101-665C-4B64-9156-B5E7D6C2212C}</Project>

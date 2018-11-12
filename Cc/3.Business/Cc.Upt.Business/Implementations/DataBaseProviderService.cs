@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using Cc.Common.LogHelper;
 using Cc.Upt.Business.Definitions;
 using Cc.Upt.Domain.Dto;
 using Cc.Upt.Domain.Enumerations;
@@ -32,12 +33,12 @@ namespace Cc.Upt.Business.Implementations
                         dbConnection = new OracleConnection(connectionString);
                         dbConnection.Open();
                         dbCommand = new OracleCommand(theSelect,
-                            (OracleConnection)dbConnection);
+                            (OracleConnection) dbConnection);
                         break;
                     case DataBaseProvider.SqlServer:
                         dbConnection = new SqlConnection(connectionString);
                         dbConnection.Open();
-                        dbCommand = new SqlCommand(theSelect, (SqlConnection)dbConnection);
+                        dbCommand = new SqlCommand(theSelect, (SqlConnection) dbConnection);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(baseProvider), baseProvider, null);
@@ -85,7 +86,8 @@ namespace Cc.Upt.Business.Implementations
             }
         }
 
-        public bool ExecuteCommand(IsoluctionParameterDto isoluctionParameterDto, DataBaseProvider baseProvider, string connectionString, SqlTask sqlTask)
+        public bool ExecuteCommand(IsoluctionParameterDto isoluctionParameterDto, DataBaseProvider baseProvider,
+            string connectionString, SqlTask sqlTask)
         {
             IDbConnection dbConnection = null;
 
@@ -101,12 +103,12 @@ namespace Cc.Upt.Business.Implementations
             try
             {
                 var theCommand = sqlTask == SqlTask.CreateColumn
-                    ? (baseProvider == DataBaseProvider.Oracle
+                    ? baseProvider == DataBaseProvider.Oracle
                         ? isoluctionParameterDto.ScriptCreateColumnOracle
-                        : isoluctionParameterDto.ScriptCreateColumnSql)
-                    : (baseProvider == DataBaseProvider.Oracle
+                        : isoluctionParameterDto.ScriptCreateColumnSql
+                    : baseProvider == DataBaseProvider.Oracle
                         ? isoluctionParameterDto.ScriptInsertOracle
-                        : isoluctionParameterDto.ScriptInsertSql);
+                        : isoluctionParameterDto.ScriptInsertSql;
 
                 DbCommand dbCommand;
                 switch (baseProvider)
@@ -115,22 +117,23 @@ namespace Cc.Upt.Business.Implementations
                         dbConnection = new OracleConnection(connectionString);
                         dbConnection.Open();
                         dbCommand = new OracleCommand(theCommand,
-                            (OracleConnection)dbConnection);
+                            (OracleConnection) dbConnection);
                         break;
                     case DataBaseProvider.SqlServer:
                         dbConnection = new SqlConnection(connectionString);
                         dbConnection.Open();
-                        dbCommand = new SqlCommand(theCommand, (SqlConnection)dbConnection);
+                        dbCommand = new SqlCommand(theCommand, (SqlConnection) dbConnection);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(baseProvider), baseProvider, null);
                 }
-                
+
                 return Convert.ToInt32(dbCommand.ExecuteScalar()) > 0;
             }
             catch (Exception e)
             {
-                return false;
+                Log.Instance.Error(e);
+                throw;
             }
             finally
             {

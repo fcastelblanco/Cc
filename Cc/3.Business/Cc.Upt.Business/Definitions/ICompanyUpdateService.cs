@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using Cc.Upt.Data.Definitions;
 using Cc.Upt.Domain;
+using Cc.Upt.DomainRepository.Definitions;
 
 namespace Cc.Upt.Business.Definitions
 {
-    public interface ICompanyUpdateService : IEntityService<CompanyUpdate>
+    public interface ICompanyUpdateService : IRepository<CompanyUpdate>
     {
         List<CompanyUpdate> GetCompanyUpdateList(Guid companyId);
         bool Save(CompanyUpdate companyUpdate);

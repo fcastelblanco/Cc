@@ -8,7 +8,7 @@ using Cc.Upt.Domain;
 
 namespace Cc.Upt.Business.Implementations
 {
-    public class CompanyReleaseService : EntityService<CompanyRelease>, ICompanyReleaseService
+    public class CompanyReleaseService : Repository<CompanyRelease>, ICompanyReleaseService
     {
         public CompanyReleaseService(IContext context) : base(context)
         {

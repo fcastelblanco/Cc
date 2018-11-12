@@ -64,10 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementations\Context.cs" />
-    <Compile Include="Implementations\EntityService.cs" />
+    <Compile Include="Implementations\Repository.cs" />
     <Compile Include="Definitions\IContext.cs" />
-    <Compile Include="Definitions\IEntityService.cs" />
-    <Compile Include="Definitions\IService.cs" />
     <Compile Include="Migrations\201802252228172_FromZero.cs" />
     <Compile Include="Migrations\201802252228172_FromZero.Designer.cs">
       <DependentUpon>201802252228172_FromZero.cs</DependentUpon>
@@ -85,6 +83,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\4.Domain\Cc.Upt.DomainRepository\Cc.Upt.DomainRepository\Cc.Upt.DomainRepository.csproj">
+      <Project>{7711C7D1-028A-4B02-8FA8-1C03ED613B0B}</Project>
+      <Name>Cc.Upt.DomainRepository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\4.Domain\Cc.Upt.Domain\Cc.Upt.Domain.csproj">
       <Project>{7C8F66FF-63B0-4977-9049-451C1A35B1F1}</Project>
       <Name>Cc.Upt.Domain</Name>

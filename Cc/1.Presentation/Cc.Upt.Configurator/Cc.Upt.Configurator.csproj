@@ -218,13 +218,13 @@
       <Project>{0F82B700-1CF2-4D6C-AA25-EB4DAE36219F}</Project>
       <Name>Cc.Upt.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\4.Domain\Cc.Upt.DomainRepository\Cc.Upt.DomainRepository\Cc.Upt.DomainRepository.csproj">
+      <Project>{7711C7D1-028A-4B02-8FA8-1C03ED613B0B}</Project>
+      <Name>Cc.Upt.DomainRepository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\4.Domain\Cc.Upt.Domain\Cc.Upt.Domain.csproj">
       <Project>{7C8F66FF-63B0-4977-9049-451C1A35B1F1}</Project>
       <Name>Cc.Upt.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\5.Data\Cc.Upt.Data\Cc.Upt.Data.csproj">
-      <Project>{8ED59F8D-AEEE-4490-9B63-8B568A9840FA}</Project>
-      <Name>Cc.Upt.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\6.Common\Cc.Common\Cc.Common.csproj">
       <Project>{83190101-665C-4B64-9156-B5E7D6C2212C}</Project>

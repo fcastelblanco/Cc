@@ -10,11 +10,9 @@ using System.Web.Security;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using Cc.Ioc;
 using Cc.Upt.Business.Definitions;
-using Cc.Upt.Data.Definitions;
-using Cc.Upt.Data.Implementations;
 using Cc.Upt.Web.AuthenticationWeb;
-using Cc.Upt.Web.Modules;
 
 namespace Cc.Upt.Web
 {
@@ -24,9 +22,8 @@ namespace Cc.Upt.Web
         {
             var builder = new ContainerBuilder();
 
+            builder.RegisterModules();
             builder.RegisterAssemblyTypes(typeof(MvcApplication).Assembly).PropertiesAutowired();
-            builder.RegisterModule(new BusinessModule());
-            builder.RegisterType(typeof(Context)).As(typeof(IContext)).InstancePerLifetimeScope();
 
             var container = builder.Build();
 
@@ -67,7 +64,7 @@ namespace Cc.Upt.Web
                             CompanyId = user.CompanyId
                         };
 
-                 
+
                         HttpContext.Current.User = newUser;
                         if (!Request.Path.ToLower().Contains("logout"))
                             return;

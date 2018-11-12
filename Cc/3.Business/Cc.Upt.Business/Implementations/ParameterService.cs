@@ -16,7 +16,7 @@ using Cc.Upt.Domain.Enumerations;
 
 namespace Cc.Upt.Business.Implementations
 {
-    public class ParameterService : EntityService<Parameter>, IParameterService
+    public class ParameterService : Repository<Parameter>, IParameterService
     {
         public ParameterService(IContext context) : base(context)
         {

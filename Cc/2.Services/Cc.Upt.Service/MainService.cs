@@ -26,7 +26,7 @@ namespace Cc.Upt.Service
             _cancellationTokenSource = new CancellationTokenSource();
             _cancellationToken = _cancellationTokenSource.Token;
             ResetEvents = new List<ManualResetEvent>();
-            _updaterService = IsnContainer.Resolve<IUpdaterService>();
+            _updaterService = CcContainer.Resolve<IUpdaterService>();
             InitializeComponent();
         }
 

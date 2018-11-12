@@ -1,5 +1,5 @@
-﻿@using Isn.Common.Enumerations
-@using Isn.Upt.Presentation.AuthenticationWeb;
+﻿@using Cc.Common.Enumerations
+@using Cc.Upt.Web.AuthenticationWeb;
 @{
     var currentUser = User as AuthorizedPrincipal;
 }
@@ -44,7 +44,7 @@
                 <ul class="nav navbar-nav"></ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    @if (User.Identity.IsAuthenticated && currentUser.Profile == Isn.Upt.Domain.Enumerations.Profile.Administrator)
+                    @if (User.Identity.IsAuthenticated && currentUser.Profile == Cc.Upt.Domain.Enumerations.Profile.Administrator)
                     {
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -57,7 +57,7 @@
                             </ul>
                         </li>
                     }
-                    @if (User.Identity.IsAuthenticated && (currentUser.Profile == Isn.Upt.Domain.Enumerations.Profile.Administrator || currentUser.Profile == Isn.Upt.Domain.Enumerations.Profile.PackageCreator))
+                    @if (User.Identity.IsAuthenticated && (currentUser.Profile == Cc.Upt.Domain.Enumerations.Profile.Administrator || currentUser.Profile == Cc.Upt.Domain.Enumerations.Profile.PackageCreator))
                     {
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">

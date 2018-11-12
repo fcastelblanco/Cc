@@ -9,7 +9,7 @@ using Cc.Upt.Domain.Enumerations;
 
 namespace Cc.Upt.Business.Implementations
 {
-    public class UserTokenService : EntityService<UserToken>, IUserTokenService
+    public class UserTokenService : Repository<UserToken>, IUserTokenService
     {
         public UserTokenService(IContext context) : base(context)
         {

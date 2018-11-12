@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using Cc.Upt.Data.Definitions;
 using Cc.Upt.Domain;
+using Cc.Upt.DomainRepository.Definitions;
 
 namespace Cc.Upt.Business.Definitions
 {
-    public interface ICompanyReleaseService : IEntityService<CompanyRelease>
+    public interface ICompanyReleaseService : IRepository<CompanyRelease>
     {
         bool Save(CompanyRelease model);
         List<CompanyRelease> GetCompanyReleaseList(Guid companyId);

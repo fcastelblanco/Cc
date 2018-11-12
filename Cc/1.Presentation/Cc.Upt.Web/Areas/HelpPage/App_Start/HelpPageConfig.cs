@@ -21,7 +21,7 @@ namespace Cc.Upt.Web.Areas.HelpPage.App_Start
     public static class HelpPageConfig
     {
         [SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters",
-            MessageId = "Isn.Upt.Presentation.Areas.HelpPage.TextSample.#ctor(System.String)",
+            MessageId = "Cc.Upt.Web.Areas.HelpPage.TextSample.#ctor(System.String)",
             Justification = "End users may choose to merge this string with existing localized resources.")]
         [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly",
             MessageId = "bsonspec",

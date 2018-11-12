@@ -1,6 +1,6 @@
-﻿using System.Reflection;
-using Autofac;
-using Module = Autofac.Module;
+﻿using Autofac;
+using Cc.Upt.Business.Definitions;
+using Cc.Upt.Business.Implementations;
 
 namespace Cc.Ioc.Modules
 {
@@ -8,10 +8,19 @@ namespace Cc.Ioc.Modules
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterAssemblyTypes(Assembly.Load("Isn.Upt.Business"))
-                .Where(t => t.Name.EndsWith("Service"))
-                .AsImplementedInterfaces()
-                .InstancePerLifetimeScope();
+            builder.RegisterType<CompanyReleaseService>().As<ICompanyReleaseService>();
+            builder.RegisterType<CompanyService>().As<ICompanyService>();
+            builder.RegisterType<CompanyUpdateService>().As<ICompanyUpdateService>();
+            builder.RegisterType<DataBaseProviderService>().As<IDataBaseProviderService>();
+            builder.RegisterType<DownloadRequestReleaseService>().As<IDownloadRequestReleaseService>();
+            
+            builder.RegisterType<GenericClientService>().As<IGenericClientService>();
+            builder.RegisterType<ParameterService>().As<IParameterService>();
+            builder.RegisterType<ReleaseService>().As<IReleaseService>();
+            builder.RegisterType<UserService>().As<IUserService>();
+            builder.RegisterType<UserTokenService>().As<IUserTokenService>();
+            
+            builder.RegisterType<ValidateService>().As<IValidateService>();
         }
     }
 }

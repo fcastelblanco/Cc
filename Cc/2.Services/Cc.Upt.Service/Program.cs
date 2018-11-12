@@ -10,8 +10,6 @@ namespace Cc.Upt.Service
         /// </summary>
         private static void Main()
         {
-            IsnContainer.Build();
-
             var servicesToRun = new ServiceBase[]
             {
                 new MainService()

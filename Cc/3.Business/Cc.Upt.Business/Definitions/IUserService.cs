@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using Cc.Upt.Data.Definitions;
 using Cc.Upt.Domain;
+using Cc.Upt.DomainRepository.Definitions;
 
 namespace Cc.Upt.Business.Definitions
 {
-    public interface IUserService: IEntityService<User>
+    public interface IUserService: IRepository<User>
     {
         User GetById(Guid id);
         bool Save(User user);

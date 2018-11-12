@@ -38,12 +38,11 @@ namespace Cc.Upt.Configurator
                 WindowsExtension.StopService(UpdaterService.UpdaterServiceName, out var exception);
 
             Process[] proceses = null;
-            proceses = Process.GetProcessesByName("Isn.Upt.Presentation.Notificator");
+            proceses = Process.GetProcessesByName("Cc.Upt.Notificator");
             foreach (var proces in proceses) proces.Kill();
 
             Current.DispatcherUnhandledException += CurrentOnDispatcherUnhandledException;
             Log.Instance.Info("Ipm iniciado");
-            IsnContainer.Build();
         }
 
         private static void CurrentOnDispatcherUnhandledException(object sender,

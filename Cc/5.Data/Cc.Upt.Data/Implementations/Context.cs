@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading;
 using Cc.Common.Definitions;
 using Cc.Upt.Data.Definitions;
-using Cc.Upt.Data.Migrations;
 using Cc.Upt.Domain;
 
 namespace Cc.Upt.Data.Implementations
@@ -13,11 +12,10 @@ namespace Cc.Upt.Data.Implementations
     public class Context : DbContext, IContext
     {
         public Context()
-            : base("Updater")
+            : base("Upt")
         {
             Configuration.LazyLoadingEnabled = false;
-            //Database.SetInitializer(new CreateDatabaseIfNotExists<Context>());
-            //Database.SetInitializer<Context>(null);
+            Database.SetInitializer<Context>(null);
         }
 
         public IDbSet<User> Users { get; set; }
@@ -63,7 +61,7 @@ namespace Cc.Upt.Data.Implementations
         public IDbSet<UserToken> UserTokens { get; set; }
 
         public IDbSet<Parameter> Parameters { get; set; }
-        public IDbSet<DownloadRequestRelease> DownloadRequestReleases { get ; set ; }
+        public IDbSet<DownloadRequestRelease> DownloadRequestReleases { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

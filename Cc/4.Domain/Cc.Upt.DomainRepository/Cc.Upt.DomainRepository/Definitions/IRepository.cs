@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Cc.Common.Implementations;
 
-namespace Cc.Upt.Data.Definitions
+namespace Cc.Upt.DomainRepository.Definitions
 {
-    public interface IEntityService<T> : IService
-        where T : BaseEntity
+    public interface IRepository<T>
     {
         void Create(T entity);
         void Delete(T entity);

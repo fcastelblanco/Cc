@@ -34,8 +34,8 @@ namespace Cc.Upt.Configurator
         public CompanyMapper()
         {
             InitializeComponent();
-            _parameterService = IsnContainer.Resolve<IParameterService>();
-            _dataBaseProviderService = IsnContainer.Resolve<IDataBaseProviderService>();
+            _parameterService = CcContainer.Resolve<IParameterService>();
+            _dataBaseProviderService = CcContainer.Resolve<IDataBaseProviderService>();
         }
 
         public ObservableCollection<CompanyMapperDto> CompanyMappers

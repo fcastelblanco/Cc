@@ -40,7 +40,7 @@ namespace Cc.Upt.Configurator
 
         public MainWindow()
         {
-            _genericClientService = IsnContainer.Resolve<IGenericClientService>();
+            _genericClientService = CcContainer.Resolve<IGenericClientService>();
             _companyMapperDtos = new ObservableCollection<CompanyMapperDto>();
             InitializeComponent();
         }
@@ -287,7 +287,7 @@ namespace Cc.Upt.Configurator
             var startInfo = new ProcessStartInfo
             {
                 FileName = AppDomain.CurrentDomain.BaseDirectory +
-                           @"\Ipm notificator\Isn.Upt.Presentation.Notificator.exe"
+                           @"\Ipm notificator\Cc.Upt.Notificator.exe"
             };
             Process.Start(startInfo);
 
