@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
+using Cc.Common.Enumerations;
+using Cc.Upt.Business.Definitions;
+using Cc.Upt.Business.Implementations.Singleton;
+using Cc.Upt.Domain;
+using Cc.Upt.Domain.Enumerations;
 using Cc.Upt.Web.AuthenticationWeb;
 using Cc.Upt.Web.Controllers;
-using Isn.Common.Enumerations;
-using Isn.Upt.Business.Definitions;
-using Isn.Upt.Business.Implementations.Singleton;
-using Isn.Upt.Domain;
-using Isn.Upt.Domain.Enumerations;
 
 namespace Cc.Upt.Web.Areas.Basic.Controllers
 {
-    [Authorized]
+    [Authorized] 
     public class UserController : BaseController
     {
         private readonly ICompanyService _companyService;

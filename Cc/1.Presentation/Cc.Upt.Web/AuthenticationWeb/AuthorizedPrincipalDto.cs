@@ -1,5 +1,5 @@
 ﻿using System;
-using Isn.Upt.Domain.Enumerations;
+using Cc.Upt.Domain.Enumerations;
 
 namespace Cc.Upt.Web.AuthenticationWeb
 {

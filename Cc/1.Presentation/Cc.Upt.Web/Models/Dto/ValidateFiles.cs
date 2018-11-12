@@ -1,4 +1,4 @@
-﻿using Isn.Upt.Domain.Enumerations;
+﻿using Cc.Upt.Domain.Enumerations;
 
 namespace Cc.Upt.Web.Models.Dto
 {

@@ -10,11 +10,11 @@ using System.Web.Security;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using Cc.Upt.Business.Definitions;
+using Cc.Upt.Data.Definitions;
+using Cc.Upt.Data.Implementations;
 using Cc.Upt.Web.AuthenticationWeb;
 using Cc.Upt.Web.Modules;
-using Isn.Upt.Business.Definitions;
-using Isn.Upt.Data.Definitions;
-using Isn.Upt.Data.Implementations;
 
 namespace Cc.Upt.Web
 {

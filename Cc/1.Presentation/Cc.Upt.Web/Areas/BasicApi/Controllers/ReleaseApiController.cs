@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Http;
+using Cc.Upt.Business.Definitions;
+using Cc.Upt.Domain;
 using Cc.Upt.Web.AuthenticationApi;
 using Cc.Upt.Web.AuthenticationWeb;
-using Isn.Upt.Business.Definitions;
-using Isn.Upt.Domain;
 
 namespace Cc.Upt.Web.Areas.BasicApi.Controllers
 {

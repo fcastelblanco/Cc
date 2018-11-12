@@ -1,6 +1,6 @@
 ﻿using System.Web;
 using System.Web.Http;
-using Isn.Upt.Domain;
+using Cc.Upt.Domain;
 
 namespace Cc.Upt.Web.AuthenticationApi
 {

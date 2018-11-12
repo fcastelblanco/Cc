@@ -7,10 +7,10 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Mvc;
-using Isn.Common.ExtensionMethods;
-using Isn.Common.LogHelper;
-using Isn.Upt.Business.Definitions;
-using Isn.Upt.Domain;
+using Cc.Common.ExtensionMethods;
+using Cc.Common.LogHelper;
+using Cc.Upt.Business.Definitions;
+using Cc.Upt.Domain;
 using ActionFilterAttribute = System.Web.Http.Filters.ActionFilterAttribute;
 
 namespace Cc.Upt.Web.AuthenticationApi

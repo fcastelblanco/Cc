@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Filters;
-using Isn.Common.LogHelper;
+using Cc.Common.LogHelper;
 
 namespace Cc.Upt.Web.ExceptionHandling
 {
