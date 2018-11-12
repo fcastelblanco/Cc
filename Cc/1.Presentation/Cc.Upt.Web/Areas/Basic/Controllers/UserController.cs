@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using Cc.Common.Enumerations;
 using Cc.Upt.Business.Definitions;
 using Cc.Upt.Business.Implementations.Singleton;
+using Cc.Upt.Common.Enumerations;
 using Cc.Upt.Domain;
 using Cc.Upt.Domain.Enumerations;
 using Cc.Upt.Web.AuthenticationWeb;

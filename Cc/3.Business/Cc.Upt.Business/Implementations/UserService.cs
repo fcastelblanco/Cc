@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Cc.Common.EmailHelper;
-using Cc.Common.ExtensionMethods;
 using Cc.Upt.Business.Definitions;
 using Cc.Upt.Business.Implementations.Singleton;
+using Cc.Upt.Common.EmailHelper;
+using Cc.Upt.Common.ExtensionMethods;
 using Cc.Upt.Data.Definitions;
 using Cc.Upt.Data.Implementations;
 using Cc.Upt.Domain;

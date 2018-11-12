@@ -6,17 +6,17 @@ using System.IO.Compression;
 using System.Linq;
 using System.ServiceProcess;
 using System.Threading;
-using Cc.Common.ExtensionMethods;
-using Cc.Common.Implementations.DataBaseHelper;
-using Cc.Common.LogHelper;
 using Cc.Upt.Business.Definitions;
 using Cc.Upt.Business.Implementations.Singleton;
+using Cc.Upt.Common.ExtensionMethods;
+using Cc.Upt.Common.Implementations.DataBaseHelper;
+using Cc.Upt.Common.LogHelper;
 using Cc.Upt.Domain;
 using Cc.Upt.Domain.Dto;
 using Cc.Upt.Domain.Enumerations;
 using Microsoft.Web.Administration;
 using Microsoft.Win32;
-using Path = Cc.Common.ExtensionMethods.Path;
+using Path = Cc.Upt.Common.ExtensionMethods.Path;
 
 namespace Cc.Upt.Business.Implementations
 {

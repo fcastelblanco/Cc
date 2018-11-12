@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Cc.Common.CustomResponse;
+using Cc.Upt.Common.CustomResponse;
 
 namespace Cc.Upt.Business.Definitions
 {

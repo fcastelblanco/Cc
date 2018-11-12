@@ -3,8 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Hosting;
 using System.Web.Mvc;
-using Cc.Common.LogHelper;
 using Cc.Upt.Business.Definitions;
+using Cc.Upt.Common.LogHelper;
 
 namespace Cc.Upt.Web.Workers
 {

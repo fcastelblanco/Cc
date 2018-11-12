@@ -103,9 +103,9 @@
     <Content Include="IpmC.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\6.Common\Cc.Common\Cc.Common.csproj">
+    <ProjectReference Include="..\..\6.Common\Cc.Upt.Common\Cc.Upt.Common.csproj">
       <Project>{83190101-665C-4B64-9156-B5E7D6C2212C}</Project>
-      <Name>Cc.Common</Name>
+      <Name>Cc.Upt.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

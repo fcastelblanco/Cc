@@ -104,9 +104,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\6.Common\Cc.Common\Cc.Common.csproj">
-      <Project>{83190101-665C-4B64-9156-B5E7D6C2212C}</Project>
-      <Name>Cc.Common</Name>
+    <ProjectReference Include="..\Cc.Upt.CommonDomain\Cc.Upt.CommonDomain.csproj">
+      <Project>{826DBBB4-0858-441C-95A9-21F00C13A2B3}</Project>
+      <Name>Cc.Upt.CommonDomain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

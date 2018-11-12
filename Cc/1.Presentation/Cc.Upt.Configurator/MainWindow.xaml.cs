@@ -11,15 +11,15 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Threading;
-using Cc.Common.Enumerations;
-using Cc.Common.ExtensionMethods;
-using Cc.Ioc;
 using Cc.Upt.Business.Definitions;
 using Cc.Upt.Business.Implementations;
 using Cc.Upt.Business.Implementations.Singleton;
+using Cc.Upt.Common.Enumerations;
+using Cc.Upt.Common.ExtensionMethods;
 using Cc.Upt.Domain;
 using Cc.Upt.Domain.Dto;
 using Cc.Upt.Domain.Enumerations;
+using Cc.Upt.Ioc;
 
 namespace Cc.Upt.Configurator
 {

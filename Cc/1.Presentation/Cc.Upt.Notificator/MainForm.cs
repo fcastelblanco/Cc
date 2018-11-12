@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using Cc.Common.LogHelper;
+using Cc.Upt.Common.LogHelper;
 
 namespace Cc.Upt.Notificator
 {

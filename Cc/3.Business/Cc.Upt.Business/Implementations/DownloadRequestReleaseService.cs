@@ -1,14 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using Cc.Common.Enumerations;
-using Cc.Common.LogHelper;
 using Cc.Upt.Business.Definitions;
+using Cc.Upt.Common.Enumerations;
+using Cc.Upt.Common.LogHelper;
 using Cc.Upt.Data.Definitions;
 using Cc.Upt.Data.Implementations;
 using Cc.Upt.Domain;
 using Cc.Upt.Domain.Enumerations;
-using Path = Cc.Common.ExtensionMethods.Path;
+using Path = Cc.Upt.Common.ExtensionMethods.Path;
 
 namespace Cc.Upt.Business.Implementations
 {

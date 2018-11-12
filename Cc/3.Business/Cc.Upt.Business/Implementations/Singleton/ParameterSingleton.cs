@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Cc.Common.Implementations;
+using Cc.Upt.Common.Implementations;
 using Cc.Upt.Domain;
 
 namespace Cc.Upt.Business.Implementations.Singleton

@@ -1,5 +1,4 @@
 ﻿using System.ServiceProcess;
-using Cc.Ioc;
 
 namespace Cc.Upt.Service
 {

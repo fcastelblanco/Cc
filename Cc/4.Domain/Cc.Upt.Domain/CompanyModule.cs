@@ -1,7 +1,8 @@
 
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using Cc.Common.Implementations;
+
+using Cc.Upt.CommonDomain.Implementations;
 
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 

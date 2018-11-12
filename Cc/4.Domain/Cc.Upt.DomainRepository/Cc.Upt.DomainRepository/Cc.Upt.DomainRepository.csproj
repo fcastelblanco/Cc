@@ -42,14 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Definitions\IRepository.cs" />
-    <Compile Include="Definitions\IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\6.Common\Cc.Common\Cc.Common.csproj">
-      <Project>{83190101-665C-4B64-9156-B5E7D6C2212C}</Project>
-      <Name>Cc.Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

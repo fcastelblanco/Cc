@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using Cc.Common.Implementations;
+
+using Cc.Upt.CommonDomain.Implementations;
 using Cc.Upt.Domain.Enumerations;
 
 namespace Cc.Upt.Domain

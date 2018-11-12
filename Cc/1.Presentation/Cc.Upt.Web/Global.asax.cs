@@ -10,8 +10,8 @@ using System.Web.Security;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
-using Cc.Ioc;
 using Cc.Upt.Business.Definitions;
+using Cc.Upt.Ioc;
 using Cc.Upt.Web.AuthenticationWeb;
 
 namespace Cc.Upt.Web

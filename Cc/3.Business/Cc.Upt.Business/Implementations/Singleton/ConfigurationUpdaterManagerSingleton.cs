@@ -1,5 +1,5 @@
 ﻿using System;
-using Cc.Common.Implementations;
+using Cc.Upt.Common.Implementations;
 using Cc.Upt.Domain.Enumerations;
 
 namespace Cc.Upt.Business.Implementations.Singleton

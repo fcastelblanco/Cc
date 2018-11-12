@@ -4,10 +4,10 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Threading;
 using System.Threading.Tasks;
-using Cc.Common.LogHelper;
-using Cc.Ioc;
 using Cc.Upt.Business.Definitions;
+using Cc.Upt.Common.LogHelper;
 using Cc.Upt.Domain.Dto;
+using Cc.Upt.Ioc;
 
 
 namespace Cc.Upt.Service

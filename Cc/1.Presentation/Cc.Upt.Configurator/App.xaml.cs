@@ -4,10 +4,9 @@ using System.Reflection;
 using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
-using Cc.Common.ExtensionMethods;
-using Cc.Common.LogHelper;
-using Cc.Ioc;
 using Cc.Upt.Business.Implementations;
+using Cc.Upt.Common.ExtensionMethods;
+using Cc.Upt.Common.LogHelper;
 
 
 namespace Cc.Upt.Configurator

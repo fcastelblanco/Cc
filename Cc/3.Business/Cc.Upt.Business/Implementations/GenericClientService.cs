@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using Cc.Common.CustomResponse;
-using Cc.Common.LogHelper;
 using Cc.Upt.Business.Definitions;
 using Cc.Upt.Business.Implementations.Singleton;
+using Cc.Upt.Common.CustomResponse;
+using Cc.Upt.Common.LogHelper;
 using Newtonsoft.Json;
 
 namespace Cc.Upt.Business.Implementations

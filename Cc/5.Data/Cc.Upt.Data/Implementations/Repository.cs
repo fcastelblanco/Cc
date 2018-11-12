@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using Cc.Common.Implementations;
 using Cc.Upt.Data.Definitions;
 using Cc.Upt.DomainRepository.Definitions;
 

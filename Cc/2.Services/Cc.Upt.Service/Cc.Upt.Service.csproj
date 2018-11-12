@@ -109,13 +109,13 @@
       <Project>{7C8F66FF-63B0-4977-9049-451C1A35B1F1}</Project>
       <Name>Cc.Upt.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\6.Common\Cc.Common\Cc.Common.csproj">
+    <ProjectReference Include="..\..\6.Common\Cc.Upt.Common\Cc.Upt.Common.csproj">
       <Project>{83190101-665C-4B64-9156-B5E7D6C2212C}</Project>
-      <Name>Cc.Common</Name>
+      <Name>Cc.Upt.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cc.Ioc\Cc.Ioc.csproj">
+    <ProjectReference Include="..\Cc.Upt.Ioc\Cc.Upt.Ioc.csproj">
       <Project>{D7B0912E-CDA3-4B17-BCA1-B6994355A981}</Project>
-      <Name>Cc.Ioc</Name>
+      <Name>Cc.Upt.Ioc</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

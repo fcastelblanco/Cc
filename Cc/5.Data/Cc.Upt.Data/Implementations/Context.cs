@@ -3,7 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Threading;
-using Cc.Common.Definitions;
+using Cc.Upt.CommonDomain.Definitions;
 using Cc.Upt.Data.Definitions;
 using Cc.Upt.Domain;
 

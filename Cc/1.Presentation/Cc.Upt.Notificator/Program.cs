@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
-using Cc.Common.LogHelper;
+using Cc.Upt.Common.LogHelper;
 using Microsoft.Win32;
 
 namespace Cc.Upt.Notificator
