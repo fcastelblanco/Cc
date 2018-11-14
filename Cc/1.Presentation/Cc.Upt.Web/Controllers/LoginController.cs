@@ -110,6 +110,13 @@ namespace Cc.Upt.Web.Controllers
         public ActionResult VerifyPasswordRecover(LoginDto model)
         {
             var currentUser = _userService.FindBy(x => x.Email == model.Email).FirstOrDefault();
+
+            if (currentUser == null)
+            {
+                ModelState.AddModelError(string.Empty, $"No existe usuario con el correo ingresado");
+                return View("RecoverPassword");
+            }
+
             var templatePath =
                 System.Web.HttpContext.Current.Server.MapPath("~/Templates/passwordRecovery.html");
             var theUserToken = new UserToken

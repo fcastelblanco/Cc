@@ -1,0 +1,10 @@
+/* Add here all your CSS customizations */
+
+.validation-summary-errors {
+    padding-bottom: 20px !important;
+}
+
+    .validation-summary-errors > ul {
+        list-style: none !important;
+        padding-left: 0px !important;
+    }

@@ -1,40 +1,105 @@
 ﻿@model Cc.Upt.Domain.Dto.LoginDto
+
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
-<form method="post" action="@Url.Action("Login", "Login")">
 
-    @Html.AntiForgeryToken()
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Updater</title>
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input data-val="true" data-val-required="La clave es requerida" id="Password" name="Password" class="form-control" type="password">
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Ingresar" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
 
-    <div>
-        @Html.ActionLink("Olvidé mi contraseña", "RecoverPassword")
-    </div>
-</form>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @Styles.Render("~/css/upt-css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+    <section class="body-sign">
+        <div class="center-sign">
+            <a href="/" class="logo pull-left">
+                <span class="fc-header-title">
+                    <h2>
+                        Actualizador
+                    </h2>
+                </span>
+            </a>
+
+            <div class="panel panel-sign">
+                <div class="panel-title-sign mt-xl text-right">
+                    <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Ingreso</h2>
+                </div>
+                <div class="panel-body">
+                    <form id="form" method="post" action="@Url.Action("Login", "Login")">
+
+                        @Html.AntiForgeryToken()
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group mb-lg">
+                            <label>Nombre de usuario</label>
+                            <div class="input-group input-group-icon">
+                                <input type="text" class="form-control input-lg" name="UserName" required data-rule-required="true" data-msg-required="Éste campo es requerido" />
+                                <span class="input-group-addon">
+                                    <span class="icon icon-lg">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-lg">
+                            <div class="clearfix">
+                                <label class="pull-left">Clave</label>
+                                <a href="@Url.Action("RecoverPassword")" class="pull-right">Olvidó la clave?</a>
+                            </div>
+                            <div class="input-group input-group-icon">
+                                <input type="password" class="form-control input-lg" name="Password" required data-rule-required="true" data-msg-required="Éste campo es requerido" />
+                                <span class="input-group-addon">
+                                    <span class="icon icon-lg">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="checkbox-custom">
+                                    <input id="RememberMe" name="rememberme" type="checkbox" />
+                                    <label for="RememberMe">Recordarme</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <button type="submit" class="btn btn-primary hidden-xs">Ingresar</button>
+                                <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Ingresar</button>
+                            </div>
+                        </div>
+
+                        <span class="mt-lg mb-lg line-thru text-center text-uppercase">
+                            <span>
+                                &nbsp;
+                            </span>
+                        </span>
+
+                        <p class="text-center">No tiene cuenta aún ? <a href="#">Registrese!</a>
+
+                    </form>
+                </div>
+            </div>
+            <p class="text-center text-muted mt-md mb-md">&copy; Copyright @DateTime.Now.Year. Todos los derechos reservados por <a href="#">CcSoftware</a>.</p>
+        </div>
+    </section>
+
+    @Scripts.Render("~/js/upt-js")
+
+<script>
+   
+
+</script>
+</body>
+</html>
