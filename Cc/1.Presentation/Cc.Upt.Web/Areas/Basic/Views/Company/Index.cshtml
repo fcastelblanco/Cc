@@ -1,38 +1,45 @@
-﻿@using Cc.Common.Enumerations
-@model IEnumerable<Cc.Upt.Domain.Company>
+﻿@model IEnumerable<Cc.Upt.Domain.Company>
 
 @{
-    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" action="@Url.Action("Create")">
+            <button type="submit" class="btn btn-primary"> Nueva compañía</button>
+        </form>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Fecha finalización soporte
+                </th>
+                <th></th>
+            </tr>
 
-<p>
-    @Html.ActionLink("Crear nueva compañia", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Nombre
-        </th>
-        <th>
-            Fecha finalización soporte
-        </th>
-        <th></th>
-    </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateEndSupport)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.Id })
+                    </td>
+                </tr>
+            }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateEndSupport)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) 
-        </td>
-    </tr>
-}
-
-</table>
+        </table>
+    </div>
+</div>

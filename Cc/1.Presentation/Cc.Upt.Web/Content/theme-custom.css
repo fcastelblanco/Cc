@@ -8,3 +8,19 @@
         list-style: none !important;
         padding-left: 0px !important;
     }
+
+.logo-container > .logo > .fc-header-title > h2 {
+    color: #465162 !important;
+}
+
+.margin-25-px {
+    margin: 25px;
+}
+
+.margin-bottom-25-px {
+    margin-bottom: 25px;
+}
+
+.no-margin-botom-20-px {
+    margin-bottom: 0px !important;
+}

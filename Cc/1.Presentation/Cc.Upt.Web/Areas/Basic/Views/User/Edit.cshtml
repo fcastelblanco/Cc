@@ -6,82 +6,78 @@
 }
 
 
-<form method="post" id="userForm" action="@Url.Action("Save", "User")">
+<form method="post" id="form" action="@Url.Action("Save", "User")">
     @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            <label class="control-label col-md-2">
-                Nombre
-            </label>
-            <div class="col-md-10">
+    @Html.HiddenFor(model => model.Id)
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">
+                    Nombre
+                </label>
                 <input type="text" name="Name" class="form-control" data-rule-required="true" data-msg-required="El nombre es requerido" value="@Model.Name" />
             </div>
         </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">
-                Apellido
-            </label>
-            <div class="col-md-10">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">
+                    Apellido
+                </label>
                 <input type="text" name="LastName" class="form-control" data-rule-required="true" data-msg-required="El apellido es requerido" value="@Model.LastName" />
             </div>
         </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">
-                Nombre de usuario
-            </label>
-            <div class="col-md-10">
-                <input type="text" name="UserName" class="form-control" data-rule-required="true" data-msg-required="El nombre de usuario es requerido" value="@Model.UserName" />
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">
+                    Nombre de usuario
+                </label>
+                <div>
+                    <input type="text" name="UserName" class="form-control" data-rule-required="true" data-msg-required="El nombre de usuario es requerido" value="@Model.UserName" />
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">
-                Email
-            </label>
-            <div class="col-md-10">
-                <input type="text" name="Email" class="form-control" data-rule-required="true" data-msg-required="El e-mail es requerido" data-rule-email=”true” data-msg-email="Ingrese un e-mail valido" value="@Model.Email" />
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">
+                    Email
+                </label>
+                <input type="text" name="Email" class="form-control" data-rule-required="true" data-msg-required="El e-mail es requerido" data-rule-email="true" data-msg-email="Ingrese un e-mail valido" value="@Model.Email" />
             </div>
         </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">
-                Perfil
-            </label>
-            <div class="col-md-10">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">
+                    Perfil
+                </label>
                 @Html.DropDownListFor(model => model.Profile, ViewBag.ProfileList as IEnumerable<SelectListItem>, "Seleccione un perfil", new { @class = "form-control", data_rule_required = "true", data_msg_required = "El perfil es requerido", @id = "Profile" })
             </div>
         </div>
-
-        <div class="form-group" id="CompanyData">
-            <label class="control-label col-md-2">
-                Compañía
-            </label>
-            <div class="col-md-10">
+        <div class="col-md-4">
+            <div class="form-group" id="CompanyData">
+                <label class="control-label">
+                    Compañía
+                </label>
                 @Html.DropDownListFor(model => model.CompanyId, ViewBag.Companies as SelectList, "Seleccione una compañía", new { @class = "form-control", data_rule_required = "true", data_msg_required = "La compania es requerida", @id = "Company" })
             </div>
         </div>
+    </div>
+    <p>
+        &nbsp;
+    </p>
+    <div class="row text-center">
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" id="save" value="Guardar" class="btn btn-default" />
-            </div>
+        <div class="col-md-2 col-md-offset-4">
+            <input type="submit" id="save" value="Guardar" class="btn btn-primary btn-block" />
+        </div>
+        <div class="col-md-2">
+            <input type="button" onclick="window.location.href = '@Url.Action("Index")'" value="Volver al listado" class="btn btn-warning  btn-block" />
         </div>
     </div>
 </form>
 
-<div>
-    @Html.ActionLink("Volver al listado", "Index")
-</div>
-
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
 
     <script>
 
@@ -90,10 +86,6 @@
             PackageCreator: "1",
             Administrator: "2",
         };
-
-        $("#userForm").validate({
-            errorClass: "error-class-validation",
-        });
 
         $("#Profile").change(function () {
 
@@ -108,13 +100,6 @@
             $("#Company").attr("data-rule-required", "true");
             $("#Company").attr("data-msg-required", "La compania es requerida");
 
-        });
-
-        $("#save").click(function () {
-
-            if ($("#userForm").valid()) {
-                $("#userForm").submit();
-            }
         });
 
         $(document).ready(function () {

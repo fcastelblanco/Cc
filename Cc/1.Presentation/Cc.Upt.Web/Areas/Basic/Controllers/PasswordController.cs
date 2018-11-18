@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.Security;
 using Cc.Upt.Business.Definitions;
 using Cc.Upt.Common.ExtensionMethods;
 using Cc.Upt.Domain.Dto;
@@ -37,22 +36,25 @@ namespace Cc.Upt.Web.Areas.Basic.Controllers
         public ActionResult ResetPasswordAction(LoginDto model)
         {
             var validUser = _userService.GetAllUsers().FirstOrDefault(x => x.UserName == model.UserName);
+            
             if (validUser != null && model.Password != null)
             {
                 var currentUserPassword = model.Password.Encode();
                 validUser.Password = currentUserPassword;
                 _userService.Update(validUser);
-                FormsAuthentication.SignOut();
-                Session.Abandon();
                 return RedirectToAction("PasswordChanged");
             }
-            else
+            
+            ModelState.AddModelError("", $"El usuario {model.UserName} no existe");
+
+            var login = new LoginDto
             {
-                //Enviar al log informacion de usuario errado
-                FormsAuthentication.SignOut();
-                Session.Abandon();
-                return RedirectToAction("Index", "Login", new { area = string.Empty });
-            }
+                UserName = model.UserName,
+                Password = model.Password,
+                Email = model.Email
+            };
+
+            return View("ResetPassword", login);
         }
 
         public ActionResult PasswordChanged()

@@ -9,7 +9,6 @@ using Cc.Upt.Web.Controllers;
 namespace Cc.Upt.Web.Areas.Basic.Controllers
 {
     [Authorized]
-    [RoutePrefix("api")]
     public class CompanyController : BaseController
     {
         private readonly ICompanyService _companyService;
@@ -47,13 +46,6 @@ namespace Cc.Upt.Web.Areas.Basic.Controllers
 
             if (model.DateEndSupport.Date < DateTime.Now.Date)
             {
-                //if (currentCompany == null)
-                //    LoadList(null);
-                //else
-                //{
-                //    LoadList(currentCompany.UpdateMode);
-                //}
-                
                 ModelState.AddModelError(string.Empty, @"La fecha de finalizacion de soporte no puede ser inferior a la actual");
                 return currentCompany == null ? View("Create") : View("Edit", model);
             }

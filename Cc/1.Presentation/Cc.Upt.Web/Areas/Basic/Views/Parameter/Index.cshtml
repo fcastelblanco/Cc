@@ -1,4 +1,4 @@
-﻿@using Cc.Common.Enumerations
+﻿@using Cc.Upt.Common.Enumerations
 @using Cc.Upt.Domain.Enumerations
 @model IEnumerable<Cc.Upt.Domain.Parameter>
 
@@ -7,95 +7,112 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Parametro
-            </th>
-            <th>
-                Valor
-            </th>
-            <th>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Parametro
+                    </th>
+                    <th>
+                        Valor
+                    </th>
+                    <th>
 
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
 
-                <td>
-                    <label for="Value">
-                        @item.ParameterInternalIdentificator.GetDescription()
-                    </label>
+                        <td>
+                            <label for="Value">
+                                @item.ParameterInternalIdentificator.GetDescription()
+                            </label>
 
-                </td>
-                <td>
-                    <form method="post" action="@Url.Action("Save")" autocomplete="off" id="@item.Id">
-                        <input type="hidden" value="@item.ParameterInternalIdentificator" name="ParameterInternalIdentificator" />
-                        <input type="hidden" value="@item.ParameterType" name="ParameterType" />
-                        @switch (item.ParameterType)
-                        {
-                            case ParameterType.Date:
-                               <div class="input-group date" id="Date">
-                                    <input autocomplete="off"
-                                           type="text"
-                                           class="form-control"
-                                           name="Value"
-                                           onkeydown="return false;"
-                                           value="@(string.IsNullOrEmpty(item.Value) ? string.Empty : Convert.ToDateTime(item.Value).ToString("dd/MM/yyyy"))"
-                                           data-rule-required="true"
-                                           data-msg-required="Es requerido éste dato"/>
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                                break;
-                            case ParameterType.Email:
-                                <input autocomplete="off" type="email" class="form-control" value="@item.Value" name="Value" data-rule-required="true" data-msg-required="Es requerido éste dato"/>
-                                break;
-                            case ParameterType.Number:
-                                <input autocomplete="off" type="number" class="form-control" value="@item.Value" name="Value" required="" data-rule-required="true" data-msg-required="Es requerido éste dato"/>
-                                break;
-                            case ParameterType.Password:
-                                <input autocomplete="off" type="password" class="form-control" value="@item.Value" name="Value" required="" data-rule-required="true" data-msg-required="Es requerido éste dato"/>
-                                break;
-                            case ParameterType.Text:
-                                <input autocomplete="off" type="text" class="form-control" value="@item.Value" name="Value" required="" data-rule-required="true" data-msg-required="Es requerido éste dato"/>
-                                break;
-                            case ParameterType.CheckBox:
-
-                                if (!string.IsNullOrEmpty(item.Value) &&  item.Value == true.ToString())
+                        </td>
+                        <td>
+                            <form method="post" action="@Url.Action("Save")" autocomplete="off" id="@item.Id">
+                                <input type="hidden" value="@item.ParameterInternalIdentificator" name="ParameterInternalIdentificator" />
+                                <input type="hidden" value="@item.ParameterType" name="ParameterType" />
+                                @switch (item.ParameterType)
                                 {
-                                    <input autocomplete="off" type="checkbox" value="@item.Value" name="Value" checked="" />
+                                    case ParameterType.Date:
+                                        <div class="form-group mb-lg no-margin-botom-20-px">
+                                            <div class="input-group date" id="Date">
+                                                <input autocomplete="off"
+                                                       type="text"
+                                                       class="form-control"
+                                                       name="Value"
+                                                       onkeydown="return false;"
+                                                       value="@(string.IsNullOrEmpty(item.Value) ? string.Empty : Convert.ToDateTime(item.Value).ToString("dd/MM/yyyy"))"
+                                                       data-rule-required="true"
+                                                       data-msg-required="Es requerido éste dato" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        break;
+                                    case ParameterType.Email:
+                                        <div class="form-group mb-lg no-margin-botom-20-px">
+                                            <input autocomplete="off" type="email" class="form-control" value="@item.Value" name="Value" required data-rule-required="true" data-msg-required="Es requerido éste dato" />
+                                        </div>
+                                        break;
+                                    case ParameterType.Number:
+                                        <div class="form-group mb-lg no-margin-botom-20-px">
+                                            <input autocomplete="off" type="number" class="form-control" value="@item.Value" name="Value" required data-rule-required="true" data-msg-required="Es requerido éste dato" />
+                                        </div>
+                                        break;
+                                    case ParameterType.Password:
+                                        <div class="form-group mb-lg no-margin-botom-20-px">
+                                            <input autocomplete="off" type="password" class="form-control" value="@item.Value" name="Value" required data-rule-required="true" data-msg-required="Es requerido éste dato" />
+                                        </div>
+                                        break;
+                                    case ParameterType.Text:
+                                        <div class="form-group mb-lg no-margin-botom-20-px">
+                                            <input autocomplete="off" type="text" class="form-control" value="@item.Value" name="Value" required data-rule-required="true" data-msg-required="Es requerido éste dato" />
+                                        </div>
+                                        break;
+                                    case ParameterType.CheckBox:
+
+                                        <div class="checkbox-custom">
+                                            @if (!string.IsNullOrEmpty(item.Value) && item.Value == true.ToString())
+                                            {
+                                                <input autocomplete="off" type="checkbox" value="@item.Value" name="Value" checked="" id="chk_@item.Id" />
+                                            }
+                                            else
+                                            {
+                                                <input autocomplete="off" type="checkbox" value="@item.Value" name="Value"  id="chk_@item.Id" />
+                                            }
+                                            <label for="chk_@item.Id">
+                                                &nbsp;
+                                            </label>
+                                        </div>
+
+
+
+                                        break;
+                                    default:
+                                        throw new ArgumentOutOfRangeException();
                                 }
-                                else
-                                {
-                                    <input autocomplete="off" type="checkbox" value="@item.Value" name="Value" />
-                                }
+                            </form>
+                        </td>
+                        <td class="text-center">
+                            <input type="button" value="Guardar" class="btn btn-primary" id="btn_@item.Id" />
+                        </td>
+                    </tr>
+                }
 
-                                break;
-                            default:
-                                throw new ArgumentOutOfRangeException();
-                        }
-                    </form>
-                </td>
-
-                <td>
-                    <input type="button" value="Guardar" class="btn btn-default" id="btn_@item.Id" />
-                </td>
-
-            </tr>
-        }
-
-    </tbody>
-
-</table>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
 
     <script>
 
@@ -115,11 +132,25 @@
                 function(index, object) {
 
                     $("#" + object).validate({
-                        errorClass: "error-class-validation"
+                        highlight: function(label) {
+                            $(label).closest(".form-group").removeClass("has-success").addClass("has-error");
+                        },
+                        success: function(label) {
+                            $(label).closest(".form-group").removeClass("has-error");
+                            label.remove();
+                        },
+                        errorPlacement: function(error, element) {
+                            var placement = element.closest(".input-group");
+                            if (!placement.get(0)) {
+                                placement = element;
+                            }
+                            if (error.text() !== "") {
+                                placement.after(error);
+                            }
+                        }
                     });
 
-                    $("#btn_" + object).click(function() {
-                        console.log($("#" + object).valid());
+                    $("#btn_" + object).click(function () {
                         if ($("#" + object).valid()) {
                             $("#" + object).submit();
                         }

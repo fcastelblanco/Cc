@@ -1,0 +1,168 @@
+﻿<error errorId="8401c904-ec97-4a4e-b7a1-a5935b4a88e9" application="/LM/W3SVC/2/ROOT" host="ASUSFREDDYPC" type="System.Web.HttpParseException" message="Unterminated string literal. Strings that start with a quotation mark (&quot;) must be terminated before the end of the line.  However, strings that start with @ and a quotation mark (@&quot;) can span multiple lines. Closing HTML tags within a string literal may trigger this error message.&#xD;&#xA;" source="System.Web.WebPages.Razor" detail="System.Web.HttpParseException (0x80004005): Unterminated string literal. Strings that start with a quotation mark (&quot;) must be terminated before the end of the line.  However, strings that start with @ and a quotation mark (@&quot;) can span multiple lines. Closing HTML tags within a string literal may trigger this error message.&#xD;&#xA;&#xD;&#xA;   en System.Web.WebPages.Razor.RazorBuildProvider.EnsureGeneratedCode()&#xD;&#xA;   en System.Web.WebPages.Razor.RazorBuildProvider.get_CodeCompilerType()&#xD;&#xA;   en System.Web.Compilation.BuildProvider.GetCompilerTypeFromBuildProvider(BuildProvider buildProvider)&#xD;&#xA;   en System.Web.Compilation.BuildProvidersCompiler.ProcessBuildProviders()&#xD;&#xA;   en System.Web.Compilation.BuildProvidersCompiler.PerformBuild()&#xD;&#xA;   en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)&#xD;&#xA;   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)&#xD;&#xA;   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)&#xD;&#xA;   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)&#xD;&#xA;   en System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath)&#xD;&#xA;   en System.Web.Compilation.BuildManager.GetCompiledType(String virtualPath)&#xD;&#xA;   en System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.GetCompiledType(String virtualPath)&#xD;&#xA;   en System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)&#xD;&#xA;   en System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)&#xD;&#xA;   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   en System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   en System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   en System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   en System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="{&quot;Id&quot;:&quot;532e97da-c3aa-48d7-8b03-2b6920e6d63f&quot;,&quot;Name&quot;:&quot;Cristian Carvajal Bahamon&quot;,&quot;LastName&quot;:null,&quot;UserName&quot;:&quot;cristian.carvajal@isolucion.com.co&quot;,&quot;Profile&quot;:2,&quot;CompanyId&quot;:&quot;d4050fab-2029-414f-84a2-03a6dbf40d9d&quot;}" time="2018-11-18T18:02:47.4651061Z" statusCode="500" webHostHtmlMessage="&lt;!DOCTYPE html&gt;&#xD;&#xA;&lt;html&gt;&#xD;&#xA;    &lt;head&gt;&#xD;&#xA;        &lt;title&gt;Error del analizador&lt;/title&gt;&#xD;&#xA;        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;&#xD;&#xA;        &lt;style&gt;&#xD;&#xA;         body {font-family:&quot;Verdana&quot;;font-weight:normal;font-size: .7em;color:black;} &#xD;&#xA;         p {font-family:&quot;Verdana&quot;;font-weight:normal;color:black;margin-top: -5px}&#xD;&#xA;         b {font-family:&quot;Verdana&quot;;font-weight:bold;color:black;margin-top: -5px}&#xD;&#xA;         H1 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:18pt;color:red }&#xD;&#xA;         H2 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:14pt;color:maroon }&#xD;&#xA;         pre {font-family:&quot;Consolas&quot;,&quot;Lucida Console&quot;,Monospace;font-size:11pt;margin:0;padding:0.5em;line-height:14pt}&#xD;&#xA;         .marker {font-weight: bold; color: black;text-decoration: none;}&#xD;&#xA;         .version {color: gray;}&#xD;&#xA;         .error {margin-bottom: 10px;}&#xD;&#xA;         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }&#xD;&#xA;         @media screen and (max-width: 639px) {&#xD;&#xA;          pre { width: 440px; overflow: auto; white-space: pre-wrap; word-wrap: break-word; }&#xD;&#xA;         }&#xD;&#xA;         @media screen and (max-width: 479px) {&#xD;&#xA;          pre { width: 280px; }&#xD;&#xA;         }&#xD;&#xA;        &lt;/style&gt;&#xD;&#xA;    &lt;/head&gt;&#xD;&#xA;&#xD;&#xA;    &lt;body bgcolor=&quot;white&quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;span&gt;&lt;H1&gt;Error de servidor en la aplicación '/'.&lt;hr width=100% size=1 color=silver&gt;&lt;/H1&gt;&#xD;&#xA;&#xD;&#xA;            &lt;h2&gt; &lt;i&gt;Error del analizador&lt;/i&gt; &lt;/h2&gt;&lt;/span&gt;&#xD;&#xA;&#xD;&#xA;            &lt;font face=&quot;Arial, Helvetica, Geneva, SunSans-Regular, sans-serif &quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Descripción: &lt;/b&gt;Error al analizar el recurso requerido para dar servicio a esta solicitud. Revise los detalles de error de análisis específicos y modifique el archivo de código fuente en consecuencia.&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Mensaje de error del analizador: &lt;/b&gt;Unterminated string literal. Strings that start with a quotation mark (&amp;quot;) must be terminated before the end of the line. &amp;nbsp;However, strings that start with @ and a quotation mark (@&amp;quot;) can span multiple lines. Closing HTML tags within a string literal may trigger this error message.&lt;br&gt;&lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt;Error de código fuente:&lt;/b&gt; &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;table width=100% bgcolor=&quot;#ffffcc&quot;&gt;&#xD;&#xA;               &lt;tr&gt;&#xD;&#xA;                  &lt;td&gt;&#xD;&#xA;                      &lt;code&gt;&lt;pre&gt;&#xD;&#xA;&#xD;&#xA;Línea 2:  @model Cc.Upt.Domain.User&#xD;&#xA;Línea 3:  &#xD;&#xA;&lt;font color=red&gt;Línea 4:  @{&amp;quot;;&#xD;&#xA;&lt;/font&gt;Línea 5:      Layout = &amp;quot;~/Views/Shared/_Layout.cshtml&amp;quot;;&#xD;&#xA;Línea 6:  }&lt;/pre&gt;&lt;/code&gt;&#xD;&#xA;&#xD;&#xA;                  &lt;/td&gt;&#xD;&#xA;               &lt;/tr&gt;&#xD;&#xA;            &lt;/table&gt;&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Archivo de origen: &lt;/b&gt; /Areas/Basic/Views/User/Create.cshtml&lt;b&gt; &amp;nbsp;&amp;nbsp; Línea: &lt;/b&gt; 4&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;    &lt;/body&gt;&#xD;&#xA;&lt;/html&gt;&#xD;&#xA;">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:es-419,es;q=0.9&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=P-CRQyWQvEtCV0YWcWXbUa90JaqfuzprxikvDQt_uV8t-CRtsRnNDrbDJ8CfH7LisMYn_lKXpektJ9haXZuOHRIE8QhRRNFVAZFBLkJfUCk1; _RetadpUnoiculosI=8E628E80EB792DDBBF686606AA2B430CBB8A2F0172A60ACF933203C949FCE692D2D19219199C10800738720D88CFB60D90872F81BFB4CF28166DB6E22FC045E6068CE853BC6549FC96EF7944D5DC752F8E746292E33DB961A60423DE0B96DA0A7D3CFE6BC39438D52784A1C02096F611541E7645B230ADBF2B03CFFD9DA1997E019D025B4B422115B1AB8B6873CF051DA2B46385E5630DA9126830B14515F928EA7DE5A7CB664888F69A1495103A5621936F4CEDFCA6700D1E7A089B7F212D04E9D29D6EA42145E4E6F6711052488DA225FAC3BC2BC0B0D542B963A0E441241E41E5DF4397C21263B8A8597BCDC832180E73F03ECCB6C423B11A12C7D1628CB147010B868BB5E1DC11450B319562D93232AAA7FD97C93C58DD7440381F278DB31F35C9DD9B0C8F4BDDFC8FCAAD359D901D1680F17C755B25B137CF1765B2BA6E53133311EFB2FE81E21CA033856CC2BF4522FB9A29DBEF24B1A05D014E243D84EAF4699BE9C6F5F1B6DF8A0140CBF65EF1AF6BF134540A2BE612589BEF4D5765B1C2F3B61DD1746757975939F41D2D774AED5D0FD6603B2880866C27F56D2CA12D1F7991289EA2FF1EA85BCD7E083AAEC28F41DE980CA4E0A81D79947646894CE3ECCBC2FEEDB8166A0617F511AFAD5B241D342DB2BFDBC4ACD57B903203A002055171242911E72FEF70E4F1BB05D194F93E79ED5CB9A6117EAFCFBA5DF74DCD56713ECB4C9F043BA862317CC4F6B5905C3D7705D47A26D3029EFF0695BF42277D146BB477C3B04A8D14D583398D6BF8&#xD;&#xA;HTTP_HOST:localhost:64492&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: es-419,es;q=0.9&#xD;&#xA;Cookie: __RequestVerificationToken=P-CRQyWQvEtCV0YWcWXbUa90JaqfuzprxikvDQt_uV8t-CRtsRnNDrbDJ8CfH7LisMYn_lKXpektJ9haXZuOHRIE8QhRRNFVAZFBLkJfUCk1; _RetadpUnoiculosI=8E628E80EB792DDBBF686606AA2B430CBB8A2F0172A60ACF933203C949FCE692D2D19219199C10800738720D88CFB60D90872F81BFB4CF28166DB6E22FC045E6068CE853BC6549FC96EF7944D5DC752F8E746292E33DB961A60423DE0B96DA0A7D3CFE6BC39438D52784A1C02096F611541E7645B230ADBF2B03CFFD9DA1997E019D025B4B422115B1AB8B6873CF051DA2B46385E5630DA9126830B14515F928EA7DE5A7CB664888F69A1495103A5621936F4CEDFCA6700D1E7A089B7F212D04E9D29D6EA42145E4E6F6711052488DA225FAC3BC2BC0B0D542B963A0E441241E41E5DF4397C21263B8A8597BCDC832180E73F03ECCB6C423B11A12C7D1628CB147010B868BB5E1DC11450B319562D93232AAA7FD97C93C58DD7440381F278DB31F35C9DD9B0C8F4BDDFC8FCAAD359D901D1680F17C755B25B137CF1765B2BA6E53133311EFB2FE81E21CA033856CC2BF4522FB9A29DBEF24B1A05D014E243D84EAF4699BE9C6F5F1B6DF8A0140CBF65EF1AF6BF134540A2BE612589BEF4D5765B1C2F3B61DD1746757975939F41D2D774AED5D0FD6603B2880866C27F56D2CA12D1F7991289EA2FF1EA85BCD7E083AAEC28F41DE980CA4E0A81D79947646894CE3ECCBC2FEEDB8166A0617F511AFAD5B241D342DB2BFDBC4ACD57B903203A002055171242911E72FEF70E4F1BB05D194F93E79ED5CB9A6117EAFCFBA5DF74DCD56713ECB4C9F043BA862317CC4F6B5905C3D7705D47A26D3029EFF0695BF42277D146BB477C3B04A8D14D583398D6BF8&#xD;&#xA;Host: localhost:64492&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\Applications\Cc\Cc\1.Presentation\Cc.Upt.Web\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="{&quot;Id&quot;:&quot;532e97da-c3aa-48d7-8b03-2b6920e6d63f&quot;,&quot;Name&quot;:&quot;Cristian Carvajal Bahamon&quot;,&quot;LastName&quot;:null,&quot;UserName&quot;:&quot;cristian.carvajal@isolucion.com.co&quot;,&quot;Profile&quot;:2,&quot;CompanyId&quot;:&quot;d4050fab-2029-414f-84a2-03a6dbf40d9d&quot;}" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="cristian.carvajal@isolucion.com.co" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="{&quot;Id&quot;:&quot;532e97da-c3aa-48d7-8b03-2b6920e6d63f&quot;,&quot;Name&quot;:&quot;Cristian Carvajal Bahamon&quot;,&quot;LastName&quot;:null,&quot;UserName&quot;:&quot;cristian.carvajal@isolucion.com.co&quot;,&quot;Profile&quot;:2,&quot;CompanyId&quot;:&quot;d4050fab-2029-414f-84a2-03a6dbf40d9d&quot;}" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Basic/User/Create" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\Applications\Cc\Cc\1.Presentation\Cc.Upt.Web\Basic\User\Create" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="60197" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Basic/User/Create" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="64492" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Basic/User/Create" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="es-419,es;q=0.9" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=P-CRQyWQvEtCV0YWcWXbUa90JaqfuzprxikvDQt_uV8t-CRtsRnNDrbDJ8CfH7LisMYn_lKXpektJ9haXZuOHRIE8QhRRNFVAZFBLkJfUCk1; _RetadpUnoiculosI=8E628E80EB792DDBBF686606AA2B430CBB8A2F0172A60ACF933203C949FCE692D2D19219199C10800738720D88CFB60D90872F81BFB4CF28166DB6E22FC045E6068CE853BC6549FC96EF7944D5DC752F8E746292E33DB961A60423DE0B96DA0A7D3CFE6BC39438D52784A1C02096F611541E7645B230ADBF2B03CFFD9DA1997E019D025B4B422115B1AB8B6873CF051DA2B46385E5630DA9126830B14515F928EA7DE5A7CB664888F69A1495103A5621936F4CEDFCA6700D1E7A089B7F212D04E9D29D6EA42145E4E6F6711052488DA225FAC3BC2BC0B0D542B963A0E441241E41E5DF4397C21263B8A8597BCDC832180E73F03ECCB6C423B11A12C7D1628CB147010B868BB5E1DC11450B319562D93232AAA7FD97C93C58DD7440381F278DB31F35C9DD9B0C8F4BDDFC8FCAAD359D901D1680F17C755B25B137CF1765B2BA6E53133311EFB2FE81E21CA033856CC2BF4522FB9A29DBEF24B1A05D014E243D84EAF4699BE9C6F5F1B6DF8A0140CBF65EF1AF6BF134540A2BE612589BEF4D5765B1C2F3B61DD1746757975939F41D2D774AED5D0FD6603B2880866C27F56D2CA12D1F7991289EA2FF1EA85BCD7E083AAEC28F41DE980CA4E0A81D79947646894CE3ECCBC2FEEDB8166A0617F511AFAD5B241D342DB2BFDBC4ACD57B903203A002055171242911E72FEF70E4F1BB05D194F93E79ED5CB9A6117EAFCFBA5DF74DCD56713ECB4C9F043BA862317CC4F6B5905C3D7705D47A26D3029EFF0695BF42277D146BB477C3B04A8D14D583398D6BF8" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:64492" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="P-CRQyWQvEtCV0YWcWXbUa90JaqfuzprxikvDQt_uV8t-CRtsRnNDrbDJ8CfH7LisMYn_lKXpektJ9haXZuOHRIE8QhRRNFVAZFBLkJfUCk1" />
+    </item>
+    <item name="_RetadpUnoiculosI">
+      <value string="8E628E80EB792DDBBF686606AA2B430CBB8A2F0172A60ACF933203C949FCE692D2D19219199C10800738720D88CFB60D90872F81BFB4CF28166DB6E22FC045E6068CE853BC6549FC96EF7944D5DC752F8E746292E33DB961A60423DE0B96DA0A7D3CFE6BC39438D52784A1C02096F611541E7645B230ADBF2B03CFFD9DA1997E019D025B4B422115B1AB8B6873CF051DA2B46385E5630DA9126830B14515F928EA7DE5A7CB664888F69A1495103A5621936F4CEDFCA6700D1E7A089B7F212D04E9D29D6EA42145E4E6F6711052488DA225FAC3BC2BC0B0D542B963A0E441241E41E5DF4397C21263B8A8597BCDC832180E73F03ECCB6C423B11A12C7D1628CB147010B868BB5E1DC11450B319562D93232AAA7FD97C93C58DD7440381F278DB31F35C9DD9B0C8F4BDDFC8FCAAD359D901D1680F17C755B25B137CF1765B2BA6E53133311EFB2FE81E21CA033856CC2BF4522FB9A29DBEF24B1A05D014E243D84EAF4699BE9C6F5F1B6DF8A0140CBF65EF1AF6BF134540A2BE612589BEF4D5765B1C2F3B61DD1746757975939F41D2D774AED5D0FD6603B2880866C27F56D2CA12D1F7991289EA2FF1EA85BCD7E083AAEC28F41DE980CA4E0A81D79947646894CE3ECCBC2FEEDB8166A0617F511AFAD5B241D342DB2BFDBC4ACD57B903203A002055171242911E72FEF70E4F1BB05D194F93E79ED5CB9A6117EAFCFBA5DF74DCD56713ECB4C9F043BA862317CC4F6B5905C3D7705D47A26D3029EFF0695BF42277D146BB477C3B04A8D14D583398D6BF8" />
+    </item>
+  </cookies>
+</error>

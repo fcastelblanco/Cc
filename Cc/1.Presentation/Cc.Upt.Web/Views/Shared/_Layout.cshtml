@@ -2,18 +2,23 @@
 @using Cc.Upt.Web.AuthenticationWeb;
 @{
     var currentUser = User as AuthorizedPrincipal;
+
+    if (currentUser == null)
+    {
+        throw new Exception("Usuario no logueado");
+    }
 }
 <!DOCTYPE html>
-<html>
+<html class="fixed">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Updater</title>
+    <title>Actualizador</title>
 
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
 
     @Styles.Render("~/css/upt-css")
-    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/js/upt-modernizr")*
 
 
     @{
@@ -24,92 +29,177 @@
     }
 
 </head>
-<body>
 
-    <nav class="navbar navbar-default" style="border-bottom: 2px solid #ef6900">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="~/Basic/Release">
-                    <img src="~/Content/images/logoLogin.jpg" style=" height:30px;">
+<body>
+    <section class="body">
+
+        <!-- start: header -->
+        <header class="header">
+            <div class="logo-container">
+                <a href="#" class="logo">
+                    <span class="fc-header-title">
+                        <h2>
+                            Actualizador
+                        </h2>
+                    </span>
                 </a>
-                <h4 style="display:inline;">&nbsp;&nbsp;|&nbsp;&nbsp;Centro de Servicio</h4>
+                <div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+                    <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+                </div>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav"></ul>
+            <!-- start: search & user box -->
+            <div class="header-right">
 
-                <ul class="nav navbar-nav navbar-right">
-                    @if (User.Identity.IsAuthenticated && currentUser.Profile == Cc.Upt.Domain.Enumerations.Profile.Administrator)
-                    {
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <span class="glyphicon glyphicon-cog"></span> Admin <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Usuarios", "Index", "User")</li>
-                                <li>@Html.ActionLink("Compañias", "Index", "Company")</li>
-                                <li>@Html.ActionLink("Parametrización", "Index", "Parameter")</li>
-                            </ul>
-                        </li>
-                    }
-                    @if (User.Identity.IsAuthenticated && (currentUser.Profile == Cc.Upt.Domain.Enumerations.Profile.Administrator || currentUser.Profile == Cc.Upt.Domain.Enumerations.Profile.PackageCreator))
-                    {
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <span class="glyphicon glyphicon-compressed"></span> Paquetes <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu" style="min-width: 300px;">
+                <form action="#" class="search">
+                    <div class="input-group input-search">
+                        <input type="text" class="form-control" name="q" id="q" placeholder="Buscar...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>
 
-                                <li>@Html.ActionLink("Crear actualización", "Create", "Release")</li>
+                <span class="separator"></span>
 
-                            </ul>
-                        </li>
-                    }
-                    @if (User.Identity.IsAuthenticated && currentUser != null)
-                    {
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@currentUser.UserName&nbsp; <span class="caret"></span></a>
 
-                            <ul class="dropdown-menu">
-                                <li><a>@currentUser.Name @currentUser.LastName</a></li>
-                                <li><a>@currentUser.Profile.GetDescription()</a></li>
-                                <li class="divider"></li>
+                <div id="userbox" class="userbox">
+                    <a href="#" data-toggle="dropdown">
+                        <figure class="profile-picture">
+
+                        </figure>
+                        <div class="profile-info">
+                            <span class="name">@currentUser.Name @currentUser.LastName</span>
+                            <span class="role">@currentUser.Profile.GetDescription()</span>
+                        </div>
+
+                        <i class="fa custom-caret"></i>
+                    </a>
+
+                    <div class="dropdown-menu">
+                        <ul class="list-unstyled">
+                            <li class="divider"></li>
+                            <li>
+                                <a role="menuitem" tabindex="-1" href="#"><i class="fa fa-user"></i> Mi perfil</a>
+                            </li>
+                            <li>
+                                <a role="menuitem" tabindex="-1" href="@Url.Action("ResetPassword", "Password", new { area = "Basic", userId = currentUser.Id })"><i class="fa fa-lock"></i> Cambiar clave</a>
+                            </li>
+                            <li>
+                                <a role="menuitem" tabindex="-1" href="@Url.Action( "LogOut", "Login", new { area = "" })"><i class="fa fa-power-off"></i> Cerrar sesión</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- end: search & user box -->
+        </header>
+        <!-- end: header -->
+
+        <div class="inner-wrapper">
+            <!-- start: sidebar -->
+            <aside id="sidebar-left" class="sidebar-left">
+                <div class="sidebar-header">
+                    <div class="sidebar-title">
+                        Navigation
+                    </div>
+                    <div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+                        <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+                    </div>
+                </div>
+                <div class="nano">
+                    <div class="nano-content">
+                        <nav id="menu" class="nav-main" role="navigation">
+                            <ul class="nav nav-main">
                                 <li>
-                                    <a href="@Url.Action("ResetPassword", "Password", new { area = "Basic", userId = currentUser.Id })">
-                                        Cambiar contraseña
+                                    <a href="@Url.Action("Index", "Release")">
+                                        <i class="fa fa-home" aria-hidden="true"></i>
+                                        <span>Dashboard</span>
                                     </a>
                                 </li>
-                                <li>@Html.ActionLink("Cerrar sesión", "LogOut", "Login", new { area = "" }, new { @class = "" })</li>
 
+                                @if (User.Identity.IsAuthenticated && currentUser.Profile == Cc.Upt.Domain.Enumerations.Profile.Administrator)
+                                {
+                                    <li class="nav-parent">
+                                        <a>
+                                            <i class="fa fa-copy" aria-hidden="true"></i>
+                                            <span>Administración</span>
+                                        </a>
+                                        <ul class="nav nav-children">
+                                            <li>
+                                                <a href="@Url.Action("Index", "User")">
+                                                    Usuarios
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Index", "Company")">
+                                                    Compañias
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Index", "Parameter")">
+                                                    Parametrización
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+                                @if (User.Identity.IsAuthenticated && (currentUser.Profile == Cc.Upt.Domain.Enumerations.Profile.Administrator || currentUser.Profile == Cc.Upt.Domain.Enumerations.Profile.PackageCreator))
+                                {
+                                    <li class="nav-parent">
+                                        <a>
+                                            <i class="fa fa-tasks" aria-hidden="true"></i>
+                                            <span>Paquetes</span>
+                                        </a>
+                                        <ul class="nav nav-children">
+                                            <li>
+                                                <a href="@Url.Action("Create", "Release")">
+                                                    Crear actualización
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
                             </ul>
-                        </li>
-                    }
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
+                        </nav>
+                    </div>
+                </div>
+            </aside>
+            <!-- end: sidebar -->
+            <section role="main" class="content-body">
+                <header class="page-header">
+                    <h2>@actionName</h2>
+                    <div class="right-wrapper pull-right">
+                        <ol class="breadcrumbs">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-home"></i>
+                                </a>
+                            </li>
+                            <li><span>@controllerName</span></li>
+                            <li><span>@actionName</span></li>
+                        </ol>
 
-
-
-    <div class="panel">
-        <div class="panel-body">
-            @RenderBody()
+                        <a class="sidebar-right-toggle">
+                            &nbsp;
+                        </a>
+                    </div>
+                </header>
+                <!-- start: page -->
+                <div class="panel">
+                    <div class="panel-body">
+                        @RenderBody()
+                    </div>
+                </div>
+                <!-- end: page -->
+            </section>
         </div>
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year ISOLUCIÓN SISTEMAS INTEGRADOS DE GESTIÓN S.A.</p>
-        </footer>
-    </div>
+    </section>
 
     @Scripts.Render("~/js/upt-js")
     @RenderSection("scripts", required: false)
+
+
+
 </body>
 </html>

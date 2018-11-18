@@ -8,65 +8,59 @@
 <form method="post" action="@Url.Action("Save", "Company")" enctype="multipart/form-data">
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            <label for="Name" class="control-label col-md-2">
-                Nombre
-            </label>
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">
+                    Nombre
+                </label>
+                <input type="text" name="Name" class="form-control" data-rule-required="true" data-msg-required="El nombre es requerido" value="@Model.Name" />
             </div>
         </div>
-
-
-        <div class="form-group">
-            <label for="DateEndSupport" class="control-label col-md-2">
-                Fecha de finalización de soporte
-            </label>
-            <div class="col-md-4">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">
+                    Fecha de finalización de soporte
+                </label>
                 <div class="input-group date" id="DateEndSupport">
-                    <input type="text" class="form-control" name="DateEndSupport" onkeydown="return false;" value="@Model.DateEndSupport.ToString("dd/MM/yyyy")" data-val="true" data-val-required="Fecha final de soporte es requerida" />
+                    <input type="text" class="form-control" name="DateEndSupport" data-rule-required="true" data-msg-required="Fecha final de soporte es requerida" onkeydown="return false;" value="@Model.DateEndSupport.ToString("dd/MM/yyyy")" />
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
-                @Html.ValidationMessageFor(model => model.DateEndSupport, "", new { @class = "text-danger" })
             </div>
         </div>
+    </div>
+    <p>
+        &nbsp;
+    </p>
+    <div class="row text-center">
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-default" />
-            </div>
+        <div class="col-md-2 col-md-offset-4">
+            <input type="submit" id="save" value="Guardar" class="btn btn-primary btn-block" />
+        </div>
+        <div class="col-md-2">
+            <input type="button" onclick="window.location.href = '@Url.Action("Index")'" value="Volver al listado" class="btn btn-warning  btn-block" />
         </div>
     </div>
 </form>
 
-    <div>
-        @Html.ActionLink("Volver a la lista", "Index")
-    </div>
+@section Scripts {
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
+    <script>
 
-        <script>
+        $(document).ready(function () {
 
-            $(document).ready(function() {
-
-                $('#DateEndSupport').datepicker({
-                    format: "dd/mm/yyyy",
-                    clearBtn: true,
-                    autoclose: true,
-                    language: "es",
-                    todayBtn: true
-                });
-                
+            $('#DateEndSupport').datepicker({
+                format: "dd/mm/yyyy",
+                autoclose: true,
+                language: "es"
             });
 
-        </script>
-    }
+        });
+
+    </script>
+}

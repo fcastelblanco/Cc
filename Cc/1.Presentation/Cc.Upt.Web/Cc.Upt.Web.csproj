@@ -410,7 +410,6 @@
     <Content Include="Content\uploadfile.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Areas\Basic\Views\User\Details.cshtml" />
     <Content Include="Areas\Basic\Views\Release\Edit.cshtml" />
     <Content Include="Content\bootstrap\config.json" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
@@ -424,6 +423,7 @@
     <Content Include="Scripts\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Scripts\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="libman.json" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\bootstrap-datepicker\css\datepicker.css" />
@@ -501,7 +501,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\magnific-popup\magnific-popup.css" />
     <Content Include="Scripts\magnific-popup\magnific-popup.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\modernizr\modernizr.js" />
     <Content Include="Scripts\nanoscroller\nanoscroller.css" />
     <Content Include="Scripts\nanoscroller\nanoscroller.js" />
     <Content Include="Scripts\theme.custom.js" />

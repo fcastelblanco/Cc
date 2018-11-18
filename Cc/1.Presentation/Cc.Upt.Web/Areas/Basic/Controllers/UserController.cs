@@ -88,7 +88,7 @@ namespace Cc.Upt.Web.Areas.Basic.Controllers
                 Token = Guid.NewGuid(),
                 UserId = theUserToSave.Id,
                 TokenType = TokenType.CreateUser,
-                Expiration = DateTime.Now.Date.AddDays(Convert.ToInt32(parameterInstance.ParameterList.FirstOrDefault(x => x.ParameterInternalIdentificator == ParameterInternalIdentificator.ValidDaysToken).Value))
+                Expiration = DateTime.Now.Date.AddDays(Convert.ToInt32(parameterInstance.ParameterList.FirstOrDefault(x => x.ParameterInternalIdentificator == ParameterInternalIdentificator.ValidDaysToken)?.Value))
             };
 
             if (!_userTokenService.Save(theUserToken))
