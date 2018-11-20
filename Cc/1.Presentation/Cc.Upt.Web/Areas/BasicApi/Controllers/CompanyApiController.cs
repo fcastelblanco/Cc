@@ -25,7 +25,7 @@ namespace Cc.Upt.Web.Areas.BasicApi.Controllers
         [Route("CompanyApi/GetCompanyUpdateList/{companyId}")]
         public IHttpActionResult GetCompanyUpdateList(Guid companyId)
         {
-            var dataToReturn = _companyUpdateService.GetCompanyUpdateList(companyId);
+            var dataToReturn = _companyUpdateService.GetServerUpdateList(companyId);
             return Ok(dataToReturn);
         }
 
@@ -33,7 +33,7 @@ namespace Cc.Upt.Web.Areas.BasicApi.Controllers
         [Route("CompanyApi/GetAvailableReleaseByCompanyId/{companyId}")]
         public IHttpActionResult GetAvailableReleaseByCompanyId(Guid companyId)
         {
-            var dataToReturn = _companyUpdateService.GetAvailableReleaseByCompanyId(companyId);
+            var dataToReturn = _companyUpdateService.GetAvailableReleaseByServerId(companyId);
             return Ok(dataToReturn);
         }
 
@@ -54,7 +54,7 @@ namespace Cc.Upt.Web.Areas.BasicApi.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult AddCompanyUpdate(CompanyUpdate companyUpdate)
+        public IHttpActionResult AddCompanyUpdate(ServerUpdate companyUpdate)
         {
             try
             {

@@ -51,7 +51,7 @@ namespace Cc.Upt.Web
                     var serializeModel =
                         new JavaScriptSerializer().Deserialize<AuthorizedPrincipalDto>(authTicket.UserData);
                     var userService = DependencyResolver.Current.GetService<IUserService>();
-                    var user = userService.FindBy(u => u.UserName == serializeModel.UserName).FirstOrDefault();
+                    var user = userService.FindBy(u => u.Email == serializeModel.UserName).FirstOrDefault();
                     if (user != null)
                     {
                         var newUser = new AuthorizedPrincipal(authTicket.UserData)
@@ -59,7 +59,7 @@ namespace Cc.Upt.Web
                             Id = user.Id,
                             Name = user.Name,
                             LastName = user.LastName,
-                            UserName = user.UserName,
+                            Email = user.Email,
                             Profile = user.Profile,
                             CompanyId = user.CompanyId
                         };

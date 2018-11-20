@@ -36,7 +36,6 @@ namespace Cc.Upt.Business.Implementations
                     exists.Password = exists.Password;
                     exists.Name = user.Name;
                     exists.LastName = user.LastName;
-                    exists.UserName = user.UserName;
                     exists.Email = user.Email;
                     exists.CompanyId = user.CompanyId;
                     exists.Profile = user.Profile;

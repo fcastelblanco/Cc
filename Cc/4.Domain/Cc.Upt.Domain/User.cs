@@ -1,29 +1,23 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-
-using Cc.Upt.CommonDomain.Implementations;
+using Cc.Upt.Domain.Common.Implementations;
 using Cc.Upt.Domain.Enumerations;
 
 namespace Cc.Upt.Domain
 {
     [Table("User", Schema = "dbo")]
-    public class User : AuditableEntity<Guid>
+    public class User : AuditableEntity
     {
-        public User()
-        {
-            Companies = new System.Collections.Generic.List<Company>();
-        }
-        
+        [ForeignKey("Company")] public Guid CompanyId { get; set; }
+
         public string Name { get; set; }
         public string LastName { get; set; }
-        public string UserName { get; set; }
+
         public string Password { get; set; }
         public Profile Profile { get; set; }
         public string Email { get; set; }
-        public Guid CompanyId { get; set; }
-        public byte[] Photo { get; set; }
 
-        [ForeignKey("UserRequestDeployId")]
-        public virtual System.Collections.Generic.ICollection<Company> Companies { get; set; } // Company.FK_Company_User
+        public byte[] Photo { get; set; }
+        public virtual Company Company { get; set; }
     }
 }

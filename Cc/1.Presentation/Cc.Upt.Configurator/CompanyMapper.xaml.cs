@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using System.Windows.Threading;
 using Cc.Upt.Business.Definitions;
 using Cc.Upt.Common.LogHelper;
-using Cc.Upt.Domain.Dto;
+using Cc.Upt.Domain.DataTransferObject;
 using Cc.Upt.Domain.Enumerations;
 using Cc.Upt.Ioc;
 using Newtonsoft.Json;

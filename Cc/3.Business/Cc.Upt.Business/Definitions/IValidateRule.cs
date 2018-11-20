@@ -1,4 +1,4 @@
-﻿using Cc.Upt.Domain.Dto;
+﻿using Cc.Upt.Domain.DataTransferObject;
 
 namespace Cc.Upt.Business.Definitions
 {

@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using Cc.Upt.Data.Definitions;
 using Cc.Upt.Domain;
-using Cc.Upt.DomainRepository.Definitions;
+using Cc.Upt.Domain.Repository.Definitions;
+
 
 namespace Cc.Upt.Business.Definitions
 {
-    public interface ICompanyUpdateService : IRepository<CompanyUpdate>
+    public interface ICompanyUpdateService : IRepository<ServerUpdate>
     {
-        List<CompanyUpdate> GetCompanyUpdateList(Guid companyId);
-        bool Save(CompanyUpdate companyUpdate);
-        CompanyUpdate ValidateXmlFile(string path, string userName);
-        CompanyUpdate GetLastUpdate(Guid companyId);
-        bool CreateXml(CompanyUpdate companyUpdate, string path);
-        IEnumerable<Release> GetAvailableReleaseByCompanyId(Guid companyId);
+        List<ServerUpdate> GetServerUpdateList(Guid companyId);
+        bool Save(ServerUpdate companyUpdate);
+        ServerUpdate ValidateXmlFile(string path, string userName);
+        ServerUpdate GetLastUpdate(Guid companyId);
+        bool CreateXml(ServerUpdate companyUpdate, string path);
+        IEnumerable<Release> GetAvailableReleaseByServerId(Guid companyId);
     }
 }

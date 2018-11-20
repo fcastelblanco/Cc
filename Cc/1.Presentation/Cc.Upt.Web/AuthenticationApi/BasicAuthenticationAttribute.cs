@@ -35,7 +35,7 @@ namespace Cc.Upt.Web.AuthenticationApi
 
                 var authToken = actionContext.Request.Headers.Authorization.Parameter;
                 var decodedToken = Encoding.UTF8.GetString(Convert.FromBase64String(authToken));
-                var userName = decodedToken.Substring(0, decodedToken.IndexOf(":", StringComparison.Ordinal));
+                var email = decodedToken.Substring(0, decodedToken.IndexOf(":", StringComparison.Ordinal));
                 var password = decodedToken.Substring(decodedToken.IndexOf(":", StringComparison.Ordinal) + 1);
 
                 IUserService userService;
@@ -48,7 +48,7 @@ namespace Cc.Upt.Web.AuthenticationApi
                     userService = DependencyResolver.Current.GetService<IUserService>();
                     userPassword = password.Encode();
                     user = userService
-                        .FindBy(u => u.UserName == userName && u.Password == userPassword).FirstOrDefault();
+                        .FindBy(u => u.Email == email && u.Password == userPassword).FirstOrDefault();
 
                     HttpContext.Current.User = new GenericPrincipal(new ApiIdentity(user), new string[] { });
                     if (user != null)
@@ -82,7 +82,7 @@ namespace Cc.Upt.Web.AuthenticationApi
                 userService = DependencyResolver.Current.GetService<IUserService>();
                 userPassword = password.Encode();
                 user = userService
-                    .FindBy(u => u.UserName == userName && u.Password == userPassword).FirstOrDefault();
+                    .FindBy(u => u.Email == email && u.Password == userPassword).FirstOrDefault();
 
                 if (user != null)
                 {

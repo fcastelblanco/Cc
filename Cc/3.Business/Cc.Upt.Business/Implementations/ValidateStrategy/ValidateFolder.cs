@@ -2,7 +2,8 @@
 using System.Linq;
 using Cc.Upt.Business.Definitions;
 using Cc.Upt.Business.Implementations.ValidateRules;
-using Cc.Upt.Domain.Dto;
+using Cc.Upt.Domain.DataTransferObject;
+
 
 namespace Cc.Upt.Business.Implementations.ValidateStrategy
 {

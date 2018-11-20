@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Cc.Upt.Business.Definitions;
 using Cc.Upt.Common.LogHelper;
-using Cc.Upt.Domain.Dto;
+using Cc.Upt.Domain.DataTransferObject;
 using Cc.Upt.Ioc;
 
 

@@ -44,12 +44,6 @@ namespace Cc.Upt.Web.Areas.Basic.Controllers
                 return currentCompany == null ? View("Create") : View("Edit", model); 
             }
 
-            if (model.DateEndSupport.Date < DateTime.Now.Date)
-            {
-                ModelState.AddModelError(string.Empty, @"La fecha de finalizacion de soporte no puede ser inferior a la actual");
-                return currentCompany == null ? View("Create") : View("Edit", model);
-            }
-
             var dataRetrieved = _companyService.Save(model);
             return RedirectToAction("Index");
         }

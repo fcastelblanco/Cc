@@ -3,9 +3,9 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Threading;
-using Cc.Upt.CommonDomain.Definitions;
 using Cc.Upt.Data.Definitions;
 using Cc.Upt.Domain;
+using Cc.Upt.Domain.Common.Definitions;
 
 namespace Cc.Upt.Data.Implementations
 {
@@ -18,15 +18,16 @@ namespace Cc.Upt.Data.Implementations
             Database.SetInitializer<Context>(null);
         }
 
+        public IDbSet<ServerUpdate> ServerUpdates { get; set; }
         public IDbSet<User> Users { get; set; }
         public IDbSet<Company> Companies { get; set; }
-        public IDbSet<CompanyUpdate> CompanyUpdates { get; set; }
         public IDbSet<Release> Releases { get; set; }
-        public IDbSet<UnhandledException> UnhandledExceptions { get; set; }
-        public IDbSet<CompanyModule> CompanyModules { get; set; }
-        public IDbSet<Module> Modules { get; set; }
         public IDbSet<Server> Servers { get; set; }
-        public IDbSet<CompanyRelease> CompanyRelease { get; set; }
+        public IDbSet<ServerRelease> ServerReleases { get; set; }
+        public IDbSet<UnhandledException> UnhandledExceptions { get; set; }
+        public IDbSet<UserToken> UserTokens { get; set; }
+        public IDbSet<Parameter> Parameters { get; set; }
+        public IDbSet<DownloadRequestRelease> DownloadRequestReleases { get; set; }
 
         public override int SaveChanges()
         {
@@ -44,24 +45,19 @@ namespace Cc.Upt.Data.Implementations
                 if (entry.State == EntityState.Added)
                 {
                     entity.CreatedBy = identityName;
-                    entity.CreatedDate = now;
+                    entity.CreatedOn = now;
                 }
                 else
                 {
                     Entry(entity).Property(x => x.CreatedBy).IsModified = false;
-                    Entry(entity).Property(x => x.CreatedDate).IsModified = false;
+                    Entry(entity).Property(x => x.CreatedOn).IsModified = false;
                     entity.UpdatedBy = identityName;
-                    entity.UpdatedDate = now;
+                    entity.UpdatedOn = now;
                 }
             }
 
             return base.SaveChanges();
         }
-
-        public IDbSet<UserToken> UserTokens { get; set; }
-
-        public IDbSet<Parameter> Parameters { get; set; }
-        public IDbSet<DownloadRequestRelease> DownloadRequestReleases { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

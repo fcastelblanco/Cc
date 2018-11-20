@@ -147,7 +147,7 @@ namespace Cc.Upt.Business.Implementations
 
             foreach (var item in dataRetrievedAvailableExpired)
             {
-                var currentDifference = (DateTime.Now - item.CreatedDate).Days;
+                var currentDifference = (DateTime.Now - item.CreatedOn).Days;
 
                 if (currentDifference <= parameterValue) continue;
 
@@ -192,7 +192,7 @@ namespace Cc.Upt.Business.Implementations
                 if (currentData == null)
                     return false;
 
-                currentData.CreatedDate = downloadRequestRelease.CreatedDate;
+                currentData.CreatedOn = downloadRequestRelease.CreatedOn;
                 Update(currentData);
                 return true;
             }

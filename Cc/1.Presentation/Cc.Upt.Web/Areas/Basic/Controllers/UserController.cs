@@ -68,12 +68,11 @@ namespace Cc.Upt.Web.Areas.Basic.Controllers
                 Profile = model.Profile,
                 LastName = model.LastName,
                 Name = model.Name,
-                UserName = model.UserName,
                 Email = model.Email,
-                CompanyId = model.CompanyId
+                CompanyId = model.CompanyId,
+                Id = model.Id == Guid.Empty ? Guid.NewGuid() : model.Id
             };
 
-            theUserToSave.Id = model.Id == Guid.Empty ? Guid.NewGuid() : model.Id;
             var dataRetrieved = _userService.Save(theUserToSave);
 
             if (model.Id != Guid.Empty)

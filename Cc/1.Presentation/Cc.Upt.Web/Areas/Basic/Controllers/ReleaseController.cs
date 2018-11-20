@@ -54,14 +54,14 @@ namespace Cc.Upt.Web.Areas.Basic.Controllers
             {
                 Id = x.Id,
                 CreatedBy = x.CreatedBy,
-                CreatedDate = x.CreatedDate,
+                CreatedOn = x.CreatedOn,
                 IsSafe = x.IsSafe,
                 Description = x.Description,
                 UpdatedBy = x.UpdatedBy,
                 Notes = x.Notes,
                 UserId = x.UserId,
                 Published = x.Published,
-                UpdatedDate = x.UpdatedDate,
+                UpdatedOn = x.UpdatedOn,
                 Version = x.Version
 
             }).OrderByDescending(x => x.Published));
@@ -115,9 +115,9 @@ namespace Cc.Upt.Web.Areas.Basic.Controllers
 
                 if (selectedCompanys != null)
                     foreach (var company in selectedCompanys)
-                        _companyReleaseService.Save(new CompanyRelease
+                        _companyReleaseService.Save(new ServerRelease
                         {
-                            CompanyId = new Guid(company),
+                            ServerId = new Guid(company),
                             ReleaseId = release.Id
                         });
 
@@ -176,13 +176,13 @@ namespace Cc.Upt.Web.Areas.Basic.Controllers
                 fileXml.SaveAs(pathXml);
                 var lastRelease = _companyUpdateService.ValidateXmlFile(pathXml, $"{User.Name} {User.LastName}");
                 var recenteRelease = _releaseService.GetLatestRelease(lastRelease.ReleaseId).ToList();
-                var releaseDistinctCompany = _companyReleaseService.GetReleaseListDownload(recenteRelease.Select(x => x.Id), lastRelease.CompanyId);
+                var releaseDistinctCompany = _companyReleaseService.GetReleaseListDownload(recenteRelease.Select(x => x.Id), lastRelease.ServerId);
                 recenteRelease = recenteRelease.Where(x => !releaseDistinctCompany.Contains(x.Id)).ToList();
                 if (recenteRelease.Any())
                 {
-                    var companyUpdate = new CompanyUpdate
+                    var companyUpdate = new ServerUpdate
                     {
-                        CompanyId = lastRelease.CompanyId,
+                        ServerId = lastRelease.ServerId,
                         Update = lastRelease.Update
                     };
                     byte[] data = CreateRelease(companyUpdate, recenteRelease);
@@ -207,9 +207,9 @@ namespace Cc.Upt.Web.Areas.Basic.Controllers
                 recenteRelease = recenteRelease.Where(x => !releaseDistinctCompany.Contains(x.Id)).ToList();
                 if (recenteRelease.Any())
                 {
-                    var companyUpdate = new CompanyUpdate
+                    var companyUpdate = new ServerUpdate
                     {
-                        CompanyId = User.CompanyId,
+                        ServerId = User.CompanyId,
                         Update = DateTime.Now
                     };
                     byte[] data = CreateRelease(companyUpdate, recenteRelease);
@@ -224,7 +224,7 @@ namespace Cc.Upt.Web.Areas.Basic.Controllers
             return RedirectToAction("Index");
         }
 
-        private byte[] CreateRelease(CompanyUpdate companyUpdate, List<Release> recenteRelease)
+        private byte[] CreateRelease(ServerUpdate companyUpdate, List<Release> recenteRelease)
         {
             var pathDownload = Path.Combine(_directoryPath + $@"\Isolucion_{User.Name}_{recenteRelease.Last().Version}");
             Directory.CreateDirectory(pathDownload);
@@ -236,18 +236,18 @@ namespace Cc.Upt.Web.Areas.Basic.Controllers
                 if (!Directory.Exists(path))
                     System.IO.File.Copy(path, $@"{pathDownload}\{release.Version}.zip", true);
 
-                _companyUpdateService.Save(new CompanyUpdate
+                _companyUpdateService.Save(new ServerUpdate
                 {
                     ReleaseId = release.Id,
-                    CompanyId = companyUpdate.CompanyId,
+                    ServerId = companyUpdate.ServerId,
                     Update = companyUpdate.Update
                 });
             }
 
-            _companyUpdateService.CreateXml(new CompanyUpdate
+            _companyUpdateService.CreateXml(new ServerUpdate
             {
                 ReleaseId = recenteRelease.LastOrDefault().Id,
-                CompanyId = companyUpdate.CompanyId,
+                ServerId = companyUpdate.ServerId,
                 Update = companyUpdate.Update
             }, $@"{pathDownload}\CompanyUpdate.xml");
 

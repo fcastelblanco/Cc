@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Cc.Upt.Data.Definitions;
 using Cc.Upt.Domain;
-using Cc.Upt.Domain.Dto;
+using Cc.Upt.Domain.DataTransferObject;
 using Cc.Upt.Domain.Enumerations;
-using Cc.Upt.DomainRepository.Definitions;
+using Cc.Upt.Domain.Repository.Definitions;
 
 namespace Cc.Upt.Business.Definitions
 {
@@ -16,6 +15,8 @@ namespace Cc.Upt.Business.Definitions
         bool Save(Parameter parameter, bool isSingle = false);
         void PrepareData();
         T GetParameterValueByInternalIdentificator<T>(ParameterInternalIdentificator parameterInternalIdentificator);
-        IDictionary<LicenseParameter, string> GetIsolucionParameterValues(IEnumerable<IsoluctionParameterDto> parameters, string licensePath);
+
+        IDictionary<LicenseParameter, string> GetIsolucionParameterValues(
+            IEnumerable<IsoluctionParameterDto> parameters, string licensePath);
     }
 }

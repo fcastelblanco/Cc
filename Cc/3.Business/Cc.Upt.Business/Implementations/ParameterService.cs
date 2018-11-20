@@ -11,7 +11,7 @@ using Cc.Upt.Common.LogHelper;
 using Cc.Upt.Data.Definitions;
 using Cc.Upt.Data.Implementations;
 using Cc.Upt.Domain;
-using Cc.Upt.Domain.Dto;
+using Cc.Upt.Domain.DataTransferObject;
 using Cc.Upt.Domain.Enumerations;
 
 namespace Cc.Upt.Business.Implementations

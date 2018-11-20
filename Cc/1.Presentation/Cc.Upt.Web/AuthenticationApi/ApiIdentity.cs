@@ -15,7 +15,7 @@ namespace Cc.Upt.Web.AuthenticationApi
         }
 
         public User User { get; }
-        public string Name => User.UserName;
+        public string Name => User.Name;
         public string AuthenticationType => "Basic";
         public bool IsAuthenticated => true;
     }

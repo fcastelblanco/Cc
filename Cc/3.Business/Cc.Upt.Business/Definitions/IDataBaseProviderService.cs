@@ -1,4 +1,5 @@
-using Cc.Upt.Domain.Dto;
+using Cc.Upt.Domain.DataTransferObject;
+
 using Cc.Upt.Domain.Enumerations;
 
 namespace Cc.Upt.Business.Definitions

@@ -37,7 +37,7 @@ namespace Cc.Upt.Business.Implementations
             var exists = Dbset.FirstOrDefault(x => x.Id == model.Id);
             if (exists != null)
             {
-                exists.DateEndSupport = model.DateEndSupport;
+                
                 exists.Name = model.Name;
                 Update(exists);
             }
@@ -50,7 +50,7 @@ namespace Cc.Upt.Business.Implementations
         public IEnumerable<Company> GetCompanyListByPeriodSupportOpen()
         {
             var currentDate = DateTime.Now.Date;
-            return FindBy(x => DbFunctions.TruncateTime( x.DateEndSupport) >= currentDate).ToList();
+            return null;
         }
     }
 }

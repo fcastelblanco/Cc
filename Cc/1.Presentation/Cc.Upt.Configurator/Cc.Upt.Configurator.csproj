@@ -218,11 +218,19 @@
       <Project>{0F82B700-1CF2-4D6C-AA25-EB4DAE36219F}</Project>
       <Name>Cc.Upt.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\4.Domain\Cc.Upt.CommonDomain\Cc.Upt.CommonDomain.csproj">
+    <ProjectReference Include="..\..\4.Domain\Cc.Upt.Domain.Common\Cc.Upt.Domain.Common.csproj">
       <Project>{826DBBB4-0858-441C-95A9-21F00C13A2B3}</Project>
-      <Name>Cc.Upt.CommonDomain</Name>
+      <Name>Cc.Upt.Domain.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\4.Domain\Cc.Upt.DomainRepository\Cc.Upt.DomainRepository\Cc.Upt.DomainRepository.csproj">
+    <ProjectReference Include="..\..\4.Domain\Cc.Upt.Domain.DataTransferObject\Cc.Upt.Domain.DataTransferObject.csproj">
+      <Project>{D75818B4-1192-4A9F-82A4-FB8C481DA2C7}</Project>
+      <Name>Cc.Upt.Domain.DataTransferObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\4.Domain\Cc.Upt.Domain.Enumerations\Cc.Upt.Domain.Enumerations.csproj">
+      <Project>{FA685272-B000-4452-A294-5A413AF74951}</Project>
+      <Name>Cc.Upt.Domain.Enumerations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\4.Domain\Cc.Upt.Domain.Repository\Cc.Upt.DomainRepository.csproj">
       <Project>{7711C7D1-028A-4B02-8FA8-1C03ED613B0B}</Project>
       <Name>Cc.Upt.DomainRepository</Name>
     </ProjectReference>

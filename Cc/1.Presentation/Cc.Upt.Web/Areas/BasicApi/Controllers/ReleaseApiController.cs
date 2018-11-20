@@ -33,7 +33,7 @@ namespace Cc.Upt.Web.Areas.BasicApi.Controllers
                 IsSafe = x.IsSafe,
                 Version = x.Version,
                 CreatedBy = x.CreatedBy,
-                CreatedDate = x.CreatedDate,
+                CreatedOn = x.CreatedOn,
                 Description = x.Description,
                 Notes = x.Notes,
                 Published = x.Published,
@@ -69,7 +69,7 @@ namespace Cc.Upt.Web.Areas.BasicApi.Controllers
             var dataToReturn = _downloadRequestReleaseService.IncreaseDownloadRequestReleaseDate(new DownloadRequestRelease
             {
                 Id = downloadRequestRelease.Id,
-                CreatedDate = downloadRequestRelease.CreatedDate
+                CreatedOn = downloadRequestRelease.CreatedOn
             });
 
             return Ok(dataToReturn);

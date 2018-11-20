@@ -65,32 +65,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Company.cs" />
-    <Compile Include="CompanyModule.cs" />
-    <Compile Include="CompanyRelease.cs" />
-    <Compile Include="CompanyUpdate.cs" />
+    <Compile Include="ServerRelease.cs" />
+    <Compile Include="ServerUpdate.cs" />
     <Compile Include="DownloadRequestRelease.cs" />
-    <Compile Include="Dto\CompanyMapperDto.cs" />
-    <Compile Include="Dto\IpmConfiguratorDto.cs" />
-    <Compile Include="Dto\IsoluctionParameterDto.cs" />
-    <Compile Include="Dto\ItemDto.cs" />
-    <Compile Include="Dto\LoginDto.cs" />
-    <Compile Include="Dto\SavePasswordDto.cs" />
-    <Compile Include="Dto\ValidateRuleDto.cs" />
-    <Compile Include="Enumerations\DataBaseProvider.cs" />
-    <Compile Include="Enumerations\DeployMode.cs" />
-    <Compile Include="Enumerations\DownloadRequestReleaseStatusType.cs" />
-    <Compile Include="Enumerations\FilesValidate.cs" />
-    <Compile Include="Enumerations\LicenseParameter.cs" />
-    <Compile Include="Enumerations\ParameterInternalIdentificator.cs" />
-    <Compile Include="Enumerations\ParameterIsolucion.cs" />
-    <Compile Include="Enumerations\ParameterStatus.cs" />
-    <Compile Include="Enumerations\ParameterType.cs" />
-    <Compile Include="Enumerations\Profile.cs" />
-    <Compile Include="Enumerations\SqlTask.cs" />
-    <Compile Include="Enumerations\TokenType.cs" />
-    <Compile Include="Enumerations\UpdateMode.cs" />
-    <Compile Include="Enumerations\UpdateVerification.cs" />
-    <Compile Include="Module.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Release.cs" />
@@ -101,13 +78,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cc.Upt.CommonDomain\Cc.Upt.CommonDomain.csproj">
+    <ProjectReference Include="..\Cc.Upt.Domain.Common\Cc.Upt.Domain.Common.csproj">
       <Project>{826DBBB4-0858-441C-95A9-21F00C13A2B3}</Project>
-      <Name>Cc.Upt.CommonDomain</Name>
+      <Name>Cc.Upt.Domain.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cc.Upt.Domain.Enumerations\Cc.Upt.Domain.Enumerations.csproj">
+      <Project>{FA685272-B000-4452-A294-5A413AF74951}</Project>
+      <Name>Cc.Upt.Domain.Enumerations</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

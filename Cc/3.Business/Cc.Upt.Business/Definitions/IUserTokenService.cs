@@ -1,7 +1,7 @@
 ﻿using System;
 using Cc.Upt.Domain;
 using Cc.Upt.Domain.Enumerations;
-using Cc.Upt.DomainRepository.Definitions;
+using Cc.Upt.Domain.Repository.Definitions;
 
 namespace Cc.Upt.Business.Definitions
 {

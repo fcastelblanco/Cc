@@ -8,7 +8,8 @@ using Cc.Upt.Business.Definitions;
 using Cc.Upt.Business.Implementations.Singleton;
 using Cc.Upt.Common.ExtensionMethods;
 using Cc.Upt.Domain;
-using Cc.Upt.Domain.Dto;
+using Cc.Upt.Domain.DataTransferObject;
+
 using Cc.Upt.Domain.Enumerations;
 using Cc.Upt.Web.AuthenticationWeb;
 
@@ -46,7 +47,7 @@ namespace Cc.Upt.Web.Controllers
 
             var currentUserPassword = model.Password.Encode();
             var currentUser =
-                _userService.FindBy(u => u.UserName == model.UserName && u.Password == currentUserPassword)
+                _userService.FindBy(u => u.Email == model.Email && u.Password == currentUserPassword)
                     .FirstOrDefault();
             if (currentUser == null)
             {
@@ -54,12 +55,12 @@ namespace Cc.Upt.Web.Controllers
                 return View("Index");
             }
             
-            var autorizaPrincipal = new AuthorizedPrincipal(model.UserName)
+            var autorizaPrincipal = new AuthorizedPrincipal(model.Email)
             {
                 Id = currentUser.Id,
                 Name = currentUser.Name,
                 LastName = currentUser.LastName,
-                UserName = currentUser.UserName,
+                Email = currentUser.Email,
                 Profile = currentUser.Profile,
                 CompanyId = currentUser.CompanyId
             };
@@ -82,12 +83,12 @@ namespace Cc.Upt.Web.Controllers
                 Id = authorizedData.Id,
                 Name = authorizedData.Name,
                 LastName = authorizedData.LastName,
-                UserName = authorizedData.UserName,
+                UserName = authorizedData.Email,
                 Profile = authorizedData.Profile,
                 CompanyId = authorizedData.CompanyId
             });
 
-            var authenticationTicket = new FormsAuthenticationTicket(1, authorizedData.UserName, DateTime.Now,
+            var authenticationTicket = new FormsAuthenticationTicket(1, authorizedData.Email, DateTime.Now,
                 DateTime.Now.AddDays(0.5), false, userData);
             var encryptedTicket = FormsAuthentication.Encrypt(authenticationTicket);
             var theCookie = new HttpCookie("_RetadpUnoiculosI", encryptedTicket);

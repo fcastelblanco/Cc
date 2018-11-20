@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Cc.Upt.Data.Definitions;
 using Cc.Upt.Domain;
-using Cc.Upt.DomainRepository.Definitions;
+using Cc.Upt.Domain.Repository.Definitions;
 
 namespace Cc.Upt.Business.Definitions
 {

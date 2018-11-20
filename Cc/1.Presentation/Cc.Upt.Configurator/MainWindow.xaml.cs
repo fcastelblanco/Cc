@@ -17,7 +17,7 @@ using Cc.Upt.Business.Implementations.Singleton;
 using Cc.Upt.Common.Enumerations;
 using Cc.Upt.Common.ExtensionMethods;
 using Cc.Upt.Domain;
-using Cc.Upt.Domain.Dto;
+using Cc.Upt.Domain.DataTransferObject;
 using Cc.Upt.Domain.Enumerations;
 using Cc.Upt.Ioc;
 
@@ -440,24 +440,24 @@ namespace Cc.Upt.Configurator
                         ConfigurationUpdaterManager.Instance.CompanyId.ToString().Base64Encode()
                     }
                 });
-            if (dataCompanyUser.Data.DateEndSupport.Date >= DateTime.Now.Date)
-            {
-                if (!_companyMapperDtos.Any())
-                    ExecuteActionByDispatcher(() =>
-                    {
-                        _companyMapperDtos.Add(new CompanyMapperDto
-                        {
-                            Name = dataCompanyUser.Data.Name,
-                            Id = Guid.NewGuid()
-                        });
-                    });
-                OpenCompanyMapper();
-            }
-            else
-            {
-                SetContentControlMessage(Error,
-                    $"La garantía de soporte para la empresa {dataCompanyUser.Data.Name} se encuentra vencida");
-            }
+            //if (dataCompanyUser.Data.DateEndSupport.Date >= DateTime.Now.Date)
+            //{
+            //    if (!_companyMapperDtos.Any())
+            //        ExecuteActionByDispatcher(() =>
+            //        {
+            //            _companyMapperDtos.Add(new CompanyMapperDto
+            //            {
+            //                Name = dataCompanyUser.Data.Name,
+            //                Id = Guid.NewGuid()
+            //            });
+            //        });
+            //    OpenCompanyMapper();
+            //}
+            //else
+            //{
+            //    SetContentControlMessage(Error,
+            //        $"La garantía de soporte para la empresa {dataCompanyUser.Data.Name} se encuentra vencida");
+            //}
         }
 
         private void OpenCompanyMapper()

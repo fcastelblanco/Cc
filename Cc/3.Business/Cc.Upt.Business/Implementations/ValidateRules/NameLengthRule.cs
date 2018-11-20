@@ -1,5 +1,6 @@
 ﻿using Cc.Upt.Business.Definitions;
-using Cc.Upt.Domain.Dto;
+using Cc.Upt.Domain.DataTransferObject;
+
 
 namespace Cc.Upt.Business.Implementations.ValidateRules
 {

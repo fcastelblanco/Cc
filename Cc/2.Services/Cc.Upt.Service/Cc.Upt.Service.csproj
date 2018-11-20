@@ -105,6 +105,10 @@
       <Project>{0F82B700-1CF2-4D6C-AA25-EB4DAE36219F}</Project>
       <Name>Cc.Upt.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\4.Domain\Cc.Upt.Domain.DataTransferObject\Cc.Upt.Domain.DataTransferObject.csproj">
+      <Project>{D75818B4-1192-4A9F-82A4-FB8C481DA2C7}</Project>
+      <Name>Cc.Upt.Domain.DataTransferObject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\4.Domain\Cc.Upt.Domain\Cc.Upt.Domain.csproj">
       <Project>{7C8F66FF-63B0-4977-9049-451C1A35B1F1}</Project>
       <Name>Cc.Upt.Domain</Name>

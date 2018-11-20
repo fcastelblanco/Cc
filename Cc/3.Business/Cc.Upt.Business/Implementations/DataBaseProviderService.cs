@@ -4,7 +4,8 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using Cc.Upt.Business.Definitions;
 using Cc.Upt.Common.LogHelper;
-using Cc.Upt.Domain.Dto;
+using Cc.Upt.Domain.DataTransferObject;
+
 using Cc.Upt.Domain.Enumerations;
 using Oracle.ManagedDataAccess.Client;
 

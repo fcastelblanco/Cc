@@ -12,7 +12,7 @@ using Cc.Upt.Domain;
 
 namespace Cc.Upt.Business.Implementations
 {
-    public class CompanyUpdateService : Repository<CompanyUpdate>, ICompanyUpdateService
+    public class CompanyUpdateService : Repository<ServerUpdate>, ICompanyUpdateService
     {
         private readonly IReleaseService _releaseService;
         private readonly ICompanyReleaseService _companyReleaseService;
@@ -21,15 +21,15 @@ namespace Cc.Upt.Business.Implementations
         {
             _releaseService = releaseService;
             _companyReleaseService = companyReleaseService;
-            Dbset = context.Set<CompanyUpdate>();
+            Dbset = context.Set<ServerUpdate>();
         }
 
-        public List<CompanyUpdate> GetCompanyUpdateList(Guid companyId)
+        public List<ServerUpdate> GetServerUpdateList(Guid serverId)
         {
-            return FindBy(x => x.CompanyId == companyId).ToList();
+            return FindBy(x => x.ServerId == serverId).ToList();
         }
 
-        public bool Save(CompanyUpdate companyUpdate)
+        public bool Save(ServerUpdate companyUpdate)
         {
             try
             {
@@ -43,30 +43,30 @@ namespace Cc.Upt.Business.Implementations
             }
         }
 
-        public CompanyUpdate ValidateXmlFile(string path, string userName)
+        public ServerUpdate ValidateXmlFile(string path, string userName)
         {
             using (var streamReader = new StreamReader(path))
             {
-                var theXmlSerializer = new XmlSerializer(typeof(CompanyUpdate));
-                return (CompanyUpdate) theXmlSerializer.Deserialize(streamReader);
+                var theXmlSerializer = new XmlSerializer(typeof(ServerUpdate));
+                return (ServerUpdate) theXmlSerializer.Deserialize(streamReader);
             }
         }
 
-        public CompanyUpdate GetLastUpdate(Guid companyId)
+        public ServerUpdate GetLastUpdate(Guid serverId)
         {
-            return FindBy(x => x.CompanyId == companyId).OrderBy(x => x.Update).FirstOrDefault();
+            return FindBy(x => x.ServerId == serverId).OrderBy(x => x.Update).FirstOrDefault();
         }
 
-        public bool CreateXml(CompanyUpdate companyUpdate, string path)
+        public bool CreateXml(ServerUpdate serverUpdate, string path)
         {
             using (var writer = XmlWriter.Create(path))
             {
                 writer.WriteStartDocument();
                 writer.WriteStartElement("CompanyUpdate");
-                writer.WriteElementString("ID", companyUpdate.Id.ToString());
-                writer.WriteElementString("ReleaseId", companyUpdate.ReleaseId.ToString());
-                writer.WriteElementString("Update", companyUpdate.Update.ToString(CultureInfo.InvariantCulture));
-                writer.WriteElementString("CompanyId", companyUpdate.CompanyId.ToString());
+                writer.WriteElementString("Id", serverUpdate.Id.ToString());
+                writer.WriteElementString("ReleaseId", serverUpdate.ReleaseId.ToString());
+                writer.WriteElementString("Update", serverUpdate.Update.ToString(CultureInfo.InvariantCulture));
+                writer.WriteElementString("ServerId", serverUpdate.ServerId.ToString());
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
             }
@@ -74,9 +74,9 @@ namespace Cc.Upt.Business.Implementations
             return true;
         }
 
-        public IEnumerable<Release> GetAvailableReleaseByCompanyId(Guid companyId)
+        public IEnumerable<Release> GetAvailableReleaseByServerId(Guid serverId)
         {
-            var currentCompanyUpdate = Dbset.Where(x => x.CompanyId == companyId).OrderByDescending(x => x.Update)
+            var currentCompanyUpdate = Dbset.Where(x => x.ServerId == serverId).OrderByDescending(x => x.Update)
                 .FirstOrDefault();
 
             List<Release> releaseList;
@@ -90,7 +90,7 @@ namespace Cc.Upt.Business.Implementations
                     Id = x.Id,
                     Published = x.Published,
                     CreatedBy = x.CreatedBy,
-                    CreatedDate = x.CreatedDate,
+                    CreatedOn = x.CreatedOn,
                     Description = x.Description,
                     IsSafe = x.IsSafe,
                     Notes = x.Notes,
@@ -107,7 +107,7 @@ namespace Cc.Upt.Business.Implementations
                 return null;
             }
 
-            var companyRelease = _companyReleaseService.GetCompanyReleaseList(companyId);
+            var companyRelease = _companyReleaseService.GetCompanyReleaseList(serverId);
             releaseList = _releaseService.GetList().Where(x => x.Published > currentRelease.Published).ToList();
             var temporalReleaseList = new List<Release>();
 
@@ -126,7 +126,7 @@ namespace Cc.Upt.Business.Implementations
                     Id=x.Id,
                     Published = x.Published,
                     CreatedBy = x.CreatedBy,
-                    CreatedDate = x.CreatedDate,
+                    CreatedOn = x.CreatedOn,
                     Description = x.Description,
                     IsSafe = x.IsSafe,
                     Notes = x.Notes,
@@ -141,7 +141,7 @@ namespace Cc.Upt.Business.Implementations
                 Id = x.Id,
                 Published = x.Published,
                 CreatedBy = x.CreatedBy,
-                CreatedDate = x.CreatedDate,
+                CreatedOn = x.CreatedOn,
                 Description = x.Description,
                 IsSafe = x.IsSafe,
                 Notes = x.Notes,

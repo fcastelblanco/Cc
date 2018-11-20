@@ -12,7 +12,7 @@ using Cc.Upt.Common.ExtensionMethods;
 using Cc.Upt.Common.Implementations.DataBaseHelper;
 using Cc.Upt.Common.LogHelper;
 using Cc.Upt.Domain;
-using Cc.Upt.Domain.Dto;
+using Cc.Upt.Domain.DataTransferObject;
 using Cc.Upt.Domain.Enumerations;
 using Microsoft.Web.Administration;
 using Microsoft.Win32;
@@ -175,10 +175,10 @@ namespace Cc.Upt.Business.Implementations
                                 updateResult, servicesList, services, ipmConfigurator, release,
                                 thePathForUncompress);
 
-                            _genericClientService.Post<bool>(new CompanyUpdate
+                            _genericClientService.Post<bool>(new ServerUpdate
                             {
-                                CompanyId = dataRetrievedCompany.Data.Id,
-                                CreatedDate = DateTime.Now,
+                                ServerId = dataRetrievedCompany.Data.Id,
+                                CreatedOn = DateTime.Now,
                                 ReleaseId = release.Id,
                                 Update = DateTime.Now
                             },
@@ -1189,7 +1189,7 @@ namespace Cc.Upt.Business.Implementations
                             new DownloadRequestRelease
                             {
                                 Id = currentRequestRelease.Data.Id,
-                                CreatedDate = DateTime.Now
+                                CreatedOn = DateTime.Now
                             }, "api/ReleaseApi/IncreaseDownloadRequestReleaseDate/",
                             new Dictionary<string, string>
                             {
