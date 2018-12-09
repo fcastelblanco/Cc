@@ -32,7 +32,7 @@ namespace Cc.Upt.Data.Migrations
                 Url = "http://www.updater.com"
             };
 
-            context.Companies.Add(company);
+            context.Companies.AddOrUpdate(company);
 
             var user = new User
             {
@@ -45,7 +45,7 @@ namespace Cc.Upt.Data.Migrations
                 Profile = Profile.Administrator                
             };
 
-            context.Users.Add(user);
+            context.Users.AddOrUpdate(user);
 
             context.SaveChanges();
         }
