@@ -304,16 +304,15 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="AuthenticationApi\ApiIdentity.cs" />
     <Compile Include="AuthenticationApi\BasicAuthenticationAttribute.cs" />
-    <Compile Include="AuthenticationApi\AuthorizedApiController.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Base\BaseApiController.cs" />
+    <Compile Include="Base\BaseController.cs" />
+    <Compile Include="Base\BaseViewPage.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="ExceptionHandling\IsolucionExceptionFilterAttribute.cs" />
+    <Compile Include="ExceptionHandling\ExceptionFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Dto\ValidateFiles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Workers\RequestReleaseCreator.cs" />

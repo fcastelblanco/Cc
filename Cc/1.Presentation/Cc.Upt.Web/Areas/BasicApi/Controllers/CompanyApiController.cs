@@ -2,14 +2,13 @@
 using System.Web.Http;
 using Cc.Upt.Business.Definitions;
 using Cc.Upt.Domain;
-using Cc.Upt.Web.AuthenticationApi;
-
+using Cc.Upt.Web.Base;
 
 namespace Cc.Upt.Web.Areas.BasicApi.Controllers
 {
     [Authorize]
     [RoutePrefix("api")]
-    public class CompanyApiController : AuthorizedApiController
+    public class CompanyApiController : BaseApiController
     {
         private readonly ICompanyService _companyService;
         private readonly ICompanyUpdateService _companyUpdateService;

@@ -19,7 +19,7 @@ namespace Cc.Upt.Web
             );
 
             config.Filters.Add(new BasicAuthenticationAttribute());
-            config.Filters.Add(new IsolucionExceptionFilterAttribute());
+            config.Filters.Add(new ExceptionFilter());
 
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling =
                 PreserveReferencesHandling.All;

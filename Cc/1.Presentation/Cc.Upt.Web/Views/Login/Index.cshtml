@@ -1,4 +1,4 @@
-﻿@model Cc.Upt.Domain.Dto.LoginDto
+﻿@model Cc.Upt.Domain.DataTransferObject.LoginDto
 
 @{
     Layout = null;
@@ -41,9 +41,9 @@
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                         <div class="form-group mb-lg">
-                            <label>Nombre de usuario</label>
+                            <label>E-mail</label>
                             <div class="input-group input-group-icon">
-                                <input type="text" class="form-control input-lg" name="UserName" required data-rule-required="true" data-msg-required="Éste campo es requerido" />
+                                <input type="text" class="form-control input-lg" name="Email" required data-rule-required="true" data-msg-required="Éste campo es requerido" value="@Model.Email" />
                                 <span class="input-group-addon">
                                     <span class="icon icon-lg">
                                         <i class="fa fa-user"></i>
@@ -58,7 +58,7 @@
                                 <a href="@Url.Action("RecoverPassword")" class="pull-right">Olvidó la clave?</a>
                             </div>
                             <div class="input-group input-group-icon">
-                                <input type="password" class="form-control input-lg" name="Password" required data-rule-required="true" data-msg-required="Éste campo es requerido" />
+                                <input type="password" class="form-control input-lg" name="Password" required data-rule-required="true" data-msg-required="Éste campo es requerido" value="@Model.Password" />
                                 <span class="input-group-addon">
                                     <span class="icon icon-lg">
                                         <i class="fa fa-lock"></i>
@@ -97,9 +97,5 @@
 
     @Scripts.Render("~/js/upt-js")
 
-<script>
-   
-
-</script>
 </body>
 </html>

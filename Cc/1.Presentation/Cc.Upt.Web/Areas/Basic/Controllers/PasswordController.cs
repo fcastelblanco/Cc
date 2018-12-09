@@ -6,7 +6,7 @@ using Cc.Upt.Common.ExtensionMethods;
 using Cc.Upt.Domain.DataTransferObject;
 
 
-using Cc.Upt.Web.Controllers;
+using Cc.Upt.Web.Base;
 
 
 namespace Cc.Upt.Web.Areas.Basic.Controllers
@@ -39,7 +39,7 @@ namespace Cc.Upt.Web.Areas.Basic.Controllers
             
             if (validUser != null && model.Password != null)
             {
-                var currentUserPassword = model.Password.Encode();
+                var currentUserPassword = model.Password.Encrypt(StringExtension.PassPhrase);
                 validUser.Password = currentUserPassword;
                 _userService.Update(validUser);
                 return RedirectToAction("PasswordChanged");

@@ -1,10 +1,10 @@
 ﻿using System.Web.Http;
 using Cc.Upt.Business.Definitions;
-using Cc.Upt.Web.AuthenticationApi;
+using Cc.Upt.Web.Base;
 
 namespace Cc.Upt.Web.Areas.BasicApi.Controllers
 {
-    public class ParameterApiController : AuthorizedApiController
+    public class ParameterApiController : BaseApiController
     {
         private readonly IParameterService _parameterService;
 

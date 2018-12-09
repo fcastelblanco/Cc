@@ -1,11 +1,11 @@
 ﻿using System.Web.Http;
 using Cc.Upt.Business.Definitions;
-using Cc.Upt.Web.AuthenticationApi;
+using Cc.Upt.Web.Base;
 
 
 namespace Cc.Upt.Web.Areas.BasicApi.Controllers
 {
-    public class UserApiController : AuthorizedApiController
+    public class UserApiController : BaseApiController
     {
         private readonly IUserService _userService;
 
@@ -17,7 +17,7 @@ namespace Cc.Upt.Web.Areas.BasicApi.Controllers
         [HttpGet]
         public IHttpActionResult GetCurrentUserData()
         {
-            return Ok(AuthorizedUser);
+            return Ok(User);
         }
     }
 }

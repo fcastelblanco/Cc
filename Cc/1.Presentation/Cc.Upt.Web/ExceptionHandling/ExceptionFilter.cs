@@ -5,7 +5,7 @@ using Cc.Upt.Common.LogHelper;
 
 namespace Cc.Upt.Web.ExceptionHandling
 {
-    public class IsolucionExceptionFilterAttribute : IExceptionFilter
+    public class ExceptionFilter : IExceptionFilter
     {
         public bool AllowMultiple { get; }
         public Task ExecuteExceptionFilterAsync(HttpActionExecutedContext actionExecutedContext, CancellationToken cancellationToken)

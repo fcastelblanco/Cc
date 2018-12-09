@@ -19,5 +19,8 @@ namespace Cc.Upt.Domain
 
         public byte[] Photo { get; set; }
         public virtual Company Company { get; set; }
+
+        [NotMapped]
+        public bool IsAuthenticated { get; set; }
     }
 }

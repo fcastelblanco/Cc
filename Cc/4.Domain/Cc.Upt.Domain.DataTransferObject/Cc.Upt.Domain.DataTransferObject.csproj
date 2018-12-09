@@ -49,6 +49,7 @@
     <Compile Include="LoginDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SavePasswordDto.cs" />
+    <Compile Include="ValidateFiles.cs" />
     <Compile Include="ValidateRuleDto.cs" />
   </ItemGroup>
   <ItemGroup>

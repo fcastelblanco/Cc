@@ -3,8 +3,6 @@ using System.Linq;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
-using System.Web.Security;
 using Cc.Upt.Business.Definitions;
 using Cc.Upt.Business.Implementations.Singleton;
 using Cc.Upt.Common.ExtensionMethods;
@@ -16,7 +14,7 @@ using Microsoft.Owin.Security;
 
 namespace Cc.Upt.Web.Controllers
 {
-    public class LoginController : BaseController
+    public class LoginController : Controller
     {
         private readonly ICompanyService _companyService;
         private readonly IUserService _userService;
@@ -33,7 +31,7 @@ namespace Cc.Upt.Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(new LoginDto());
         }
 
         [ValidateAntiForgeryToken]
@@ -42,17 +40,24 @@ namespace Cc.Upt.Web.Controllers
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError(string.Empty, "Nombre de usuario y clave son requeridos");
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", model);
             }
 
-            var currentUserPassword = model.Password.Encode();
             var currentUser =
-                _userService.FindBy(u => u.Email == model.Email && u.Password == currentUserPassword)
+                _userService.FindBy(u => u.Email == model.Email)
                     .FirstOrDefault();
+
             if (currentUser == null)
             {
-                ModelState.AddModelError(string.Empty, "Nombre de usuario o clave son incorrectos");
-                return View("Index");
+                ModelState.AddModelError(string.Empty, "No se encontró usuario con el e-mail ingresado");
+                return View("Index", model);
+            }
+
+            if (currentUser.Password.Decrypt(StringExtension.PassPhrase) != model.Password)
+            {
+                model.Password = string.Empty;
+                ModelState.AddModelError(string.Empty, "La clave es incorrecta");
+                return View("Index", model);
             }
 
             var authentication = HttpContext.GetOwinContext().Authentication;
@@ -83,10 +88,10 @@ namespace Cc.Upt.Web.Controllers
         public ActionResult LogOut()
         {
             var authentication = HttpContext.GetOwinContext().Authentication;
-            authentication.SignOut();
+            authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             Session.Clear();
-            Session.Abandon();            
-            return RedirectToAction("Index");
+            Session.Abandon();
+            return RedirectToAction("Index", new LoginDto());
         }
 
         public ActionResult RecoverPassword()
@@ -178,14 +183,14 @@ namespace Cc.Upt.Web.Controllers
 
             if (_userTokenService.DeleteAllUserTokenByTokenType(savePasswordDto.UserId, TokenType.CreateUser))
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new LoginDto());
             }
 
             throw new Exception("No fue posible lleva a cabo toda la operación");
         }
 
-        [System.Web.Mvc.HttpGet]
-        [System.Web.Mvc.Route("Login/ForgotPassword/{token}/{tokenType}")]
+        [HttpGet]
+        [Route("Login/ForgotPassword/{token}/{tokenType}")]
         public ActionResult ForgotPassword(string token, int tokenType)
         {
             var dataRetrievedExistingToken = _userTokenService.IsValidToken(Guid.Parse(token), (TokenType)tokenType);
@@ -211,14 +216,14 @@ namespace Cc.Upt.Web.Controllers
             var validUser = _userService.GetAllUsers().FirstOrDefault(x => x.Id == userId);
             if (validUser != null)
             {
-                var currentUserPassword = model.Password.Encode();
+                var currentUserPassword = model.Password.Encrypt(StringExtension.PassPhrase);
                 validUser.Password = currentUserPassword;
                 _userService.Update(validUser);
                 return RedirectToAction("PasswordChanged", "Password");
             }
             else
             {
-                return RedirectToAction("Index", "Login");
+                return View("Index", "Login", new LoginDto());
             }
         }
     }

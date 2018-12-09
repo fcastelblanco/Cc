@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using Cc.Upt.Business.Definitions;
 
-using Cc.Upt.Web.Controllers;
+using Cc.Upt.Web.Base;
 
 
 namespace Cc.Upt.Web.Areas.Basic.Controllers

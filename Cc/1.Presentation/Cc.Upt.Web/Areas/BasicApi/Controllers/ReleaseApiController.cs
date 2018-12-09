@@ -3,14 +3,14 @@ using System.Linq;
 using System.Web.Http;
 using Cc.Upt.Business.Definitions;
 using Cc.Upt.Domain;
-using Cc.Upt.Web.AuthenticationApi;
+using Cc.Upt.Web.Base;
 
 
 namespace Cc.Upt.Web.Areas.BasicApi.Controllers
 {
     [Authorize]
     [RoutePrefix("api")]
-    public class ReleaseApiController : AuthorizedApiController
+    public class ReleaseApiController : BaseApiController
     {
         private readonly IDownloadRequestReleaseService _downloadRequestReleaseService;
         private readonly IReleaseService _releaseService;

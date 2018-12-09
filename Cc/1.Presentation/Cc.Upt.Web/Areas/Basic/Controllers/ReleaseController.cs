@@ -10,10 +10,11 @@ using Cc.Upt.Business.Implementations.Singleton;
 using Cc.Upt.Common.Implementations;
 using Cc.Upt.Common.LogHelper;
 using Cc.Upt.Domain;
+using Cc.Upt.Domain.DataTransferObject;
 using Cc.Upt.Domain.Enumerations;
 
-using Cc.Upt.Web.Controllers;
-using Cc.Upt.Web.Models.Dto;
+using Cc.Upt.Web.Base;
+
 
 namespace Cc.Upt.Web.Areas.Basic.Controllers
 {

@@ -3,14 +3,13 @@ using System.Linq;
 using System.Security.Claims;
 using System.Web.Mvc;
 using Cc.Upt.Business.Definitions;
-using Cc.Upt.Business.Implementations.Singleton;
 using Cc.Upt.Domain;
 
-namespace Cc.Upt.Web.Controllers
+namespace Cc.Upt.Web.Base
 {
-    public class BaseController : Controller
+    public class BaseViewPage<TModel> : WebViewPage<TModel>
     {
-        protected new User User
+        public new User User
         {
             get
             {
@@ -21,16 +20,21 @@ namespace Cc.Upt.Web.Controllers
                     return null;
 
                 var userService = DependencyResolver.Current.GetService<IUserService>();
-                return userService.GetById(Guid.Parse(dataCustomPrincipal.Value));
+                var currentUser = userService.GetById(Guid.Parse(dataCustomPrincipal.Value));
+                
+                if (currentUser == null)
+                    throw new Exception("No se encuentra el usuario");
+
+                currentUser.IsAuthenticated = base.User.Identity.IsAuthenticated;
+
+                return currentUser;
             }
         }
 
-        public BaseController()
+        public object ClaimDefinition { get; private set; }
+
+        public override void Execute()
         {
-            ParameterSingleton.Instance = new ParameterSingleton
-            {
-                ParameterList = DependencyResolver.Current.GetService<IParameterService>().GetAllParameters().ToList()
-            };
         }
     }
 }

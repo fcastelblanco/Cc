@@ -82,6 +82,10 @@
       <Project>{826DBBB4-0858-441C-95A9-21F00C13A2B3}</Project>
       <Name>Cc.Upt.Domain.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\4.Domain\Cc.Upt.Domain.Enumerations\Cc.Upt.Domain.Enumerations.csproj">
+      <Project>{FA685272-B000-4452-A294-5A413AF74951}</Project>
+      <Name>Cc.Upt.Domain.Enumerations</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\4.Domain\Cc.Upt.Domain.Repository\Cc.Upt.DomainRepository.csproj">
       <Project>{7711C7D1-028A-4B02-8FA8-1C03ED613B0B}</Project>
       <Name>Cc.Upt.DomainRepository</Name>
@@ -89,6 +93,10 @@
     <ProjectReference Include="..\..\4.Domain\Cc.Upt.Domain\Cc.Upt.Domain.csproj">
       <Project>{7C8F66FF-63B0-4977-9049-451C1A35B1F1}</Project>
       <Name>Cc.Upt.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\6.Common\Cc.Upt.Common\Cc.Upt.Common.csproj">
+      <Project>{83190101-665C-4B64-9156-B5E7D6C2212C}</Project>
+      <Name>Cc.Upt.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

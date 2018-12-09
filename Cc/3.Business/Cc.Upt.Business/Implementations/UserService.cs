@@ -44,7 +44,7 @@ namespace Cc.Upt.Business.Implementations
                 }
                 else
                 {
-                    var passwordEncoded = StringExtension.RandomString(5, true).Encode();
+                    var passwordEncoded = StringExtension.RandomString(5, true).Encrypt(StringExtension.PassPhrase);
                     user.Password = passwordEncoded;
                     Create(user);
                 }
@@ -124,7 +124,7 @@ namespace Cc.Upt.Business.Implementations
                 var dataDictionary = new Dictionary<string, string>
                 {
                     {"{{name}}", currentUser.Name + " " + currentUser.LastName},
-                    {"{{clave}}", password.Decode()},
+                    {"{{clave}}", password.Encrypt(StringExtension.PassPhrase)},
                     {"{{url}}", url},
                     {"{{contactUrl}}", "http://web.isolucion.com.co/contactenos/"}
                 };
@@ -163,7 +163,7 @@ namespace Cc.Upt.Business.Implementations
 
             try
             {
-                currentUser.Password = password.Encode();
+                currentUser.Password = password.Encrypt(StringExtension.PassPhrase);
                 Update(currentUser);
                 return true;
             }

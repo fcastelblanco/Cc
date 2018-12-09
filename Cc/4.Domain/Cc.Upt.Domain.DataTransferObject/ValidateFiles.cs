@@ -1,6 +1,6 @@
 ﻿using Cc.Upt.Domain.Enumerations;
 
-namespace Cc.Upt.Web.Models.Dto
+namespace Cc.Upt.Domain.DataTransferObject
 {
     public class ValidateFiles
     {

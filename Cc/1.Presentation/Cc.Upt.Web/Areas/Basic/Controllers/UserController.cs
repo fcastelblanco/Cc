@@ -7,7 +7,7 @@ using Cc.Upt.Common.Enumerations;
 using Cc.Upt.Domain;
 using Cc.Upt.Domain.Enumerations;
 
-using Cc.Upt.Web.Controllers;
+using Cc.Upt.Web.Base;
 
 namespace Cc.Upt.Web.Areas.Basic.Controllers
 {

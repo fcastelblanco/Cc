@@ -46,11 +46,10 @@ namespace Cc.Upt.Web.AuthenticationApi
                     controller == "UserApi")
                 {
                     userService = DependencyResolver.Current.GetService<IUserService>();
-                    userPassword = password.Encode();
+                    userPassword = password.Encrypt(StringExtension.PassPhrase);
                     user = userService
                         .FindBy(u => u.Email == email && u.Password == userPassword).FirstOrDefault();
-
-                    HttpContext.Current.User = new GenericPrincipal(new ApiIdentity(user), new string[] { });
+                    
                     if (user != null)
                         Log.Instance.Info("Se acepta petición desde: " + ip + ", controlador: " + controller + ", acción: " +
                                           action + ", identificador del usuario autorizado: " + user.Id);
@@ -80,7 +79,7 @@ namespace Cc.Upt.Web.AuthenticationApi
                 }
 
                 userService = DependencyResolver.Current.GetService<IUserService>();
-                userPassword = password.Encode();
+                userPassword = password.Encrypt(StringExtension.PassPhrase);
                 user = userService
                     .FindBy(u => u.Email == email && u.Password == userPassword).FirstOrDefault();
 
@@ -94,8 +93,7 @@ namespace Cc.Upt.Web.AuthenticationApi
                         actionContext.Response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
                         return;
                     }
-
-                    HttpContext.Current.User = new GenericPrincipal(new ApiIdentity(user), new string[] {});
+                    
                     Log.Instance.Info("Se acepta petición desde: " + ip + ", controlador: " + controller + ", acción: " +
                                       action + ", identificador del usuario autorizado: " + user.Id);
                     base.OnActionExecuting(actionContext);

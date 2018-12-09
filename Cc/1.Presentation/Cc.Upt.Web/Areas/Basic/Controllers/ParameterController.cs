@@ -4,7 +4,7 @@ using Cc.Upt.Business.Definitions;
 using Cc.Upt.Business.Implementations.Singleton;
 using Cc.Upt.Domain;
 using Cc.Upt.Domain.Enumerations;
-using Cc.Upt.Web.Controllers;
+using Cc.Upt.Web.Base;
 
 
 namespace Cc.Upt.Web.Areas.Basic.Controllers

@@ -1,13 +1,5 @@
 ﻿@using Cc.Upt.Common.Enumerations
-@
-@{
-    var currentUser = User as AuthorizedPrincipal;
 
-    if (currentUser == null)
-    {
-        throw new Exception("Usuario no logueado");
-    }
-}
 <!DOCTYPE html>
 <html class="fixed">
 <head>
@@ -69,8 +61,8 @@
 
                         </figure>
                         <div class="profile-info">
-                            <span class="name">@currentUser.Name @currentUser.LastName</span>
-                            <span class="role">@currentUser.Profile.GetDescription()</span>
+                            <span class="name">@User.Name @User.LastName</span>
+                            <span class="role">@User.Profile.GetDescription()</span>
                         </div>
 
                         <i class="fa custom-caret"></i>
@@ -83,7 +75,7 @@
                                 <a role="menuitem" tabindex="-1" href="#"><i class="fa fa-user"></i> Mi perfil</a>
                             </li>
                             <li>
-                                <a role="menuitem" tabindex="-1" href="@Url.Action("ResetPassword", "Password", new { area = "Basic", userId = currentUser.Id })"><i class="fa fa-lock"></i> Cambiar clave</a>
+                                <a role="menuitem" tabindex="-1" href="@Url.Action("ResetPassword", "Password", new { area = "Basic", userId = User.Id })"><i class="fa fa-lock"></i> Cambiar clave</a>
                             </li>
                             <li>
                                 <a role="menuitem" tabindex="-1" href="@Url.Action( "LogOut", "Login", new { area = "" })"><i class="fa fa-power-off"></i> Cerrar sesión</a>
@@ -118,7 +110,7 @@
                                     </a>
                                 </li>
 
-                                @if (User.Identity.IsAuthenticated && currentUser.Profile == Cc.Upt.Domain.Enumerations.Profile.Administrator)
+                                @if (User.IsAuthenticated && User.Profile == Cc.Upt.Domain.Enumerations.Profile.Administrator)
                                 {
                                     <li class="nav-parent">
                                         <a>
@@ -144,7 +136,7 @@
                                         </ul>
                                     </li>
                                 }
-                                @if (User.Identity.IsAuthenticated && (currentUser.Profile == Cc.Upt.Domain.Enumerations.Profile.Administrator || currentUser.Profile == Cc.Upt.Domain.Enumerations.Profile.PackageCreator))
+                                @if (User.IsAuthenticated && (User.Profile == Cc.Upt.Domain.Enumerations.Profile.Administrator || User.Profile == Cc.Upt.Domain.Enumerations.Profile.PackageCreator))
                                 {
                                     <li class="nav-parent">
                                         <a>
