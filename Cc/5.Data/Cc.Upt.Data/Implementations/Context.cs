@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading;
 using Cc.Upt.Data.Definitions;
 using Cc.Upt.Domain;
@@ -39,19 +40,19 @@ namespace Cc.Upt.Data.Implementations
             {
                 if (!(entry.Entity is IAuditableEntity entity)) continue;
 
-                var identityName = Thread.CurrentPrincipal.Identity.Name;
+                var identity = Thread.CurrentPrincipal.Identity as ClaimsIdentity;
                 var now = DateTime.UtcNow;
 
                 if (entry.State == EntityState.Added)
                 {
-                    entity.CreatedBy = identityName;
+                    entity.CreatedBy = identity.Claims.Where(x => x.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).FirstOrDefault();
                     entity.CreatedOn = now;
                 }
                 else
                 {
                     Entry(entity).Property(x => x.CreatedBy).IsModified = false;
                     Entry(entity).Property(x => x.CreatedOn).IsModified = false;
-                    entity.UpdatedBy = identityName;
+                    entity.UpdatedBy = identity.Claims.Where(x => x.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).FirstOrDefault();
                     entity.UpdatedOn = now;
                 }
             }

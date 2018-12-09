@@ -5,13 +5,13 @@ using Cc.Upt.Business.Definitions;
 using Cc.Upt.Common.ExtensionMethods;
 using Cc.Upt.Domain.DataTransferObject;
 
-using Cc.Upt.Web.AuthenticationWeb;
+
 using Cc.Upt.Web.Controllers;
 
 
 namespace Cc.Upt.Web.Areas.Basic.Controllers
 {
-    [Authorized]
+    [Authorize]
     public class PasswordController : BaseController
     {
         private readonly IUserService _userService;

@@ -11,13 +11,13 @@ using Cc.Upt.Common.Implementations;
 using Cc.Upt.Common.LogHelper;
 using Cc.Upt.Domain;
 using Cc.Upt.Domain.Enumerations;
-using Cc.Upt.Web.AuthenticationWeb;
+
 using Cc.Upt.Web.Controllers;
 using Cc.Upt.Web.Models.Dto;
 
 namespace Cc.Upt.Web.Areas.Basic.Controllers
 {
-    [Authorized]
+    [Authorize]
     public class ReleaseController : BaseController
     {
         private readonly ICompanyService _companyService;

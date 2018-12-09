@@ -12,7 +12,7 @@ using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using Cc.Upt.Business.Definitions;
 using Cc.Upt.Ioc;
-using Cc.Upt.Web.AuthenticationWeb;
+
 
 namespace Cc.Upt.Web
 {
@@ -37,44 +37,6 @@ namespace Cc.Upt.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             DependencyResolver.Current.GetService<IParameterService>().PrepareData();
-        }
-
-        protected void Application_PostAuthenticateRequest()
-        {
-            var authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
-            if (authCookie != null)
-            {
-                var authTicket = FormsAuthentication.Decrypt(authCookie.Value);
-
-                if (authTicket != null)
-                {
-                    var serializeModel =
-                        new JavaScriptSerializer().Deserialize<AuthorizedPrincipalDto>(authTicket.UserData);
-                    var userService = DependencyResolver.Current.GetService<IUserService>();
-                    var user = userService.FindBy(u => u.Email == serializeModel.UserName).FirstOrDefault();
-                    if (user != null)
-                    {
-                        var newUser = new AuthorizedPrincipal(authTicket.UserData)
-                        {
-                            Id = user.Id,
-                            Name = user.Name,
-                            LastName = user.LastName,
-                            Email = user.Email,
-                            Profile = user.Profile,
-                            CompanyId = user.CompanyId
-                        };
-
-
-                        HttpContext.Current.User = newUser;
-                        if (!Request.Path.ToLower().Contains("logout"))
-                            return;
-
-                        authCookie.Expires = DateTime.Now.AddDays(-2);
-                        Request.Cookies.Remove(FormsAuthentication.FormsCookieName);
-                        Request.Cookies.Clear();
-                    }
-                }
-            }
         }
     }
 }

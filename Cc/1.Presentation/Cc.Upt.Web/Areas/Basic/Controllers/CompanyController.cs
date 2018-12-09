@@ -2,13 +2,13 @@
 using System.Web.Mvc;
 using Cc.Upt.Business.Definitions;
 using Cc.Upt.Domain;
-using Cc.Upt.Web.AuthenticationWeb;
+
 using Cc.Upt.Web.Controllers;
 
 
 namespace Cc.Upt.Web.Areas.Basic.Controllers
 {
-    [Authorized]
+    [Authorize]
     public class CompanyController : BaseController
     {
         private readonly ICompanyService _companyService;

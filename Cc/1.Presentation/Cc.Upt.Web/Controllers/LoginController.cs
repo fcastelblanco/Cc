@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -9,10 +10,9 @@ using Cc.Upt.Business.Implementations.Singleton;
 using Cc.Upt.Common.ExtensionMethods;
 using Cc.Upt.Domain;
 using Cc.Upt.Domain.DataTransferObject;
-
 using Cc.Upt.Domain.Enumerations;
-using Cc.Upt.Web.AuthenticationWeb;
-
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 
 namespace Cc.Upt.Web.Controllers
 {
@@ -54,18 +54,22 @@ namespace Cc.Upt.Web.Controllers
                 ModelState.AddModelError(string.Empty, "Nombre de usuario o clave son incorrectos");
                 return View("Index");
             }
-            
-            var autorizaPrincipal = new AuthorizedPrincipal(model.Email)
-            {
-                Id = currentUser.Id,
-                Name = currentUser.Name,
-                LastName = currentUser.LastName,
-                Email = currentUser.Email,
-                Profile = currentUser.Profile,
-                CompanyId = currentUser.CompanyId
-            };
 
-            CrearAutenticacionTicket(autorizaPrincipal);
+            var authentication = HttpContext.GetOwinContext().Authentication;
+
+            var identity = new ClaimsIdentity(
+                new[]
+                {
+                    new Claim(ClaimTypes.Name, currentUser.Name),
+                    new Claim(ClaimTypes.NameIdentifier, currentUser.Id.ToString())
+                }, DefaultAuthenticationTypes.ApplicationCookie);
+
+            authentication.SignIn(new AuthenticationProperties
+            {
+                IsPersistent = true,
+                ExpiresUtc = DateTime.UtcNow.AddDays(1)
+            }, identity);
+
             _userTokenService.DeleteAllUserTokenByTokenType(currentUser.Id, TokenType.CreateUser);
 
             ParameterSingleton.Instance = new ParameterSingleton
@@ -76,29 +80,12 @@ namespace Cc.Upt.Web.Controllers
             return RedirectToLocal(returnUrl);
         }
 
-        public void CrearAutenticacionTicket(IAuthorizedPrincipal authorizedData)
-        {
-            var userData = new JavaScriptSerializer().Serialize(new AuthorizedPrincipalDto
-            {
-                Id = authorizedData.Id,
-                Name = authorizedData.Name,
-                LastName = authorizedData.LastName,
-                UserName = authorizedData.Email,
-                Profile = authorizedData.Profile,
-                CompanyId = authorizedData.CompanyId
-            });
-
-            var authenticationTicket = new FormsAuthenticationTicket(1, authorizedData.Email, DateTime.Now,
-                DateTime.Now.AddDays(0.5), false, userData);
-            var encryptedTicket = FormsAuthentication.Encrypt(authenticationTicket);
-            var theCookie = new HttpCookie("_RetadpUnoiculosI", encryptedTicket);
-            Response.Cookies.Add(theCookie);
-        }
-
         public ActionResult LogOut()
         {
-            FormsAuthentication.SignOut();
-            Session.Abandon();
+            var authentication = HttpContext.GetOwinContext().Authentication;
+            authentication.SignOut();
+            Session.Clear();
+            Session.Abandon();            
             return RedirectToAction("Index");
         }
 
@@ -151,8 +138,8 @@ namespace Cc.Upt.Web.Controllers
             return RedirectToAction("Index", "Release", new { area = "Basic" });
         }
 
-        [System.Web.Mvc.HttpGet]
-        [System.Web.Mvc.Route("Login/CreateUserPassword/{token}/{tokenType}")]
+        [HttpGet]
+        [Route("Login/CreateUserPassword/{token}/{tokenType}")]
         public ActionResult CreateUserPassword(string token, int tokenType)
         {
             var dataRetrievedExistingToken = _userTokenService.IsValidToken(Guid.Parse(token), (TokenType)tokenType);

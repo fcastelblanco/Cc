@@ -4,11 +4,11 @@ using System.Web.Http;
 using Cc.Upt.Business.Definitions;
 using Cc.Upt.Domain;
 using Cc.Upt.Web.AuthenticationApi;
-using Cc.Upt.Web.AuthenticationWeb;
+
 
 namespace Cc.Upt.Web.Areas.BasicApi.Controllers
 {
-    [Authorized]
+    [Authorize]
     [RoutePrefix("api")]
     public class ReleaseApiController : AuthorizedApiController
     {

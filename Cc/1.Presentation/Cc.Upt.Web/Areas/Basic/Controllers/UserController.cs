@@ -6,12 +6,12 @@ using Cc.Upt.Business.Implementations.Singleton;
 using Cc.Upt.Common.Enumerations;
 using Cc.Upt.Domain;
 using Cc.Upt.Domain.Enumerations;
-using Cc.Upt.Web.AuthenticationWeb;
+
 using Cc.Upt.Web.Controllers;
 
 namespace Cc.Upt.Web.Areas.Basic.Controllers
 {
-    [Authorized] 
+    [Authorize] 
     public class UserController : BaseController
     {
         private readonly ICompanyService _companyService;

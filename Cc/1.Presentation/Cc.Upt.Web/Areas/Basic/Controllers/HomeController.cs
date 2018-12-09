@@ -1,13 +1,13 @@
 ﻿using System.Web.Mvc;
 using Cc.Upt.Business.Definitions;
-using Cc.Upt.Web.AuthenticationWeb;
+
 using Cc.Upt.Web.Controllers;
 
 
 namespace Cc.Upt.Web.Areas.Basic.Controllers
 {
    
-    [Authorized]
+    [Authorize]
     public class HomeController : BaseController
     {
         private readonly IUserService _userService;
