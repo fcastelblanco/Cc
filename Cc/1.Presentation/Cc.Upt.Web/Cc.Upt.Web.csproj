@@ -329,9 +329,6 @@
     <Content Include="Areas\Basic\Views\Parameter\Index.cshtml" />
     <Content Include="Areas\Basic\Views\Password\PasswordChanged.cshtml" />
     <Content Include="Areas\Basic\Views\Password\ResetPassword.cshtml" />
-    <Content Include="Areas\Basic\Views\Release\Create.cshtml" />
-    <Content Include="Areas\Basic\Views\Release\Download.cshtml" />
-    <Content Include="Areas\Basic\Views\Release\Index.cshtml" />
     <Content Include="Areas\Basic\Views\User\Create.cshtml" />
     <Content Include="Areas\Basic\Views\User\Edit.cshtml" />
     <Content Include="Areas\Basic\Views\User\Index.cshtml" />
@@ -430,7 +427,6 @@
     <Content Include="Content\uploadfile.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Areas\Basic\Views\Release\Edit.cshtml" />
     <Content Include="Content\bootstrap\config.json" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
@@ -443,6 +439,10 @@
     <Content Include="Scripts\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Scripts\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\Basic\Views\Release\Create.cshtml" />
+    <Content Include="Areas\Basic\Views\Release\Download.cshtml" />
+    <Content Include="Areas\Basic\Views\Release\Edit.cshtml" />
+    <Content Include="Areas\Basic\Views\Release\Index.cshtml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\bootstrap-datepicker\css\datepicker.css" />
