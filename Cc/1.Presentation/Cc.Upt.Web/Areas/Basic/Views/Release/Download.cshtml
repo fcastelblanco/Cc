@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br/>
+<form method="post" action="@Url.Action("DownloadRelease", "Release")" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Subi archivo de control</strong><br/>
+                    <small> Por favor suba el archivo generado despues de la ultima actualización realizada</small>
+                </div>
+                <div class="panel-body">
+                    <div class="input-group image-preview">
+                        <span class="input-group-btn">
+                            <div class="btn btn-default image-preview-input">
+                                <input type="file" accept="xml" name="fileXml" >
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Subir y descargar</button>
+</form>

@@ -1,0 +1,581 @@
+﻿@{    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Aplicación Web</strong>
+                <span class="text-danger"> (La carpeta se debe llamar Web.zip)</span>
+                <br />
+                <small> Si es necesario tener respaldo de pre-existencia de carpetas y/o archivos en el destino, los contenidos o carpetasdeberán terminar con _BU</small>
+            </div>
+            <div class="panel-body">
+                <div id="WebFile">
+                    <div class="ajax-upload-dragdrop" style="vertical-align: top; width: 400px;">
+                        <div class="ajax-file-upload" style="position: relative; overflow: hidden; cursor: default;">
+                            Cargar Archivo
+                            <form method="POST" action="@Url.Action("Validate", "Release", new  { area ="Basic" })" enctype="multipart/form-data" style="margin: 0px; padding: 0px;">
+                                <input type="file" id="uploadWeb" name="myfile[]" accept="zip" style="position: absolute; cursor: pointer; top: 0px; width: 100%; height: 100%; left: 0px; z-index: 100; opacity: 0;">
+                            </form>
+                        </div><span><b>Arraste los archivos</b></span>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="ajax-file-upload-container"></div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" id="WebBackup">
+                        ¿Es necesario tener Backup de la carpeta?
+                    </label>
+                </div>
+                <div id="WebButton" class="ajax-file-upload-green">Subir</div>
+                <div id="WebMessage">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Servicios</strong> <br />
+                <small>
+                    Esta carpeta tendrá sub carpetas en dónde cada sub carpeta será llamada cómo se llame el servicio
+                </small><br />
+                <small> Si es necesario tener respaldo de pre-existencia de carpetas y/o archivos en el destino, los contenidos o carpetasdeberán terminar con _BU</small>
+            </div>
+            <div class="panel-body">
+                <div id="ServicesFile">
+                    <div class="ajax-upload-dragdrop" style="vertical-align: top; width: 400px;">
+                        <div class="ajax-file-upload" style="position: relative; overflow: hidden; cursor: default;">
+                            Cargar Archivo
+                            <form method="POST" action="@Url.Action("Validate")" enctype="multipart/form-data" style="margin: 0px; padding: 0px;">
+                                <input type="file" id="uploadServices" name="myfile[]" accept="zip" style="position: absolute; cursor: pointer; top: 0px; width: 100%; height: 100%; left: 0px; z-index: 100; opacity: 0;">
+                            </form>
+                        </div><span><b>Arraste los archivos</b></span>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="ajax-file-upload-container"></div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" id="ServicesBackup">
+                        ¿Es necesario tener Backup de la carpeta?
+                    </label>
+                </div>
+                <div id="ServicesButton" class="ajax-file-upload-green">Subir</div>
+                <div id="ServicesMessage">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Scripts Actualización</strong>
+                <small class="text-danger">(La carpeta se debe llamar ScriptsCommit.zip) </small>
+                <br />
+                <small>Los archivos deben venir nombrados de la siguiente forma YYYY_MM_DD_HHMM_CLIENTE_MODULO_DESCRIPCION_USUARIO_MOTOR_CONSECUTIVO </small>
+            </div>
+            <div class="panel-body">
+                <div id="ScriptsCommitFile">
+                    <div class="ajax-upload-dragdrop" style="vertical-align: top; width: 400px;">
+                        <div class="ajax-file-upload" style="position: relative; overflow: hidden; cursor: default;">
+                            Cargar Archivo
+                            <form method="POST" action="@Url.Action("Validate")" enctype="multipart/form-data" style="margin: 0px; padding: 0px;">
+                                <input type="file" id="uploadScriptsCommit" name="myfile[]" accept="zip" style="position: absolute; cursor: pointer; top: 0px; width: 100%; height: 100%; left: 0px; z-index: 100; opacity: 0;">
+                            </form>
+                        </div><span><b>Arraste los archivos</b></span>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="ajax-file-upload-container"></div>
+                <div id="ScriptsCommitButton" class="ajax-file-upload-green">Subir</div>
+                <div id="ScriptsCommitMessage">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Scripts Rollback</strong>
+                <small class="text-danger">(La carpeta se debe llamar ScriptsRollBack.zip)</small><br />
+                <small>Los archivos deben venir nombrados de la siguiente forma YYYY_MM_DD_HHMM_CLIENTE_MODULO_DESCRIPCION_USUARIO_MOTOR_CONSECUTIVO </small>
+            </div>
+            <div class="panel-body">
+                <div id="ScriptsRollBackFile">
+                    <div class="ajax-upload-dragdrop" style="vertical-align: top; width: 400px;">
+                        <div class="ajax-file-upload" style="position: relative; overflow: hidden; cursor: default;">
+                            Cargar Archivo
+                            <form method="POST" action="@Url.Action("Validate")" enctype="multipart/form-data" style="margin: 0px; padding: 0px;">
+                                <input type="file" id="uploadScriptsRollBack" name="myfile[]" accept="zip" style="position: absolute; cursor: pointer; top: 0px; width: 100%; height: 100%; left: 0px; z-index: 100; opacity: 0;">
+                            </form>
+                        </div><span><b>Arraste los archivos</b></span>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="ajax-file-upload-container"></div>
+
+                <div id="ScriptsRollBackButton" class="ajax-file-upload-green">Subir</div>
+                <div id="ScriptsRollBackMessage">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Libreria</strong> <small class="text-danger">(La carpeta se debe llamar Library.zip)</small><br />
+                <small> Si es necesario tener respaldo de pre-existencia de carpetas y/o archivos en el destino, los contenidos o carpetasdeberán terminar con _BU</small>
+            </div>
+            <div class="panel-body">
+                <div id="LibraryFile">
+                    <div class="ajax-upload-dragdrop" style="vertical-align: top; width: 400px;">
+                        <div class="ajax-file-upload" style="position: relative; overflow: hidden; cursor: default;">
+                            Cargar Archivo
+                            <form method="POST" action="@Url.Action("Validate")" enctype="multipart/form-data" style="margin: 0px; padding: 0px;">
+                                <input type="file" id="uploadLibrary" name="myfile[]" accept="zip" style="position: absolute; cursor: pointer; top: 0px; width: 100%; height: 100%; left: 0px; z-index: 100; opacity: 0;">
+                            </form>
+                        </div><span><b>Arraste los archivos</b></span>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="ajax-file-upload-container"></div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" id="LibraryBackup">
+                        ¿Es necesario tener Backup de la carpeta?
+                    </label>
+                </div>
+                <div id="LibraryButton" class="ajax-file-upload-green">Subir</div>
+                <div id="LibraryMessage">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Templates</strong> <small class="text-danger">(La carpeta se debe llamar Templates.zip)</small><br />
+                <small> Si es necesario tener respaldo de pre-existencia de carpetas y/o archivos en el destino, los contenidos o carpetasdeberán terminar con _BU</small>
+            </div>
+            <div class="panel-body">
+                <div id="TemplatesFile">
+                    <div class="ajax-upload-dragdrop" style="vertical-align: top; width: 400px;">
+                        <div class="ajax-file-upload" style="position: relative; overflow: hidden; cursor: default;">
+                            Cargar Archivo
+                            <form method="POST" action="@Url.Action("Validate")" enctype="multipart/form-data" style="margin: 0px; padding: 0px;">
+                                <input type="file" id="uploadTemplates" name="myfile[]" accept="zip" style="position: absolute; cursor: pointer; top: 0px; width: 100%; height: 100%; left: 0px; z-index: 100; opacity: 0;">
+                            </form>
+                        </div><span><b>Arraste los archivos</b></span>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="ajax-file-upload-container"></div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" id="TemplatesBackup">
+                        ¿Es necesario tener Backup de la carpeta?
+                    </label>
+                </div>
+                <div id="TemplatesButton" class="ajax-file-upload-green">Subir</div>
+                <div id="TemplatesMessage">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Banco Conocimiento</strong> <small class="text-danger">(La carpeta se debe llamar BancoConocimiento.zip)</small><br />
+                <small> Si es necesario tener respaldo de pre-existencia de carpetas y/o archivos en el destino, los contenidos o carpetasdeberán terminar con _BU</small>
+            </div>
+            <div class="panel-body">
+                <div id="KnowledgeBankFile">
+                    <div class="ajax-upload-dragdrop" style="vertical-align: top; width: 400px;">
+                        <div class="ajax-file-upload" style="position: relative; overflow: hidden; cursor: default;">
+                            Cargar Archivo
+                            <form method="POST" action="@Url.Action("Validate")" enctype="multipart/form-data" style="margin: 0px; padding: 0px;">
+                                <input type="file" id="uploadKnowledgeBank" name="myfile[]" accept="zip" style="position: absolute; cursor: pointer; top: 0px; width: 100%; height: 100%; left: 0px; z-index: 100; opacity: 0;">
+                            </form>
+                        </div><span><b>Arraste los archivos</b></span>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="ajax-file-upload-container"></div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" id="KnowledgeBankBackup">
+                        ¿Es necesario tener Backup de la carpeta?
+                    </label>
+                </div>
+                <div id="KnowledgeBankButton" class="ajax-file-upload-green">Subir</div>
+                <div id="KnowledgeBankMessage">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Banco Anexo</strong> <small class="text-danger">(La carpeta se debe llamar BancoAnexo.zip)</small><br />
+                <small> Si es necesario tener respaldo de pre-existencia de carpetas y/o archivos en el destino, los contenidos o carpetasdeberán terminar con _BU</small>
+            </div>
+            <div class="panel-body">
+                <div id="AttachedBankFile">
+                    <div class="ajax-upload-dragdrop" style="vertical-align: top; width: 400px;">
+                        <div class="ajax-file-upload" style="position: relative; overflow: hidden; cursor: default;">
+                            Cargar Archivo
+                            <form method="POST" action="@Url.Action("Validate")" enctype="multipart/form-data" style="margin: 0px; padding: 0px;">
+                                <input type="file" id="uploadAttachedBank" name="myfile[]" accept="zip" style="position: absolute; cursor: pointer; top: 0px; width: 100%; height: 100%; left: 0px; z-index: 100; opacity: 0;">
+                            </form>
+                        </div><span><b>Arraste los archivos</b></span>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="ajax-file-upload-container"></div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" id="AttachedBankBackup">
+                        ¿Es necesario tener Backup de la carpeta?
+                    </label>
+                </div>
+                <div id="AttachedBankButton" class="ajax-file-upload-green">Subir</div>
+                <div id="AttachedBankMessage">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<form method="post" action="@Url.Action("CreateRelease", "Release")" id="form">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>
+                        Notas de versión
+                    </strong>
+                </div>
+                <div class="panel-body">
+                    <textarea name="Notes" id="Notes" data-rule-required="true" data-msg-required="Las notas de la versión son necesarias" data-rule-min="100" data-msg-min="Al menos 100 caracteres para describir esta liberación" class="form-control"></textarea>
+                    <br />
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Tipo de Release</strong>
+                    <small class="text-danger">Escoja los clientes para los que aplica esta actualización</small>
+                    <br />
+                    <small>Seleccione todos si la actualización aplica para todas las empresas </small>
+                </div>
+                <div class="panel-body">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="AllCompanys" value="1" /> Todos
+                        </label>
+                    </div>
+                    <div class="s2-example">
+                        <select class="js-example-basic-multiple  form-control" name="selectedCompanys[]" multiple="multiple" aria-hidden="true">
+                            @foreach (var item in ViewBag.Companys)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="input-group image-preview">
+        <span class="input-group-btn">
+            <div class="btn btn-default image-preview-input">
+                <button type="submit" class="btn btn-primary" id="save">Crear Actualización</button>
+            </div>
+        </span>
+    </div>
+</form>
+
+
+@section scripts{
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            $('.js-example-basic-multiple').select2();
+
+            var allTextArea = $("textarea");
+            $.each(allTextArea,
+                function (index, object) {
+                    $(object).val($(object).val().replace(/^\s*|\s*$/g, ''));
+                });
+            CKEDITOR.replace("Notes");
+
+
+
+            var webUploadFile = $("#WebFile").uploadFile({
+                url: "@Url.Action("Validate")",
+                fileName: "fileuploader",
+                multiple: false,
+                dragDrop: true,
+                autoSubmit: false,
+                dynamicFormData: function () {
+                    var data = { "FileTypeValidate": 1, "RequiredBackup": $('#WebBackup:checked').length > 0 };
+                    return data;
+                },
+                onSubmit: function (files) {
+                    $("#WebMessage").html($("#WebMessage").html() + "<br/>Subiendo Archivo:" + JSON.stringify(files));
+                },
+                onSuccess: function (files, data, xhr, pd) {
+                    if (data.Success)
+                        $("#WebMessage").html($("#WebMessage").html() + "<br/><span class='text-success'>Carga Exitoso: " + JSON.stringify(files) + "</span>");
+                    else
+                        $("#WebMessage").html($("#WebMessage").html() + "<br/><span class='text-danger'>Error  " + JSON.stringify(data.Message) + "</span>");
+                },
+                onCancel: function (files, pd) {
+                    $("#WebMessage").html($("#WebMessage").html() + "<br/>Canceled  files: " + JSON.stringify(files));
+                }
+            });
+            $("#WebButton").click(function () {
+                $("#WebMessage").html("");
+                webUploadFile.startUpload();
+            });
+
+
+            var scriptsCommitUploadFile = $("#ScriptsCommitFile").uploadFile({
+                url: "@Url.Action("Validate")",
+                fileName: "fileuploader",
+                multiple: false,
+                dragDrop: true,
+                autoSubmit: false,
+                formData: { "FileTypeValidate": 3 },
+                onSubmit: function (files) {
+                    $("#ScriptsCommitMessage").html($("#ScriptsCommitMessage").html() + "<br/>Subiendo Archivo:" + JSON.stringify(files));
+                },
+                onSuccess: function (files, data, xhr, pd) {
+                    if (data.Success)
+                        $("#ScriptsCommitMessage").html($("#ScriptsCommitMessage").html() + "<br/><span class='text-success'>Carga Exitoso: " + JSON.stringify(files) + "</span>");
+                    else
+                        $("#ScriptsCommitMessage").html($("#ScriptsCommitMessage").html() + "<br/><span class='text-danger'>Error  " + JSON.stringify(data.Message) + "</span>");
+                },
+                onCancel: function (files, pd) {
+                    $("#ScriptsCommitMessage").html($("#ScriptsCommitMessage").html() + "<br/>Canceled  files: " + JSON.stringify(files));
+                }
+            });
+            $("#ScriptsCommitButton").click(function () {
+                $("#ScriptsCommitMessage").html("");
+                scriptsCommitUploadFile.startUpload();
+            });
+
+            var servicesUploadFile = $("#ServicesFile").uploadFile({
+                url: "@Url.Action("Validate")",
+                fileName: "fileuploader",
+                multiple: false,
+                dragDrop: true,
+                autoSubmit: false,
+                dynamicFormData: function () {
+                    var data = { "FileTypeValidate": 2, "RequiredBackup": $('#ServicesBackup:checked').length > 0 };
+                    return data;
+                },
+                onSubmit: function (files) {
+                    $("#ServicesMessage").html($("#ServicesMessage").html() + "<br/>Subiendo Archivo:" + JSON.stringify(files));
+                },
+                onSuccess: function (files, data, xhr, pd) {
+                    if (data.Success)
+                        $("#ServicesMessage").html($("#ServicesMessage").html() + "<br/><span class='text-success'>Carga Exitoso: " + JSON.stringify(files) + "</span>");
+                    else
+                        $("#ServicesMessage").html($("#ServicesMessage").html() + "<br/><span class='text-danger'>Error  " + JSON.stringify(data.Message) + "</span>");
+                },
+                onCancel: function (files, pd) {
+                    $("#ServicesMessage").html($("#ServicesMessage").html() + "<br/>Canceled  files: " + JSON.stringify(files));
+                }
+            });
+            $("#ServicesButton").click(function () {
+                $("#ServicesMessage").html("");
+                servicesUploadFile.startUpload();
+            });
+
+            var scriptsRollBackUploadFile = $("#ScriptsRollBackFile").uploadFile({
+                url: "@Url.Action("Validate")",
+                fileName: "fileuploader",
+                multiple: false,
+                dragDrop: true,
+                autoSubmit: false,
+                formData: { "FileTypeValidate": 4, "RequiredBackup": $('#checkArray:checkbox:checked').length > 0 },
+                onSubmit: function (files) {
+                    $("#ScriptsRollBackMessage").html($("#ScriptsRollBackMessage").html() + "<br/>Subiendo Archivo:" + JSON.stringify(files));
+                },
+                onSuccess: function (files, data, xhr, pd) {
+                    if (data.Success)
+                        $("#ScriptsRollBackMessage").html($("#ScriptsRollBackMessage").html() + "<br/><span class='text-success'>Carga Exitoso: " + JSON.stringify(files) + "</span>");
+                    else
+                        $("#ScriptsRollBackMessage").html($("#ScriptsRollBackMessage").html() + "<br/><span class='text-danger'>Error  " + JSON.stringify(data.Message) + "</span>");
+                },
+                onCancel: function (files, pd) {
+                    $("#ScriptsRollBackMessage").html($("#ScriptsRollBackMessage").html() + "<br/>Canceled  files: " + JSON.stringify(files));
+                }
+            });
+            $("#ScriptsRollBackButton").click(function () {
+                $("#ScriptsRollBackMessage").html("");
+                scriptsRollBackUploadFile.startUpload();
+            });
+
+
+            var libraryUploadFile = $("#LibraryFile").uploadFile({
+                url: "@Url.Action("Validate")",
+                fileName: "fileuploader",
+                multiple: false,
+                dragDrop: true,
+                autoSubmit: false,
+                dynamicFormData: function () {
+                    var data = { "FileTypeValidate": 5, "RequiredBackup": $('#LibraryBackup:checked').length > 0 };
+                    return data;
+                },
+                onSubmit: function (files) {
+                    $("#LibraryMessage").html($("#LibraryMessage").html() + "<br/>Subiendo Archivo:" + JSON.stringify(files));
+                },
+                onSuccess: function (files, data, xhr, pd) {
+                    if (data.Success)
+                        $("#LibraryMessage").html($("#LibraryMessage").html() + "<br/><span class='text-success'>Carga Exitoso: " + JSON.stringify(files) + "</span>");
+                    else
+                        $("#LibraryMessage").html($("#LibraryMessage").html() + "<br/><span class='text-danger'>Error  " + JSON.stringify(data.Message) + "</span>");
+                },
+                onCancel: function (files, pd) {
+                    $("#LibraryMessage").html($("#LibraryMessage").html() + "<br/>Canceled  files: " + JSON.stringify(files));
+                }
+            });
+            $("#LibraryButton").click(function () {
+                $("#LibraryMessage").html("");
+                libraryUploadFile.startUpload();
+            });
+
+
+            var templatesUploadFile = $("#TemplatesFile").uploadFile({
+                url: "@Url.Action("Validate")",
+                fileName: "fileuploader",
+                multiple: false,
+                dragDrop: true,
+                autoSubmit: false,
+                dynamicFormData: function () {
+                    var data = { "FileTypeValidate": 6, "RequiredBackup": $('#TemplatesBackup:checked').length > 0 };
+                    return data;
+                },
+                onSubmit: function (files) {
+                    $("#TemplatesMessage").html($("#TemplatesMessage").html() + "<br/>Subiendo Archivo:" + JSON.stringify(files));
+                },
+                onSuccess: function (files, data, xhr, pd) {
+                    if (data.Success)
+                        $("#TemplatesMessage").html($("#TemplatesMessage").html() + "<br/><span class='text-success'>Carga Exitoso: " + JSON.stringify(files) + "</span>");
+                    else
+                        $("#TemplatesMessage").html($("#TemplatesMessage").html() + "<br/><span class='text-danger'>Error  " + JSON.stringify(data.Message) + "</span>");
+                },
+                onCancel: function (files, pd) {
+                    $("#TemplatesMessage").html($("#TemplatesMessage").html() + "<br/>Canceled  files: " + JSON.stringify(files));
+                }
+            });
+            $("#TemplatesButton").click(function () {
+                $("#TemplatesMessage").html("");
+                templatesUploadFile.startUpload();
+            });
+
+            var knowledgeBankUploadFile = $("#KnowledgeBankFile").uploadFile({
+                url: "@Url.Action("Validate")",
+                fileName: "fileuploader",
+                multiple: false,
+                dragDrop: true,
+                autoSubmit: false,
+                dynamicFormData: function () {
+                    var data = { "FileTypeValidate": 1, "RequiredBackup": $('#KnowledgeBankBackup:checked').length > 0 };
+                    return data;
+                },
+                onSubmit: function (files) {
+                    $("#KnowledgeBankMessage").html($("#KnowledgeBankMessage").html() + "<br/>Subiendo Archivo:" + JSON.stringify(files));
+                },
+                onSuccess: function (files, data, xhr, pd) {
+                    if (data.Success)
+                        $("#KnowledgeBankMessage").html($("#KnowledgeBankMessage").html() + "<br/><span class='text-success'>Carga Exitoso: " + JSON.stringify(files) + "</span>");
+                    else
+                        $("#KnowledgeBankMessage").html($("#KnowledgeBankMessage").html() + "<br/><span class='text-danger'>Error  " + JSON.stringify(data.Message) + "</span>");
+                },
+                onCancel: function (files, pd) {
+                    $("#KnowledgeBankMessage").html($("#KnowledgeBankMessage").html() + "<br/>Canceled  files: " + JSON.stringify(files));
+                }
+            });
+            $("#KnowledgeBankButton").click(function () {
+                $("#KnowledgeBankMessage").html("");
+                knowledgeBankUploadFile.startUpload();
+            });
+
+            var attachedBankUploadFile = $("#AttachedBankFile").uploadFile({
+                url: "@Url.Action("Validate")",
+                fileName: "fileuploader",
+                multiple: false,
+                dragDrop: true,
+                autoSubmit: false,
+                dynamicFormData: function () {
+                    var data = { "FileTypeValidate": 8, "RequiredBackup": $('#KnowledgeBankBackup:checked').length > 0 };
+                    return data;
+                },
+                onSubmit: function (files) {
+                    $("#AttachedBankMessage").html($("#AttachedBankMessage").html() + "<br/>Subiendo Archivo:" + JSON.stringify(files));
+                },
+                onSuccess: function (files, data, xhr, pd) {
+                    if (data.Success)
+                        $("#AttachedBankMessage").html($("#AttachedBankMessage").html() + "<br/><span class='text-success'>Carga Exitoso: " + JSON.stringify(files) + "</span>");
+                    else
+                        $("#AttachedBankMessage").html($("#AttachedBankMessage").html() + "<br/><span class='text-danger'>Error  " + JSON.stringify(data.Message) + "</span>");
+                },
+                onCancel: function (files, pd) {
+                    $("#AttachedBankMessage").html($("#AttachedBankMessage").html() + "<br/>Canceled  files: " + JSON.stringify(files));
+                }
+            });
+            $("#AttachedBankButton").click(function () {
+                $("#AttachedBankMessage").html("");
+                attachedBankUploadFile.startUpload();
+            });
+        });
+
+
+    </script>
+
+}
